@@ -1,0 +1,32 @@
+<div class="flex flex-col space-y-10 w-full">
+  <zap-date-picker
+    id="some"
+    label="Date picker"
+    [formControl]="datePickerControl"
+    helpText="Select your date of birth"
+    [dropdown]="false"
+    shape="curve"
+  ></zap-date-picker>
+  <zap-date-picker
+    id="some"
+    label="Date picker"
+    helpText="Select your date of birth"
+    shape="curve"
+  ></zap-date-picker>
+  <zap-date-picker
+    label="Range date picker"
+    [range]="true"
+    [breakpoints]="breakpoints"
+    [dropdown]="false"
+    shape="curve"
+  >
+  </zap-date-picker>
+  <zap-date-picker
+    label="Range date picker"
+    [range]="true"
+    [formControl]="datePickerControl2"
+    [breakpoints]="breakpoints2"
+    shape="curve"
+  >
+  </zap-date-picker>
+</div>
