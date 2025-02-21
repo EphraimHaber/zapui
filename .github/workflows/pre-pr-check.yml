@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Run Tests
-        run: npm test --no-watch --no-progress --browsers=ChromeHeadless
+        run: ng test --no-watch --no-progress --browsers=ChromeHeadless
 
       - name: Run Linter
         run: npm run lint
