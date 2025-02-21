@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { ZapButton } from './button.component';
-import { ZapIconDirective } from '../directives/icon.directive';
 
 describe('ZapButton', () => {
     let component: ZapButton;
