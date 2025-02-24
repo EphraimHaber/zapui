@@ -220,7 +220,7 @@ export class DPCalendar implements OnInit {
     if (currentIndex > 0) {
       this.selectedMonthAndYearRange = this.monthsAndYearRange[currentIndex - 1];
   
-      const [start, end] = this.selectedMonthAndYearRange.split(' - ');
+      const [start] = this.selectedMonthAndYearRange.split(' - ');
       const startMonth = start.split(' ')[0];
       const startYear = parseInt(start.split(' ')[1]);
   
@@ -242,7 +242,7 @@ export class DPCalendar implements OnInit {
     if (currentIndex < this.monthsAndYearRange.length - 1) {
       this.selectedMonthAndYearRange = this.monthsAndYearRange[currentIndex + 1];
   
-      const [start, end] = this.selectedMonthAndYearRange.split(' - ');
+      const [start] = this.selectedMonthAndYearRange.split(' - ');
       const startMonth = start.split(' ')[0];
       const startYear = parseInt(start.split(' ')[1]);
   
@@ -256,7 +256,7 @@ export class DPCalendar implements OnInit {
     }
   }
 
-  handleMonthSelect(selected: any): void {
+  handleMonthSelect(selected: string): void {
     this.currentMonth = selected;
     this.changeMonthAndYear.emit({
       month: this.currentMonth,
@@ -264,7 +264,7 @@ export class DPCalendar implements OnInit {
     });
   }
 
-  handleYearSelect(selected: any): void {
+  handleYearSelect(selected: string): void {
     this.currentYear = parseInt(selected);
     this.changeMonthAndYear.emit({
       month: this.currentMonth,
@@ -272,8 +272,8 @@ export class DPCalendar implements OnInit {
     });
   }
 
-  handleMonthAndYearRangeSelect(selected: any): void {
-    const [start, end] = selected.split(' - ');
+  handleMonthAndYearRangeSelect(selected: string): void {
+    const [start] = selected.split(' - ');
     const startMonth = start.split(' ')[0];
     const startYear = parseInt(start.split(' ')[1]);
     this.currentMonth = startMonth;

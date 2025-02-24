@@ -25,8 +25,6 @@ export class ZapChip implements AfterViewInit {
   @ContentChild(ZapIconDirective, { static: false })
   iconDirective!: ZapIconDirective;
 
-  constructor() {}
-
   ngAfterViewInit() {
     if (this.iconDirective) {
       this.iconDirective.el.nativeElement.style.height = 'var(--zap-chip-font-size)';

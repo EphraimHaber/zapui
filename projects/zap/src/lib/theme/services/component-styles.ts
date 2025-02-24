@@ -1,4 +1,4 @@
-import { HexCode } from '../../interfaces';
+import { HexCode, ZapConfig } from '../../interfaces';
 import { toKebabCase } from '../utils/base-theme-utils';
 import { handlePaddingStyles } from '../utils/padding-utils';
 
@@ -10,7 +10,7 @@ interface ComponentStyles {
 export function generateComponentStylesVariables(
   styles: ComponentStyles,
   componentKey: string,
-  config: any
+  config: ZapConfig
 ): string {
   let cssVariables = '';
   Object.entries(styles).forEach(([styleKey, styleValue]) => {

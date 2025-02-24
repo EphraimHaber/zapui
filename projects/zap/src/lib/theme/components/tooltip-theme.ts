@@ -1,10 +1,7 @@
 import { TooltipConfig } from '../../interfaces';
-import { getExistingShapeFor, getShapeCssValues } from '../utils/shape-utils';
+import { getShapeCssValues } from '../utils/shape-utils';
 
-export function generateComponentTooltipVariables(
-  value: TooltipConfig,
-  root: HTMLElement
-) {
+export function generateComponentTooltipVariables(value: TooltipConfig) {
   let cssVariables = '';
   const tooltipShapeValue = value.shape || '';
 

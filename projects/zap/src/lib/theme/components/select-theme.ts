@@ -3,7 +3,6 @@ import { getShapeCssValues } from '../utils/shape-utils';
 
 export function generateComponentSelectVariables(
   value: SelectConfig,
-  root: HTMLElement
 ) {
   let cssVariables = '';
   const selectSizeValue = value.size;
@@ -26,7 +25,7 @@ export function generateComponentSelectVariables(
   }
 
   if (selectSizeValue) {
-    cssVariables += getSelectSizeCssValues(selectSizeValue, root);
+    cssVariables += getSelectSizeCssValues(selectSizeValue);
   } else {
     cssVariables += getDefaultSelectSizeCssValues();
   }
@@ -36,7 +35,6 @@ export function generateComponentSelectVariables(
 
 export function getSelectSizeCssValues(
   selectSizeValue: string,
-  root: HTMLElement
 ): string {
   let cssVariables = '';
 

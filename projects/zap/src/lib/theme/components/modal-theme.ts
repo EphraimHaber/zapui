@@ -1,9 +1,8 @@
 import { ModalConfig } from '../../interfaces';
-import { getExistingShapeFor, getShapeCssValues } from '../utils/shape-utils';
+import { getShapeCssValues } from '../utils/shape-utils';
 
 export function generateComponentModalVariables(
   value: ModalConfig,
-  root: HTMLElement
 ) {
   let cssVariables = '';
   const modalShapeValue = value.shape;

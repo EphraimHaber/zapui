@@ -1,4 +1,4 @@
-import { HexCode, Padding, ShapeType } from './index';
+import { HexCode, Padding } from './index';
 
 export interface TextareaConfig {
   shape?: 'flat' | 'curve';

@@ -19,7 +19,6 @@ export class ControlValueAccessorDirective<T>
 {
   control!: FormControl;
   isRequired = false;
-  colors: any = [];
 
   private _isDisabled = false;
   private _destroy$ = new Subject<void>();
@@ -62,11 +61,12 @@ export class ControlValueAccessorDirective<T>
           break;
       }
     } catch (error) {
+      console.error(error);
       this.control = new FormControl();
     }
   }
 
-  writeValue(value: any): void {
+  writeValue(value: T): void {
     if (this.control) {
       if (this.control.value !== value) {
         this.control.setValue(value, { emitEvent: false });

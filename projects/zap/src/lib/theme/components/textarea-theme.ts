@@ -1,10 +1,7 @@
 import { TextareaConfig } from '../../interfaces';
-import {  getShapeCssValues } from '../utils/shape-utils';
+import { getShapeCssValues } from '../utils/shape-utils';
 
-export function generateComponentTextareaVariables(
-  value: TextareaConfig,
-  root: HTMLElement
-) {
+export function generateComponentTextareaVariables(value: TextareaConfig) {
   let cssVariables = '';
   const textareaShapeValue = value.shape;
 

@@ -1,5 +1,5 @@
 import { ChipConfig } from '../../interfaces';
-import { getExistingShapeFor, getShapeCssValues } from '../utils/shape-utils';
+import { getShapeCssValues } from '../utils/shape-utils';
 
 /**
  * This function generates the css variables for the chip component

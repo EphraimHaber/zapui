@@ -118,7 +118,7 @@ export class ZapDatePicker<T>
 
   @HostListener('document:keydown.escape', ['$event'])
   onEscapePress(event: KeyboardEvent): void {
-    if (this.isCalendarOpen) {
+    if (this.isCalendarOpen && event.key === 'Escape') {
       this.toggleCalendar();
     }
   }
@@ -337,7 +337,6 @@ export class ZapDatePicker<T>
       const viewportHeight = window.innerHeight;
       const spaceBelow = viewportHeight - inputRect.bottom;
       const spaceAbove = inputRect.top;
-      const scrollY = window.scrollY;
       const scrollX = window.scrollX;
 
       if (!calendarElement.dataset.appendedToBody) {

@@ -3,7 +3,6 @@ import { getShapeCssValues } from "../utils/shape-utils";
 
 export function generateComponentAlertVariables(
   value: AlertConfig,
-  root: HTMLElement,
 ) {
   let cssVariables = '';
   const alertShapeValue = value.shape;

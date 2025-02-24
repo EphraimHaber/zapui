@@ -13,6 +13,8 @@
       class="fa-solid"
       [ngClass]="[icon, iconPosition]"
       (click)="handleIconClick($event)"
+      (keydown.enter)="handleIconClick($event)"
+      tabindex="0"
     ></i>
     } @else if (iconDirective) {
     <ng-content select="[zapFormFieldIcon]"></ng-content>

@@ -21,6 +21,8 @@
           class="__zap__form__control__label"
           [for]="radio.value"
           (click)="control.setValue(radio.value)"
+          (keydown.enter)="control.setValue(radio.value)"
+          tabindex="0"
           >{{ radio.name }}</label
         >
       </fieldset>

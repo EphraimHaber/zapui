@@ -21,8 +21,6 @@ export class ZapAccordionItem implements AfterViewInit {
   @ContentChild(ZapAccordionHeader) header!: ZapAccordionHeader;
   isOpen = false;
 
-  constructor() {}
-
   ngAfterViewInit() {
     if (this.header) {
       this.header.toggle.subscribe(() => {

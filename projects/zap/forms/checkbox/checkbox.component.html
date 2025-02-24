@@ -6,6 +6,8 @@
       [for]="id"
       class="__zap__form__control__label"
       (click)="checkbox.click()"
+      (keydown.enter)="checkbox.click()"
+      tabindex="0"
       >{{ label }}</label
     >
     } @else if (labelDirective) {

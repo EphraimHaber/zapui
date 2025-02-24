@@ -1,9 +1,8 @@
 import { GlobalConfig } from '../../interfaces/config.interface';
-import { getExistingShapeFor, getShapeCssValues } from '../utils/shape-utils';
+import { getShapeCssValues } from '../utils/shape-utils';
 
 export function generateComponentGlobalVariables(
   config: GlobalConfig,
-  root: HTMLElement
 ): string {
   const components = [
     'alert',

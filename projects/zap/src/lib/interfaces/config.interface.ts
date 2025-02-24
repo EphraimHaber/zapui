@@ -41,7 +41,6 @@ export interface ZapConfig {
 
 export interface GlobalConfig {
   shape?: ShapeType;
-  styles?: {};
 }
 
 export interface ZapTheme {

@@ -32,7 +32,7 @@ import {
     },
   ],
 })
-export class ZapToggle<T> extends ControlValueAccessorDirective implements AfterViewInit<T> {
+export class ZapToggle<T> extends ControlValueAccessorDirective<T> implements AfterViewInit {
   @Input() label = '';
   @Input() helpText = '';
   @Input() zapClass = '';
