@@ -37,6 +37,7 @@ module.exports = tseslint.config(
         },
       ],
       "@typescript-eslint/no-explicit-any": "off",
+      "@angular-eslint/no-output-on-prefix": "off"
     },
   },
   {
