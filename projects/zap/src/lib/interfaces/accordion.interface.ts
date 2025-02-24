@@ -2,8 +2,7 @@ import { HexCode, Padding } from './index';
 
 export interface AccordionConfig {
   styles?: {
-    colors?: {
-      [theme: string]: {
+    colors?: Record<string, {
         headerBgColor?: HexCode;
         headerTextColor?: HexCode;
         itemBorderColor?: HexCode;
@@ -11,8 +10,7 @@ export interface AccordionConfig {
         headerTextHoverColor?: HexCode;
         contentTextColor?: HexCode;
         contentBgColor?: HexCode;
-      };
-    };
+      }>;
     headerPaddingLeft?: string;
     headerPaddingRight?: string;
     headerPaddingTop?: string;

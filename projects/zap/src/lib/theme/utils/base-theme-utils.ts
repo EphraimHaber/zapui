@@ -79,7 +79,8 @@ export function rgbaToRgbNumber(rgba: string): string {
   return '';
 }
 
-export function deepEqual(obj1: any, obj2: any): boolean {
+
+export function deepEqual(obj1: Record<string, unknown>, obj2: Record<string, unknown>): boolean {
   if (obj1 === obj2) return true;
   if (
     typeof obj1 !== 'object' ||
@@ -97,7 +98,7 @@ export function deepEqual(obj1: any, obj2: any): boolean {
 
   for (const key of keys1) {
     if (!keys2.includes(key)) return false;
-    if (!deepEqual(obj1[key], obj2[key])) return false;
+    if (!deepEqual(obj1[key] as Record<string, unknown>, obj2[key] as Record<string, unknown>)) return false;
   }
 
   return true;

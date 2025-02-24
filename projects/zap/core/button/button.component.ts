@@ -13,7 +13,7 @@ import { ZapIconDirective } from '../directives/icon.directive';
 })
 export class ZapButton implements AfterViewInit {
   @Input() text = 'Submit';
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
   @Input() shape!: 'pill' | 'curve' | 'flat';
   @Input() size!: 'compact' | 'wide' | 'tight' | 'base';
   @Input() type: 'info' | 'success' | 'warning' | 'error' | 'default' =
@@ -23,12 +23,10 @@ export class ZapButton implements AfterViewInit {
   @Input() img: string | undefined = undefined;
   @Input() imgPosition: 'left' | 'right' = 'left';
   @Input() variant: 'outlined' | 'default' | 'link' = 'default';
-  @Input() disabled: boolean = false;
-  @Input() icononly: boolean = false;
+  @Input() disabled = false;
+  @Input() icononly = false;
   @ContentChild(ZapIconDirective, { static: false })
   iconDirective!: ZapIconDirective;
-
-  constructor() {}
 
   ngAfterViewInit() {
     if (this.iconDirective) {

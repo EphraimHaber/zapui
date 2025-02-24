@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, Inject, Injector, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Directive, Inject, Injector, OnInit, OnDestroy } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -15,13 +15,12 @@ import { distinctUntilChanged, startWith, Subject, takeUntil, tap } from 'rxjs';
   selector: '[libControlValueAccessor]',
 })
 export class ControlValueAccessorDirective<T>
-  implements OnInit, ControlValueAccessor
+  implements OnInit, ControlValueAccessor, OnDestroy
 {
   control!: FormControl;
-  isRequired: boolean = false;
-  colors: any = [];
+  isRequired = false;
 
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
   private _destroy$ = new Subject<void>();
   private _onTouched!: () => T;
   protected globalConfig: { shape: string } = {
@@ -38,7 +37,7 @@ export class ControlValueAccessorDirective<T>
   setFormControl() {
     try {
       const formControl = this.injector.get(NgControl);
-
+      const ngModel = formControl as NgModel;
       switch (formControl.constructor) {
         case FormControlName:
           this.control = this.injector
@@ -46,7 +45,6 @@ export class ControlValueAccessorDirective<T>
             .getControl(formControl as FormControlName);
           break;
         case NgModel:
-          const ngModel = formControl as NgModel;
           this.control = ngModel.control;
           ngModel.valueChanges?.pipe(
             takeUntil(this._destroy$),
@@ -62,11 +60,12 @@ export class ControlValueAccessorDirective<T>
           break;
       }
     } catch (error) {
+      console.error(error);
       this.control = new FormControl();
     }
   }
 
-  writeValue(value: any): void {
+  writeValue(value: T): void {
     if (this.control) {
       if (this.control.value !== value) {
         this.control.setValue(value, { emitEvent: false });
@@ -83,7 +82,7 @@ export class ControlValueAccessorDirective<T>
         startWith(this.control.value),
         distinctUntilChanged(),
         tap((val) => {
-          fn(val), this.control?.updateValueAndValidity();
+          fn(val); this.control?.updateValueAndValidity();
         })
       )
       .subscribe();

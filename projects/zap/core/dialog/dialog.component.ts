@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ContentChild,
   EventEmitter,
@@ -20,15 +19,15 @@ import { ZapDialogButtonDirective } from './dialog-btn.directive';
 })
 export class ZapDialog{
   @Output() confirm: EventEmitter<void> = new EventEmitter<void>();
-  @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
-  @Input() title: string = 'Are you sure?';
-  @Input() text: string = '';
-  @Input() zapClass: string = '';
+  @Output() close: EventEmitter<void> = new EventEmitter<void>();
+  @Input() title = 'Are you sure?';
+  @Input() text = '';
+  @Input() zapClass = '';
   @Input() shape!: 'curve' | 'pill' | 'flat';
   @Input() position: 'top' | 'default' = 'default';
   @HostListener('document:keydown', ['$event'])
   handleEsc(event: KeyboardEvent): void {
-    if (event.key === 'Escape' || event.code === 'Escape') this.cancel.emit();
+    if (event.key === 'Escape' || event.code === 'Escape') this.close.emit();
   }
   @ContentChild(ZapDialogButtonDirective, { static: false })
   btnDirective!: ZapDialogButtonDirective;

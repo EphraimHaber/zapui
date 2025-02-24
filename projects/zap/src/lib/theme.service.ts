@@ -7,6 +7,7 @@ import {
   ButtonConfig,
   ChipConfig,
   DialogConfig,
+  GlobalConfig,
   InputConfig,
   ModalConfig,
   SelectConfig,
@@ -46,7 +47,7 @@ export class ThemeService {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: object,
     @Optional() @Inject(NGX_ZAP_CONFIG) private config: ZapConfig
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -70,7 +71,13 @@ export class ThemeService {
     this.activeTheme = config.theme || 'dark';
 
     if (customTheme && typeof customTheme === 'object') {
-      if (deepEqual(customTheme, this.config.theme)) {
+      if (
+        typeof customTheme === 'object' &&
+        deepEqual(
+          customTheme,
+          this.config.theme as unknown as Record<string, unknown>
+        )
+      ) {
         return;
       }
     } else if (customTheme && customTheme === this.config.theme) {
@@ -80,7 +87,7 @@ export class ThemeService {
       this.activeTheme = customTheme;
     }
 
-    const theme = this.getTheme(config.theme || 'dark', root);
+    const theme = this.getTheme(config.theme || 'dark');
     this.removeExistingStyleElement();
     const styleElement = this.createStyleElement();
     this.document.head.appendChild(styleElement);
@@ -89,7 +96,7 @@ export class ThemeService {
     styleElement.innerHTML = `:root {\n${cssVariables}}`;
   }
 
-  private getTheme(theme: string, root: HTMLElement): ZapTheme {
+  private getTheme(theme: string): ZapTheme {
     if (theme === 'light') {
       return lightTheme;
     } else if (theme === 'dark') {
@@ -123,84 +130,78 @@ export class ThemeService {
     let cssVariables = '';
     cssVariables += generateColorVariables(theme, root);
     cssVariables += generateFontSizeVariables(theme);
-    cssVariables += generateGlobalStylesVariables(theme, root, this.platformId);
+    cssVariables += generateGlobalStylesVariables(theme);
 
     if (config.components) {
       for (const [componentKey, value] of Object.entries(config.components)) {
         switch (componentKey) {
           case 'global':
-            cssVariables += generateComponentGlobalVariables(value, root);
+            cssVariables += generateComponentGlobalVariables(value as GlobalConfig);
             break;
           case 'alert':
             cssVariables += generateComponentAlertVariables(
               value as AlertConfig,
-              root
             );
             break;
           case 'button':
             cssVariables += generateComponentButtonVariables(
               value as ButtonConfig,
-              root
+              root,
             );
             break;
           case 'chip':
             cssVariables += generateComponentChipVariables(
               value as ChipConfig,
-              root
+              root,
             );
             break;
           case 'dialog':
             cssVariables += generateComponentDialogVariables(
               value as DialogConfig,
-              root
             );
             break;
           case 'modal':
             cssVariables += generateComponentModalVariables(
               value as ModalConfig,
-              root
             );
             break;
           case 'input':
             cssVariables += generateComponentInputVariables(
               value as InputConfig,
-              root
             );
             break;
           case 'checkbox':
             cssVariables += generateComponentCheckboxVariables(
               value as InputConfig,
-              root
             );
             break;
           case 'textarea':
             cssVariables += generateComponentTextareaVariables(
               value as TextareaConfig,
-              root
             );
             break;
           case 'select':
             cssVariables += generateComponentSelectVariables(
               value as SelectConfig,
-              root
             );
             break;
           case 'tooltip':
             cssVariables += generateComponentTooltipVariables(
-              value as TooltipConfig,
-              root
+              value as TooltipConfig
             );
             break;
           default:
             break;
         }
 
-        if (value.styles) {
-          cssVariables += generateComponentStylesVariables(
-            value.styles,
-            componentKey,
-            this.config
-          );
+        if (componentKey !== 'global' && 'styles' in value) {
+          if (value.styles) {
+            cssVariables += generateComponentStylesVariables(
+              value.styles,
+              componentKey,
+              this.config
+            );
+          }
         }
       }
     }

@@ -1,10 +1,7 @@
 import { InputConfig } from '../../interfaces';
-import { getExistingShapeFor, getShapeCssValues } from '../utils/shape-utils';
+import { getShapeCssValues } from '../utils/shape-utils';
 
-export function generateComponentInputVariables(
-  value: InputConfig,
-  root: HTMLElement
-) {
+export function generateComponentInputVariables(value: InputConfig) {
   let cssVariables = '';
   const inputSizeValue = value.size;
   const inputShapeValue = value.shape;
@@ -15,7 +12,7 @@ export function generateComponentInputVariables(
   }
 
   if (inputSizeValue) {
-    cssVariables += getInputSizeCssValues(inputSizeValue, root);
+    cssVariables += getInputSizeCssValues(inputSizeValue);
   } else {
     cssVariables += getDefaultInputSizeCssValues();
   }
@@ -23,10 +20,7 @@ export function generateComponentInputVariables(
   return cssVariables;
 }
 
-export function getInputSizeCssValues(
-  inputSizeValue: string,
-  root: HTMLElement
-): string {
+export function getInputSizeCssValues(inputSizeValue: string): string {
   let cssVariables = '';
 
   if (inputSizeValue === 'compact') {

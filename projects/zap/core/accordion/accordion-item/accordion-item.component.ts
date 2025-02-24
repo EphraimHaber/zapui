@@ -19,13 +19,11 @@ import { ZapAccordionHeader } from '../accordion-header/accordion-header.compone
 })
 export class ZapAccordionItem implements AfterViewInit {
   @ContentChild(ZapAccordionHeader) header!: ZapAccordionHeader;
-  isOpen: boolean = false;
-
-  constructor() {}
+  isOpen = false;
 
   ngAfterViewInit() {
     if (this.header) {
-      this.header.toggle.subscribe(() => {
+      this.header.open.subscribe(() => {
         this.toggle();
       });
     }

@@ -3,7 +3,6 @@ import {
   Component,
   ContentChildren,
   Input,
-  OnInit,
   QueryList,
 } from '@angular/core';
 import { ZapAccordionItem } from '../accordion-item/accordion-item.component';
@@ -19,9 +18,7 @@ import { ZapAccordionItem } from '../accordion-item/accordion-item.component';
 })
 export class ZapAccordionGroup implements AfterViewInit {
   @ContentChildren(ZapAccordionItem) items!: QueryList<ZapAccordionItem>;
-  @Input() multiple: boolean = false;
-
-  constructor() {}
+  @Input() multiple = false;
 
   ngAfterViewInit() {
     if (!this.multiple) {

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ColorUtility {
-  constructor() {}
 
   hexToRgba(hex: string, alpha: number): string {
     const bigint = parseInt(hex?.replace('#', ''), 16);

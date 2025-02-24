@@ -22,6 +22,7 @@ import { ZapIconDirective } from '../../public-api';
     role="button"
     tabindex="0"
     (click)="onToggle()"
+    (keydown.enter)="onToggle()"
     [ngClass]="variant"
   >
     <ng-content></ng-content>
@@ -63,9 +64,9 @@ import { ZapIconDirective } from '../../public-api';
   styleUrl: './accordion-header.component.scss',
 })
 export class ZapAccordionHeader implements AfterViewInit {
+  @Output() open: EventEmitter<void> = new EventEmitter<void>();
   @Input() variant: 'default' | 'nounderline' = 'default';
   @Input() icon: 'chevron' | 'plus' = 'chevron';
-  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @ContentChild(ZapIconDirective, { static: false })
   iconDirective!: ZapIconDirective;
 
@@ -81,7 +82,7 @@ export class ZapAccordionHeader implements AfterViewInit {
     }
   }
 
-  onToggle() {
-    this.toggle.emit();
+  onToggle(): void {
+    this.open.emit();
   }
 }

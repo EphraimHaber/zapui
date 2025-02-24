@@ -11,8 +11,8 @@ import { Component, Input } from '@angular/core';
 export class ZapBadge {
   @Input() variant: 'empty' | 'default' | 'outlined' = 'default';
   @Input() type: 'default' | 'info' | 'success' | 'warning' | 'error' = 'default';
-  @Input() count: number = 0;
-  @Input() zapClass: string = '';
+  @Input() count = 0;
+  @Input() zapClass = '';
 
   getContent(): string | null {
     if (this.variant === 'empty') return null;

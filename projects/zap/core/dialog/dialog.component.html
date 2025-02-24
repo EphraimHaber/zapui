@@ -2,9 +2,11 @@
   <h3 class="__zap__dialog__title">{{ title }}</h3>
   <svg
     class="handler"
-    (click)="cancel.emit()"
+    (click)="close.emit()"
+    (keydown)="close.emit()"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 384 512"
+    tabindex="0"
   >
     <path
       d="M345 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-119 119L73 103c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l119 119L39 375c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l119-119L311 409c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-119-119L345 137z"
@@ -22,7 +24,7 @@
     @if (btnDirective) {
     <ng-content select="[zapDialogButton]"></ng-content>
     } @else {
-    <button class="btn secondary" (click)="cancel.emit()">No, cancel</button>
+    <button class="btn secondary" (click)="close.emit()">No, cancel</button>
     <button class="btn primary" (click)="confirm.emit()">Yes, confirm</button>
     }
   </div>

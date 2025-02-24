@@ -26,10 +26,10 @@ import { ZapLabelDirective } from '../public-api';
   ],
 })
 export class ZapRadio<T> extends ControlValueAccessorDirective<T> implements AfterViewInit {
-  @Input() options: Array<{ name: string; value: string }> = [];
-  @Input() label: string = '';
+  @Input() options: { name: string; value: string }[] = [];
+  @Input() label = '';
   @Input() customErrorMessages: Record<string, string> = {};
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
   @Input() variant: 'vertical' | 'horizontal' = 'vertical';
   @ContentChild(ZapLabelDirective, { static: false })
   labelDirective!: ZapLabelDirective;

@@ -7,7 +7,7 @@
     <div class="content-wrapper">
       <div class="lable-wrapper">
         @if(label) {
-        <label>
+        <label [for]="id">
           {{ label }}
         </label>
         } @else if (labelDirective) {

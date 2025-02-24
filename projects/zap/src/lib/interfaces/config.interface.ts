@@ -19,7 +19,7 @@ import {
 
 export interface ZapConfig {
   theme?: 'light' | 'dark' | string;
-  themeLibrary?: { [key: string]: ZapTheme };
+  themeLibrary?: Record<string, ZapTheme>;
   components?: {
     global?: GlobalConfig;
     alert?: AlertConfig;
@@ -41,7 +41,6 @@ export interface ZapConfig {
 
 export interface GlobalConfig {
   shape?: ShapeType;
-  styles?: {};
 }
 
 export interface ZapTheme {

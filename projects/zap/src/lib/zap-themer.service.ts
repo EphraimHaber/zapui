@@ -1,7 +1,6 @@
 import { Injectable} from '@angular/core';
 
 import { ThemeService } from './theme.service';
-import { ZapTheme } from '../public-api';
 
 @Injectable({
   providedIn: 'root',

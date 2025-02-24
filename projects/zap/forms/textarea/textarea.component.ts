@@ -30,15 +30,15 @@ import { ZapFormFieldHelpTextDirective, ZapLabelDirective } from '../public-api'
   ],
 })
 export class ZapTextarea<T> extends ControlValueAccessorDirective<T> implements AfterViewInit {
-  @Input() label: string = '';
-  @Input() id: string = '';
-  @Input() rows: string = '10';
-  @Input() zapClass: string = '';
+  @Input() label = '';
+  @Input() id = '';
+  @Input() rows = '10';
+  @Input() zapClass = '';
   @Input() shape: 'curve' | 'flat' = 'flat';
   @Input() customErrorMessages: Record<string, string> = {};
-  @Input() placeholder: string = '';
+  @Input() placeholder = '';
   @Input() resize: 'none' | 'vertical' | 'horizontal' | 'auto' = 'none';
-  @Input() helpText: string = '';
+  @Input() helpText = '';
   @ContentChild(ZapFormFieldHelpTextDirective, { static: false })
   helpTextDirective!: ZapFormFieldHelpTextDirective;
   @ContentChild(ZapLabelDirective, { static: false })

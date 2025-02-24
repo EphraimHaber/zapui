@@ -6,7 +6,7 @@ import {
   forwardRef,
   Input,
   OnDestroy,
-  ViewChild,
+  ViewChild, OnInit,
 } from '@angular/core';
 import {
   FormsModule,
@@ -40,13 +40,13 @@ import { ZapLabelDirective } from '../public-api';
 })
 export class ZapCheckbox<T>
   extends ControlValueAccessorDirective<T>
-  implements AfterViewInit, OnDestroy
+  implements AfterViewInit, OnDestroy, OnInit
 {
   @ViewChild('checkbox') checkbox!: ElementRef;
-  @Input() label: string = '';
+  @Input() label = '';
   @Input() customErrorMessages: Record<string, string> = {};
-  @Input() zapClass: string = '';
-  @Input() id: string = '';
+  @Input() zapClass = '';
+  @Input() id = '';
   @Input() shape!: 'curve' | 'flat';
   @Input() size!: 'compact' | 'base';
   @Input() labelPosition: 'left' | 'right' = 'right';

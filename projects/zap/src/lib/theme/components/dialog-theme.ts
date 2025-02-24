@@ -1,9 +1,8 @@
 import { DialogConfig } from '../../interfaces';
-import { getExistingShapeFor, getShapeCssValues } from '../utils/shape-utils';
+import { getShapeCssValues } from '../utils/shape-utils';
 
 export function generateComponentDialogVariables(
   value: DialogConfig,
-  root: HTMLElement
 ) {
   let cssVariables = '';
   const dialogShapeValue = value.shape;

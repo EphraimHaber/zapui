@@ -4,8 +4,7 @@ export interface ButtonConfig {
   shape?: ShapeType;
   size?: 'compact' | 'wide' | 'tight' | 'base';
   styles?: {
-    colors?: {
-      [theme: string]: {
+    colors?: Record<string, {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -19,7 +18,6 @@ export interface ButtonConfig {
         disabledTextColor?: HexCode;
         disabledBorderColor?: HexCode;
         iconColor?: HexCode;
-      };
-    };
+      }>;
   } & CommonStyles;
 }

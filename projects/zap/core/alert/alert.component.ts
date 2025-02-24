@@ -14,10 +14,9 @@ export class ZapAlert implements AfterViewInit {
   @Output() dismiss: EventEmitter<void> = new EventEmitter<void>();
   @Input() type: 'success' | 'warning' | 'error' | 'info' | 'default' =
     'default';
-  @Input() variant: 'default' = 'default';
   @Input() shape!: 'curve' | 'pill' | 'flat';
-  @Input() icon: string = '';
-  @Input() zapClass: string = '';
+  @Input() icon = '';
+  @Input() zapClass = '';
   @ContentChild(ZapIconDirective, { static: false })
   iconDirective!: ZapIconDirective;
 
@@ -33,7 +32,6 @@ export class ZapAlert implements AfterViewInit {
   get classes() {
     return [
       this.shape,
-      this.variant,
       this.type,
       this.zapClass,
     ]

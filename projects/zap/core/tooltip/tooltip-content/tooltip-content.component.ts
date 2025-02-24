@@ -18,7 +18,7 @@ import {
 })
 export class ZapTooltipContent {
   @ViewChild('content', { static: true }) contentElement!: ElementRef;
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 

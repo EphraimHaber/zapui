@@ -14,17 +14,17 @@ export function getShapeCssValues(
 } {
   let shapeCssValue = shapeValue;
 
-  const shapeValues: { [key: string]: string } = {
+  const shapeValues: Record<string, string> = {
     pill: 'calc(infinity * 1px)',
     curve: '0.375rem',
   };
 
-  const modalDialogShapeValues: { [key: string]: string } = {
+  const modalDialogShapeValues: Record<string, string> = {
     pill: '1rem',
     curve: '0.5rem',
   };
 
-  const checkboxValues: { [key: string]: string } = {
+  const checkboxValues: Record<string, string> = {
     pill: '0.25rem',
     curve: '0.25rem',
   };

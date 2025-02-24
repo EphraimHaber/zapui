@@ -1,10 +1,9 @@
-import { HexCode, Padding, ShapeType } from './index';
+import { HexCode, Padding } from './index';
 
 export interface TextareaConfig {
   shape?: 'flat' | 'curve';
   styles?: {
-    colors?: {
-      [theme: string]: {
+    colors?: Record<string, {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -19,8 +18,7 @@ export interface TextareaConfig {
         textFocusColor?: HexCode;
         iconColor?: HexCode;
         helpTextColor?: HexCode;
-      };
-    };
+      }>;
     borderRadius?: string;
     paddingLeft?: string;
     paddingRight?: string;

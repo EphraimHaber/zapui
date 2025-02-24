@@ -9,6 +9,7 @@
       #inputSelectValueHolder
       class="__zap__form__control__select"
       (click)="toggleOptionsList()"
+      (keydown.enter)="toggleOptionsList()"
       [id]="id"
       tabindex="0"
       [ngClass]="selectClasses"
@@ -40,6 +41,8 @@
         <span
           class="chip __zap__form__control__selected"
           (click)="cancelOption($event, option)"
+          tabindex="0"
+          (keydown.enter)="cancelOption($event, option)"
         >
           {{ getSelected(option) }}
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -109,6 +112,8 @@
           (mouseenter)="hoveredOption = option.value"
           (mouseleave)="hoveredOption = ''"
           (click)="selectOption(option)"
+          tabindex="0"
+          (keydown.enter)="selectOption(option)"
           [ngClass]="{
             __zap__form__control__selected: selectedOptionValue.includes(
               option.value

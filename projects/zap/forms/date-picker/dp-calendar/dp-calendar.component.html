@@ -94,6 +94,8 @@
             [class.in__range]="isInRange(day)"
             [class.only__range]="isOnlyRangeInThisWeek(day, week)"
             (click)="select(day)"
+            tabindex="0"
+            (keydown.enter)="select(day)"
           >
             {{ day.getDate() }}
           </div>

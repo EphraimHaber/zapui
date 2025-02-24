@@ -4,8 +4,7 @@ export interface ChipConfig {
   shape?: ShapeType;
   size?: 'compact' | 'base' | 'wide';
   styles?: {
-    colors?: {
-      [theme: string]: {
+    colors?: Record<string, {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -14,7 +13,6 @@ export interface ChipConfig {
         borderHoverColor?: HexCode;
         dismissColor?: HexCode;
         dismissHoverColor?: HexCode;
-      };
-    };
+      }>;
   } & CommonStyles;
 }

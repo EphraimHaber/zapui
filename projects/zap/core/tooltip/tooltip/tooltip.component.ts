@@ -71,19 +71,19 @@ export class ZapTooltip implements OnDestroy {
       contentElement.dataset.appendedToBody = 'true';
     }
 
-    let contentRect = contentElement.getBoundingClientRect();
+    const contentRect = contentElement.getBoundingClientRect();
 
     contentElement.style.position = 'fixed';
 
-    let parent = holderElement.closest(
+    const parent = holderElement.closest(
       '.__zap__modal__wrapper, .__zap__dialog, .modal, .dialog, .__zap__form__control__calendar'
     );
     if (parent) {
       contentElement.style.zIndex = '999';
     }
 
-    let parentElement = contentElement.offsetParent as HTMLElement;
-    let parentRect = parentElement
+    const parentElement = contentElement.offsetParent as HTMLElement;
+    const parentRect = parentElement
       ? parentElement.getBoundingClientRect()
       : { top: 0, left: 0 };
     const offsetLeft = holderRect.left - parentRect.left;
