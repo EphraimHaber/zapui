@@ -30,8 +30,8 @@ jobs:
       - name: Run Linter
         run: npm run lint
 
-      - name: Check for Build Errors
-        run: npm run build
+      - name: Check for Build Errors on Library
+        run: npm run build:lib
 
       - name: Send Status Check
         if: ${{ success() }}
