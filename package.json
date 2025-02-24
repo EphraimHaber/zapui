@@ -11,7 +11,8 @@
     "start:demo": "ng serve demo",
     "publish": "ng build zap && cd dist/zap && npm publish --tag dev-alpha",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
+    "test:watch": "ng test --watch"
   },
   "private": true,
   "dependencies": {
