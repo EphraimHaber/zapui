@@ -3,8 +3,7 @@ import { HexCode, Padding, ShapeType } from './index';
 export interface TooltipConfig {
   shape?: ShapeType;
   styles?: {
-    colors?: {
-      [theme: string]: {
+    colors?: Record<string, {
         handlerBgColor?: HexCode;
         handlerTextColor?: HexCode;
         handlerBorderColor?: HexCode;
@@ -14,8 +13,7 @@ export interface TooltipConfig {
         contentBgColor?: HexCode;
         contentTextColor?: HexCode;
         contentBorderColor?: HexCode;
-      };
-    };
+      }>;
     contentBorderRadius?: string;
     contentPaddingLeft?: string;
     contentPaddingRight?: string;

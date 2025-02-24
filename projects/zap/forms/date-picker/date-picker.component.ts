@@ -55,24 +55,24 @@ export class ZapDatePicker<T>
   @ViewChild('inputDateSelectValueHolder')
   inputDateSelectValueHolder!: ElementRef;
   @ViewChild('calendar') calendar!: ElementRef;
-  @Input() label: string = '';
-  @Input() id: string = '';
-  @Input() placeholder: string = 'Select';
+  @Input() label = '';
+  @Input() id = '';
+  @Input() placeholder = 'Select';
   @Input() shape: 'pill' | 'curve' | 'flat' = 'flat';
   @Input() size: 'compact' | 'base' | 'wide' = 'base';
   @Input() position: 'top' | 'bottom' | 'auto' = 'auto';
   @Input() customErrorMessages: Record<string, string> = {};
   @Input() icon!: string;
   @Input() iconPosition: 'left' | 'right' = 'right';
-  @Input() helpText: string = '';
+  @Input() helpText = '';
   @Input() breakpoints!: ZapDatePickerBreakpoints;
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
   @Input() monthsPerView!: number;
   @Input() maxPerRow!: number;
-  @Input() range: boolean = false;
-  @Input() dateFormat: string = 'MMM dd, yyyy';
-  @Input() locale: string = 'en-US';
-  @Input() dropdown: boolean = true;
+  @Input() range = false;
+  @Input() dateFormat = 'MMM dd, yyyy';
+  @Input() locale = 'en-US';
+  @Input() dropdown = true;
   @Input() months: string[] = [
     'January',
     'February',
@@ -96,7 +96,7 @@ export class ZapDatePicker<T>
   @ContentChild(ZapLabelDirective, { static: false })
   labelDirective!: ZapLabelDirective;
 
-  isCalendarOpen: boolean = false;
+  isCalendarOpen = false;
   weeks!: Date[][];
   currentDate!: Date;
   currentMonth!: string;
@@ -347,7 +347,7 @@ export class ZapDatePicker<T>
 
       calendarElement.style.position = 'fixed';
 
-      let parent = inputElement.closest(
+      const parent = inputElement.closest(
         '.__zap__modal__wrapper, .__zap__dialog, .modal, .dialog'
       );
       if (parent) {
@@ -357,8 +357,8 @@ export class ZapDatePicker<T>
       calendarElement.style.left = `${inputRect.left + scrollX}px`;
       calendarElement.style.width = `${inputRect.width}px`;
 
-      let parentElement = calendarElement.offsetParent as HTMLElement;
-      let parentRect = parentElement
+      const parentElement = calendarElement.offsetParent as HTMLElement;
+      const parentRect = parentElement
         ? parentElement.getBoundingClientRect()
         : { top: 0, left: 0 };
       const offsetLeft = inputRect.left - parentRect.left;

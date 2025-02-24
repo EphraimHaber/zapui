@@ -4,8 +4,7 @@ export interface SelectConfig {
   shape?: ShapeType;
   size?: 'base' | 'compact';
   styles?: {
-    colors?: {
-      [theme: string]: {
+    colors?: Record<string, {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -33,8 +32,7 @@ export interface SelectConfig {
         dismissColor?: HexCode;
         dismissHoverColor?: HexCode;
         helpTextColor?: HexCode;
-      };
-    };
+      }>;
     borderRadius?: string;
     paddingLeft?: string;
     paddingRight?: string;

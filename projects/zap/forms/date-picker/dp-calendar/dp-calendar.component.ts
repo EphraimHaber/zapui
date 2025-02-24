@@ -31,7 +31,7 @@ export class DPCalendar implements OnInit {
   @Input() monthsPerView!: number;
   @Input() maxPerRow!: number;
   @Input() selected!: { startDate: Date | null; endDate: Date | null };
-  @Input() dropdown: boolean = false;
+  @Input() dropdown = false;
   @Input() months!: string[];
   @Input() years!: string[];
   monthsAndYearRange: string[] = [];
@@ -54,7 +54,7 @@ export class DPCalendar implements OnInit {
 
   private generateMonthsAndYearRange(): void {
     if (!this.range || this.monthsPerView <= 1) return;
-    for (let year of this.years) {
+    for (const year of this.years) {
       for (let i = 0; i < this.months.length; i++) {
         const startMonth = this.months[i];
         const endMonthIndex = (i + this.monthsPerView - 1) % this.months.length;

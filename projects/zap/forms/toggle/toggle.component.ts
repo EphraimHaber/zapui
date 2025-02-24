@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, forwardRef } from '@angular/core';
+import { Component, ContentChild, Input, forwardRef, AfterViewInit } from '@angular/core';
 import {
   FormsModule,
   NG_VALUE_ACCESSOR,
@@ -32,10 +32,10 @@ import {
     },
   ],
 })
-export class ZapToggle<T> extends ControlValueAccessorDirective<T> {
-  @Input() label: string = '';
-  @Input() helpText: string = '';
-  @Input() zapClass: string = '';
+export class ZapToggle<T> extends ControlValueAccessorDirective implements AfterViewInit<T> {
+  @Input() label = '';
+  @Input() helpText = '';
+  @Input() zapClass = '';
   @Input() customErrorMessages: Record<string, string> = {};
   @ContentChild(ZapLabelDirective, { static: false })
   labelDirective!: ZapLabelDirective;

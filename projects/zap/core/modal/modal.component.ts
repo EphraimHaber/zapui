@@ -23,7 +23,7 @@ export class ZapModal {
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
   @Input() shape!: 'curve' | 'flat' | 'pill';
   @Input() size: 'tight' | 'compact' | 'base' | 'wide' | 'full' = 'tight';
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
   @HostListener('document:keydown', ['$event'])
   handleEsc(event: KeyboardEvent): void {
     if (event.key === 'Escape' || event.code === 'Escape') this.close.emit();

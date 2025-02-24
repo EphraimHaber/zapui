@@ -46,7 +46,7 @@ export class ThemeService {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: object,
     @Optional() @Inject(NGX_ZAP_CONFIG) private config: ZapConfig
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);

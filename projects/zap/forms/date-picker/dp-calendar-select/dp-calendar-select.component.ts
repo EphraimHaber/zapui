@@ -12,8 +12,8 @@ export class DPCalendarSelect {
   @Output() selectOption: EventEmitter<string> = new EventEmitter<string>();
   @Input() options!: string[];
   @Input() selected!: string;
-  @Input() scrollToSelected: boolean = false;
-  isOptionListOpen: boolean = false;
+  @Input() scrollToSelected = false;
+  isOptionListOpen = false;
 
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent): void {

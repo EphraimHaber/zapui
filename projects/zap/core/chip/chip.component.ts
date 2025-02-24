@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter, ContentChild } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, AfterViewInit } from '@angular/core';
 import { ZapIconDirective } from '../public-api';
 
 @Component({
@@ -9,10 +9,10 @@ import { ZapIconDirective } from '../public-api';
   templateUrl: './chip.component.html',
   styleUrls: ['./chip.component.scss'],
 })
-export class ZapChip {
+export class ZapChip implements AfterViewInit {
   @Output() dismiss = new EventEmitter<void>();
   @Input() text = 'Chip';
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
   @Input() variant: 'outlined' | 'default' = 'default';
   @Input() shape!: 'pill' | 'curve' | 'flat';
   @Input() size: 'base' | 'compact' | 'wide' = 'base';

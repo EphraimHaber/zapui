@@ -59,27 +59,27 @@ export class ZapSelect<T>
   >();
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
   @Output() onReset: EventEmitter<void> = new EventEmitter<void>();
-  @Input() label: string = '';
-  @Input() id: string = '';
-  @Input() placeholder: string = 'Select';
+  @Input() label = '';
+  @Input() id = '';
+  @Input() placeholder = 'Select';
   @Input() customErrorMessages: Record<string, string> = {};
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
   @Input() shape!: 'pill' | 'curve' | 'flat';
   @Input() size!: 'compact' | 'base';
   @Input() icon!: string;
   @Input() iconPosition: 'left' | 'right' = 'left';
-  @Input() searchable: boolean = true;
-  @Input() searchPlaceholder: string = 'Search';
-  @Input() notFound: string = 'No options found';
-  @Input() multiselect: boolean = false;
-  @Input() async: boolean = false;
+  @Input() searchable = true;
+  @Input() searchPlaceholder = 'Search';
+  @Input() notFound = 'No options found';
+  @Input() multiselect = false;
+  @Input() async = false;
   @Input() optionTemplate?: TemplateRef<any>;
   @Input() selectedTemplate?: TemplateRef<any>;
   @Input() position: 'top' | 'bottom' | 'auto' = 'auto';
-  @Input() helpText: string = '';
+  @Input() helpText = '';
   private _options: { label: string; value: any; [key: string]: any }[] = [];
-  isOptionListOpen: boolean = false;
-  hoveredOption: string = '';
+  isOptionListOpen = false;
+  hoveredOption = '';
   selectedOptionValue: string[] = [];
   filteredOptions: any[] = [];
   @ContentChild(ZapFormFieldIconDirective, { static: false })
@@ -211,7 +211,7 @@ export class ZapSelect<T>
 
       optionListElement.style.position = 'fixed';
 
-      let parent = inputElement.closest(
+      const parent = inputElement.closest(
         '.__zap__modal__wrapper, .__zap__dialog, .modal, .dialog, .__zap__form__control__calendar'
       );
       if (parent) {
@@ -221,8 +221,8 @@ export class ZapSelect<T>
       optionListElement.style.left = `${inputRect.left + window.scrollX}px`;
       optionListElement.style.width = `${inputRect.width}px`;
 
-      let parentElement = optionListElement.offsetParent as HTMLElement;
-      let parentRect = parentElement
+      const parentElement = optionListElement.offsetParent as HTMLElement;
+      const parentRect = parentElement
         ? parentElement.getBoundingClientRect()
         : { top: 0, left: 0 };
       const offsetLeft = inputRect.left - parentRect.left;

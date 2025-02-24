@@ -44,17 +44,17 @@ type InputType = 'password' | 'text' | 'number' | 'email' | 'tel';
 export class ZapInput<T> extends ControlValueAccessorDirective<T> implements AfterViewInit {
   @Output() iconClick: EventEmitter<void> = new EventEmitter<void>();
   @Input() type: InputType = 'text';
-  @Input() label: string = '';
-  @Input() id: string = '';
-  @Input() placeholder: string = '';
+  @Input() label = '';
+  @Input() id = '';
+  @Input() placeholder = '';
   @Input() customErrorMessages: Record<string, string> = {};
-  @Input() zapClass: string = '';
+  @Input() zapClass = '';
   @Input() size: 'compact' | 'base' = 'base';
   @Input() shape!: 'pill' | 'curve' | 'flat';
   @Input() icon!: string;
   @Input() iconPosition: 'left' | 'right' = 'left';
-  @Input() autoComplete: string = 'off';
-  @Input() helpText: string = '';
+  @Input() autoComplete = 'off';
+  @Input() helpText = '';
   @ContentChild(ZapFormFieldIconDirective, { static: false })
   iconDirective!: ZapFormFieldIconDirective;
  @ContentChild(ZapFormFieldHelpTextDirective, { static: false })

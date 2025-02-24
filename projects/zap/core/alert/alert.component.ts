@@ -16,8 +16,8 @@ export class ZapAlert implements AfterViewInit {
     'default';
   @Input() variant: 'default' = 'default';
   @Input() shape!: 'curve' | 'pill' | 'flat';
-  @Input() icon: string = '';
-  @Input() zapClass: string = '';
+  @Input() icon = '';
+  @Input() zapClass = '';
   @ContentChild(ZapIconDirective, { static: false })
   iconDirective!: ZapIconDirective;
 

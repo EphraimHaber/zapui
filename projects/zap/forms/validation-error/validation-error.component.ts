@@ -12,8 +12,8 @@ import { ValidationErrors } from '@angular/forms';
 export class ValidationErrorComponent implements OnChanges {
   @Input() errors: Record<string, ValidationErrors> | null = {};
   @Input() customErrorMessages: Record<string, string> = {};
-  @Input() zapClass: string = '';
-  @Input() color: string = '';
+  @Input() zapClass = '';
+  @Input() color = '';
   errorMessages: Record<string, string> = {
     required: 'This field is required.',
     minlength: 'Value is too short',

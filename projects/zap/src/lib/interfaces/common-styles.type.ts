@@ -1,6 +1,6 @@
 import { Padding } from "./padding.type";
 
-export type CommonStyles = {
+export interface CommonStyles {
   borderRadius?: string;
   paddingLeft?: string;
   paddingRight?: string;
@@ -14,4 +14,4 @@ export type CommonStyles = {
   lineHeight?: string;
   letterSpacing?: string;
   textTransform?: string;
-};
+}

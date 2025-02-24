@@ -3,11 +3,7 @@ import { toKebabCase } from '../utils/base-theme-utils';
 import { handlePaddingStyles } from '../utils/padding-utils';
 
 interface ComponentStyles {
-  colors?: {
-    [theme: string]: {
-      [key: string]: HexCode;
-    };
-  };
+  colors?: Record<string, Record<string, HexCode>>;
   padding?: string;
 }
 

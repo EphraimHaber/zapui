@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, Inject, Injector, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Directive, Inject, Injector, OnInit, OnDestroy } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -15,13 +15,13 @@ import { distinctUntilChanged, startWith, Subject, takeUntil, tap } from 'rxjs';
   selector: '[libControlValueAccessor]',
 })
 export class ControlValueAccessorDirective<T>
-  implements OnInit, ControlValueAccessor
+  implements OnInit, ControlValueAccessor, OnDestroy
 {
   control!: FormControl;
-  isRequired: boolean = false;
+  isRequired = false;
   colors: any = [];
 
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
   private _destroy$ = new Subject<void>();
   private _onTouched!: () => T;
   protected globalConfig: { shape: string } = {

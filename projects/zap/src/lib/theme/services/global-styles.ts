@@ -26,7 +26,7 @@ import { getDefaultDPCalendarSelectSizeCssValues } from '../components/dp-calend
 export function generateGlobalStylesVariables(
   theme: ZapTheme,
   root: HTMLElement,
-  platformId: Object
+  platformId: object
 ): string {
   let cssVariables = '';
   const styles = {

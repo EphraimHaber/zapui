@@ -21,10 +21,10 @@ export class ControlValueAccessorDirective<T>
   implements OnInit, ControlValueAccessor
 {
   control!: FormControl;
-  isRequired: boolean = false;
+  isRequired = false;
   colors: any = [];
 
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
   private _destroy$ = new Subject<void>();
   private _onTouched!: () => T;
 

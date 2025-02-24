@@ -19,7 +19,7 @@ import { ZapAccordionHeader } from '../accordion-header/accordion-header.compone
 })
 export class ZapAccordionItem implements AfterViewInit {
   @ContentChild(ZapAccordionHeader) header!: ZapAccordionHeader;
-  isOpen: boolean = false;
+  isOpen = false;
 
   constructor() {}
 
