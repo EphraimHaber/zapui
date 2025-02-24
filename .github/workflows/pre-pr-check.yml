@@ -32,3 +32,7 @@ jobs:
 
       - name: Check for Build Errors
         run: npm run build
+
+      - name: Send Status Check
+        if: ${{ success() }}
+        run: echo "All checks passed!"
