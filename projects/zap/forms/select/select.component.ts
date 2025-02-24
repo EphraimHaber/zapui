@@ -54,7 +54,7 @@ export class ZapSelect<T>
   @ViewChild('inputSelectValueHolder') inputSelectValueHolder!: ElementRef;
   @ViewChild('optionList') optionList!: ElementRef;
   @ViewChild('search') search!: ElementRef;
-  @Output() change: EventEmitter<string[] | string> = new EventEmitter<
+  @Output() onChange: EventEmitter<string[] | string> = new EventEmitter<
     string[] | string
   >();
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
@@ -81,7 +81,7 @@ export class ZapSelect<T>
   isOptionListOpen = false;
   hoveredOption = '';
   selectedOptionValue: string[] = [];
-  filteredOptions: any[] = [];
+  filteredOptions: { label: string; value: any; [key: string]: any }[] = [];
   @ContentChild(ZapFormFieldIconDirective, { static: false })
   iconDirective!: ZapFormFieldIconDirective;
   @ContentChild(ZapFormFieldHelpTextDirective, { static: false })
@@ -173,7 +173,7 @@ export class ZapSelect<T>
 
   @HostListener('document:keydown.escape', ['$event'])
   onEscapePress(event: KeyboardEvent): void {
-    if (this.isOptionListOpen) {
+    if (this.isOptionListOpen && event.key === 'Escape') {
       this.toggleOptionsList();
     }
   }
@@ -303,25 +303,25 @@ export class ZapSelect<T>
         this.selectedOptionValue = [...this.selectedOptionValue, option.value];
       }
       this.control.setValue(this.selectedOptionValue);
-      this.change.emit(this.selectedOptionValue);
+      this.onChange.emit(this.selectedOptionValue);
       this.cdr.detectChanges();
       this.handleSelectOptionPosition();
     } else {
       this.control.setValue(option.value);
-      this.change.emit(option.value);
+      this.onChange.emit(option.value);
       this.selectedOptionValue = [option.value];
       this.toggleOptionsList();
     }
   }
 
-  cancelOption(event: any, value: string): void {
+  cancelOption(event: any, value: any): void {
     event.stopPropagation();
     if (this.multiselect) {
       this.selectedOptionValue = this.selectedOptionValue.filter(
         (option) => option !== value
       );
       this.control.setValue(this.selectedOptionValue);
-      this.change.emit(this.selectedOptionValue);
+      this.onChange.emit(this.selectedOptionValue);
     }
     this.cdr.detectChanges();
     this.handleSelectOptionPosition();
@@ -331,7 +331,7 @@ export class ZapSelect<T>
     return this.options.find((option) => option.value === value)?.label || '';
   }
 
-  getSelectedOption(value: string): { label: string; value: string } {
+  getSelectedOption(value: string): { label: string; value: any } {
     return (
       this.options.find((option) => option.value === value) || {
         label: '',

@@ -23,7 +23,7 @@ export class ZapAccordionItem implements AfterViewInit {
 
   ngAfterViewInit() {
     if (this.header) {
-      this.header.toggle.subscribe(() => {
+      this.header.open.subscribe(() => {
         this.toggle();
       });
     }

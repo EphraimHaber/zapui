@@ -37,7 +37,7 @@ export class ControlValueAccessorDirective<T>
   setFormControl() {
     try {
       const formControl = this.injector.get(NgControl);
-
+      const ngModel = formControl as NgModel;
       switch (formControl.constructor) {
         case FormControlName:
           this.control = this.injector
@@ -45,7 +45,6 @@ export class ControlValueAccessorDirective<T>
             .getControl(formControl as FormControlName);
           break;
         case NgModel:
-          const ngModel = formControl as NgModel;
           this.control = ngModel.control;
           ngModel.valueChanges?.pipe(
             takeUntil(this._destroy$),
@@ -83,7 +82,7 @@ export class ControlValueAccessorDirective<T>
         startWith(this.control.value),
         distinctUntilChanged(),
         tap((val) => {
-          fn(val), this.control?.updateValueAndValidity();
+          fn(val); this.control?.updateValueAndValidity();
         })
       )
       .subscribe();

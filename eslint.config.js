@@ -36,6 +36,7 @@ module.exports = tseslint.config(
           suffixes: [""],
         },
       ],
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
   {

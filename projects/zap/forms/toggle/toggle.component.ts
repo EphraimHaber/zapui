@@ -33,6 +33,7 @@ import {
   ],
 })
 export class ZapToggle<T> extends ControlValueAccessorDirective<T> implements AfterViewInit {
+  @Input() id = '';
   @Input() label = '';
   @Input() helpText = '';
   @Input() zapClass = '';

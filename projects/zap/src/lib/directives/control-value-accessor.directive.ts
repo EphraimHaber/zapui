@@ -20,9 +20,8 @@ export class ControlValueAccessorDirective<T>
 {
   control!: FormControl;
   isRequired = false;
-  colors: any = [];
 
-  private _isDisabled: boolean = false;
+  private _isDisabled = false;
   private _destroy$ = new Subject<void>();
   private _onTouched!: () => T;
 
@@ -73,7 +72,7 @@ export class ControlValueAccessorDirective<T>
         startWith(this.control.value),
         distinctUntilChanged(),
         tap((val) => {
-          fn(val), this.control?.updateValueAndValidity();
+          fn(val); this.control?.updateValueAndValidity();
         })
       )
       .subscribe();

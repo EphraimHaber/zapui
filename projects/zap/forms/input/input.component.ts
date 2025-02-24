@@ -94,7 +94,7 @@ export class ZapInput<T> extends ControlValueAccessorDirective<T> implements Aft
     }
   }
 
-  handleIconClick(event: MouseEvent): void {
+  handleIconClick(event: Event): void {
     event.stopPropagation();
     this.iconClick.emit();
   }

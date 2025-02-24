@@ -64,7 +64,7 @@ import { ZapIconDirective } from '../../public-api';
   styleUrl: './accordion-header.component.scss',
 })
 export class ZapAccordionHeader implements AfterViewInit {
-  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
+  @Output() open: EventEmitter<void> = new EventEmitter<void>();
   @Input() variant: 'default' | 'nounderline' = 'default';
   @Input() icon: 'chevron' | 'plus' = 'chevron';
   @ContentChild(ZapIconDirective, { static: false })
@@ -83,6 +83,6 @@ export class ZapAccordionHeader implements AfterViewInit {
   }
 
   onToggle(): void {
-    this.toggle.emit();
+    this.open.emit();
   }
 }
