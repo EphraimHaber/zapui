@@ -13,7 +13,7 @@ export class DatePickerComponent {
   datePickerControl = new FormControl(
     {
       value: new Date(new Date().setMonth(new Date().getMonth() + 2)),
-      disabled: true,
+      disabled: false,
     },
     []
   );
