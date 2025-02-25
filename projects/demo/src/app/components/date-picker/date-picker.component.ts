@@ -67,6 +67,10 @@ export class DatePickerComponent {
     {
       startDate: new Date('2025-04-08'),
       endDate: new Date('2025-04-16'),
+    },
+    {
+      startDate: new Date('2025-05-26'),
+      endDate: new Date('2025-05-26'),
     }
   ];
 

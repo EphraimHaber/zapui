@@ -360,7 +360,7 @@ export class ZapDatePicker<T>
       }
 
       calendarElement.style.left = `${inputRect.left + scrollX}px`;
-      calendarElement.style.width = `${inputRect.width}px`;
+      calendarElement.style.width = this.size === 'wide' ? `${inputRect.width}px` : 'auto';
 
       const parentElement = calendarElement.offsetParent as HTMLElement;
       const parentRect = parentElement
