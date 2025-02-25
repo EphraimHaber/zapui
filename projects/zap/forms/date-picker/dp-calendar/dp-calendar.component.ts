@@ -330,6 +330,14 @@ export class DPCalendar implements OnInit {
 
     return false;
   }
+  isRangeBefore(date: Date): boolean {
+    return this.startDate !== null && this.endDate !== null && date > this.startDate && date <= this.endDate;
+  }
+
+  isRangeAfter(date: Date): boolean {
+    return this.startDate !== null && this.endDate !== null && date >= this.startDate && date < this.endDate;
+  }
+
 
   get classes(): string[] {
     return [this.shape, this.size, this.zapClass];

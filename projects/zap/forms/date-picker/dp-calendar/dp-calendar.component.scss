@@ -21,6 +21,7 @@
         @apply border  border-[var(--zap-dp-calendar-handler-border-color)] bg-[var(--zap-dp-calendar-handler-bg-color)] p-2 transition-colors duration-150 ease-linear;
         @apply hover:bg-[var(--zap-dp-calendar-handler-bg-hover-color)] hover:border-[var(--zap-dp-calendar-handler-border-hover-color)];
         @apply rounded-[var(--zap-dp-calendar-handler-border-radius)] invisible;
+        @apply text-[var(--zap-dp-calendar-handler-color)];
 
         &.active {
           @apply visible;
@@ -28,10 +29,6 @@
 
         .__zap__calendar__handler {
           @apply h-[var(--zap-dp-calendar-handler-height)] w-[var(--zap-dp-calendar-handler-width)];
-
-          path {
-            @apply fill-[var(--zap-dp-calendar-handler-color)];
-          }
         }
       }
     }
@@ -93,7 +90,7 @@
 
             &.in__range {
               &::after {
-                @apply bg-[var(--zap-dp-calendar-in-range-active-month-bg-color)] absolute left-0 top-0 w-full h-full inset-0 ring-inherit;
+                @apply z-[-1] bg-[var(--zap-dp-calendar-in-range-active-month-bg-color)] absolute left-0 top-0 w-full h-full inset-0 ring-inherit;
                 @apply content-[''] box-border;
               }
             }
@@ -189,13 +186,13 @@
                 @apply rounded-r-full;
               }
 
-              &:first-child {
+              &.range__after {
                 &::after {
                   @apply rounded-l-full rounded-r-none;
                 }
               }
 
-              &:last-child {
+              &.range__before {
                 &::after {
                   @apply rounded-r-full rounded-l-none;
                 }
@@ -237,13 +234,13 @@
                 @apply rounded-r;
               }
 
-              &:first-child {
+              &.range__after {
                 &::after {
                   @apply rounded-l rounded-r-none;
                 }
               }
 
-              &:last-child {
+              &.range__before {
                 &::after {
                   @apply rounded-r rounded-l-none;
                 }

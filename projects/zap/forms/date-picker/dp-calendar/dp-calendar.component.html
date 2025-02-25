@@ -94,6 +94,8 @@
             [class.in__range]="isInRange(day)"
             [class.only__range]="isOnlyRangeInThisWeek(day, week)"
             [class.is__disabled]="isDisabled(day)"
+            [class.range__before]="isRangeBefore(day)"
+            [class.range__after]="isRangeAfter(day)"
             (click)="select(day)"
             tabindex="0"
             (keydown.enter)="select(day)"
