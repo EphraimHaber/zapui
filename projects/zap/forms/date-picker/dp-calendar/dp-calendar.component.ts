@@ -36,6 +36,7 @@ export class DPCalendar implements OnInit {
   @Input() years!: string[];
   @Input() disableWeekends = false;
   @Input() disableDates!: Date[];
+  @Input() disableRanges!: { startDate: Date; endDate: Date }[];
   monthsAndYearRange: string[] = [];
   selectedMonthAndYearRange!: string;
   startDate: Date | null = null;
@@ -307,10 +308,23 @@ export class DPCalendar implements OnInit {
       return true;
     }
 
-    if (this.disableDates && this.disableDates.length > 0) {
-      return this.disableDates.some(
+    if (
+      this.disableDates &&
+      this.disableDates.length > 0 &&
+      this.disableDates.some(
         (date) => date.toDateString() === day.toDateString()
-      );
+      )
+    ) {
+      return true;
+    }
+
+    if (this.disableRanges && this.disableRanges.length > 0) {
+      return this.disableRanges.some((range) => {
+        return (
+          (day >= range.startDate && day <= range.endDate) ||
+          day.toDateString() === range.startDate.toDateString()
+        );
+      });
     }
 
     return false;

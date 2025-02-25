@@ -63,6 +63,12 @@ export class DatePickerComponent {
     }
     return dates;
   })();
+  disableRanges: { startDate: Date; endDate: Date }[] = [
+    {
+      startDate: new Date('2025-04-08'),
+      endDate: new Date('2025-04-16'),
+    }
+  ];
 
   reset() {
     this.datePickerControl.reset();
