@@ -23,9 +23,7 @@ import { getDefaultDPCalendarSelectSizeCssValues } from '../components/dp-calend
  * @param root
  * @returns
  */
-export function generateGlobalStylesVariables(
-  theme: ZapTheme,
-): string {
+export function generateGlobalStylesVariables(theme: ZapTheme): string {
   let cssVariables = '';
   const styles = {
     alert: [
@@ -116,7 +114,7 @@ export function generateGlobalStylesVariables(
       {
         label: 'disabled-border-color',
         value: hexToRgba(theme.colors.tertiary, 0),
-      }
+      },
     ],
     chip: [
       {
@@ -715,6 +713,22 @@ export function generateGlobalStylesVariables(
       },
       {
         label: 'help-text-color',
+        value: hexToRgba(theme.colors.secondary, 0.5),
+      },
+      {
+        label: 'disabled-border-color',
+        value: hexToRgba(theme.colors.secondary, 0.1),
+      },
+      {
+        label: 'disabled-bg-color',
+        value: 'transparent',
+      },
+      {
+        label: 'disabled-text-color',
+        value: hexToRgba(theme.colors.secondary, 0.5),
+      },
+      {
+        label: 'disabled-help-text-color',
         value: hexToRgba(theme.colors.secondary, 0.5),
       },
     ],

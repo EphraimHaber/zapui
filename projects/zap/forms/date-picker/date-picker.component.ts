@@ -442,6 +442,7 @@ export class ZapDatePicker<T>
   }
 
   toggleCalendar(): void {
+    if (this.control.disabled) return;
     this.isCalendarOpen = !this.isCalendarOpen;
     this.cdr.detectChanges();
     if (this.isCalendarOpen) {
