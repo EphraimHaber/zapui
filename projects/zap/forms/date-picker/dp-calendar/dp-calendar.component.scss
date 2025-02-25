@@ -1,8 +1,8 @@
 .__zap__calendar__container {
-  @apply animate-popup relative;
+  @apply animate-popup relative w-max;
 
   .calendar-row {
-    @apply flex justify-start gap-4;
+    @apply flex justify-start gap-4 w-max;
   }
 
   .__zap__calendar {
@@ -117,7 +117,6 @@
         }
       }
     }
-    // TODO: Fix the wide and compact
   }
 
   &.wide {
@@ -257,6 +256,16 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+
+  .__zap__calendar {
+    .weeks {
+      .day {
+        &.is__disabled {
+          @apply text-[var(--zap-dp-calendar-day-text-color)] bg-[var(--zap-dp-calendar-day-bg-color)] pointer-events-none;
         }
       }
     }

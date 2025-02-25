@@ -93,6 +93,7 @@
             [class.selected]="isSelected(day)"
             [class.in__range]="isInRange(day)"
             [class.only__range]="isOnlyRangeInThisWeek(day, week)"
+            [class.is__disabled]="isDisabled(day)"
             (click)="select(day)"
             tabindex="0"
             (keydown.enter)="select(day)"

@@ -91,6 +91,9 @@ export class ZapDatePicker<T>
     'December',
   ];
   @Input() years!: string[];
+  @Input() disableWeekends = false;
+  @Input() disableDates!: Date[];
+  @Input() disableRanges!: { startDate: Date; endDate: Date }[];
 
   @ContentChild(ZapFormFieldIconDirective, { static: false })
   iconDirective!: ZapFormFieldIconDirective;
@@ -357,7 +360,7 @@ export class ZapDatePicker<T>
       }
 
       calendarElement.style.left = `${inputRect.left + scrollX}px`;
-      calendarElement.style.width = `${inputRect.width}px`;
+      calendarElement.style.width = this.size === 'wide' ? `${inputRect.width}px` : 'auto';
 
       const parentElement = calendarElement.offsetParent as HTMLElement;
       const parentRect = parentElement
@@ -442,6 +445,7 @@ export class ZapDatePicker<T>
   }
 
   toggleCalendar(): void {
+    if (this.control.disabled) return;
     this.isCalendarOpen = !this.isCalendarOpen;
     this.cdr.detectChanges();
     if (this.isCalendarOpen) {
