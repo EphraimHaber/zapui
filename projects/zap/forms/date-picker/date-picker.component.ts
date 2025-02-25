@@ -381,6 +381,11 @@ export class ZapDatePicker<T>
     }
   }
 
+  private resetCalendar(): void {
+    this.currentDate = new Date();
+    this.updateCalendar();
+  }
+
   onPreviousMonth(offset: number): void {
     this.currentDate = new Date(
       this.currentDate.getFullYear(),
@@ -452,6 +457,15 @@ export class ZapDatePicker<T>
       this.iconPosition,
       this.control.disabled ? 'disabled' : '',
     ].filter((cls) => cls && cls !== 'default');
+  }
+
+  override reset(): void {
+    super.reset();
+    this.selected = {
+      startDate: null,
+      endDate: null,
+    };
+    this.resetCalendar();
   }
 
   override ngOnDestroy(): void {

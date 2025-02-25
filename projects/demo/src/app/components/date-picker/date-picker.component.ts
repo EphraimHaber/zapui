@@ -12,12 +12,32 @@ import { ZapDatePicker, ZapDatePickerBreakpoints } from 'zap/forms';
 export class DatePickerComponent {
   datePickerControl = new FormControl(
     {
-      value: new Date(new Date().setMonth(new Date().getMonth() + 1)),
+      value: new Date(new Date().setMonth(new Date().getMonth() + 2)),
       disabled: false,
     },
     []
   );
-  datePickerControl2 = new FormControl({ value: '', disabled: false }, []);
+  datePickerControl2 = new FormControl(
+    {
+      value: '',
+      disabled: false,
+    },
+    []
+  );
+  datePickerControl3 = new FormControl(
+    {
+      value: '',
+      disabled: false,
+    },
+    []
+  );
+  datePickerControl4 = new FormControl(
+    {
+      value: '',
+      disabled: false,
+    },
+    []
+  );
   breakpoints: ZapDatePickerBreakpoints = {
     default: {
       maxPerRow: 1,
@@ -34,4 +54,11 @@ export class DatePickerComponent {
       monthsPerView: 1,
     },
   };
+
+  reset() {
+    this.datePickerControl.reset();
+    this.datePickerControl2.reset();
+    this.datePickerControl3.reset();
+    this.datePickerControl4.reset();
+  }
 }
