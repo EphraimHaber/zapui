@@ -1,4 +1,11 @@
-import { ChangeDetectorRef, Directive, Inject, Injector, OnInit, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Directive,
+  Inject,
+  Injector,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -27,7 +34,10 @@ export class ControlValueAccessorDirective<T>
     shape: '',
   };
 
-  constructor(@Inject(Injector) private injector: Injector, protected cdr: ChangeDetectorRef) {}
+  constructor(
+    @Inject(Injector) private injector: Injector,
+    protected cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.setFormControl();
@@ -46,13 +56,15 @@ export class ControlValueAccessorDirective<T>
           break;
         case NgModel:
           this.control = ngModel.control;
-          ngModel.valueChanges?.pipe(
-            takeUntil(this._destroy$),
-            distinctUntilChanged(),
-            tap((val) => {
-              this.writeValue(val);
-            })
-          ).subscribe();
+          ngModel.valueChanges
+            ?.pipe(
+              takeUntil(this._destroy$),
+              distinctUntilChanged(),
+              tap((val) => {
+                this.writeValue(val);
+              })
+            )
+            .subscribe();
           break;
         default:
           this.control = (formControl as FormControlDirective)
@@ -82,16 +94,28 @@ export class ControlValueAccessorDirective<T>
         startWith(this.control.value),
         distinctUntilChanged(),
         tap((val) => {
-          fn(val); this.control?.updateValueAndValidity();
+          fn(val);
+          this.control?.updateValueAndValidity();
+          this.onValueChange(val);
         })
       )
       .subscribe();
   }
 
+  onValueChange(value: T) {
+    if (value === null || value === undefined || value === '') {
+      this.reset();
+    }
+  }
+
+  reset(): void {
+    this.control.reset();
+  }
+
   setDisabledState?(isDisabled: boolean): void {
     this._isDisabled = isDisabled;
   }
-  
+
   registerOnTouched(fn: () => T): void {
     this._onTouched = fn;
   }

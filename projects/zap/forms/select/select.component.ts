@@ -340,8 +340,8 @@ export class ZapSelect<T>
     );
   }
 
-  reset(): void {
-    this.control.reset();
+  override reset(): void {
+    super.reset();
     this.selectedOptionValue = [];
   }
 

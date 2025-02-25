@@ -1,5 +1,6 @@
 <div class="flex flex-col space-y-10 w-full">
   <zap-date-picker
+    #datePicker
     id="some"
     label="Date picker"
     [formControl]="datePickerControl"
@@ -10,6 +11,7 @@
   <zap-date-picker
     id="some"
     label="Date picker"
+    [formControl]="datePickerControl2"
     helpText="Select your date of birth"
     shape="curve"
   ></zap-date-picker>
@@ -17,6 +19,7 @@
     label="Range date picker"
     [range]="true"
     [breakpoints]="breakpoints"
+    [formControl]="datePickerControl3"
     [dropdown]="false"
     shape="curve"
   >
@@ -24,7 +27,7 @@
   <zap-date-picker
     label="Range date picker"
     [range]="true"
-    [formControl]="datePickerControl2"
+    [formControl]="datePickerControl4"
     [breakpoints]="breakpoints2"
     shape="curve"
   >
