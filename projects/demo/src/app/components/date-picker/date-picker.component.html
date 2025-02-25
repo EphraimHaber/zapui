@@ -15,6 +15,9 @@
     [formControl]="datePickerControl2"
     helpText="Select your date of birth"
     shape="curve"
+    [disableWeekends]="true"
+    [disableDates]="disableDates"
+    [disableRanges]="disableRanges"
   ></zap-date-picker>
   <zap-date-picker
     label="Range date picker"

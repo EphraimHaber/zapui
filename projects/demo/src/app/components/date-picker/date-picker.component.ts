@@ -54,6 +54,25 @@ export class DatePickerComponent {
       monthsPerView: 1,
     },
   };
+  disableDates: Date[] = (() => {
+    const dates: Date[] = [];
+    const today = new Date();
+    const lastWeek = new Date(today.setDate(today.getDate() - 7));
+    for (let i = 0; i < 7; i++) {
+      dates.push(new Date(lastWeek.setDate(lastWeek.getDate() + 1)));
+    }
+    return dates;
+  })();
+  disableRanges: { startDate: Date; endDate: Date }[] = [
+    {
+      startDate: new Date('2025-04-08'),
+      endDate: new Date('2025-04-16'),
+    },
+    {
+      startDate: new Date('2025-05-26'),
+      endDate: new Date('2025-05-26'),
+    }
+  ];
 
   reset() {
     this.datePickerControl.reset();

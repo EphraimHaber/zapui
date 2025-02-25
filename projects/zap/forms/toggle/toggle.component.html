@@ -3,7 +3,7 @@
   [ngClass]="[zapClass, label || helpText ? 'between' : 'start']"
 >
   <div class="wrapper">
-    @if(label || helpText) {
+    @if(label || labelDirective || helpText || helpTextDirective) {
     <div class="content-wrapper">
       <div class="lable-wrapper">
         @if(label) {
