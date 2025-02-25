@@ -13,7 +13,8 @@
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint",
     "test": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
-    "test:watch": "ng test --watch"
+    "test:watch": "ng test --watch",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +44,7 @@
     "angular-eslint": "^19.1.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.21.0",
+    "husky": "^9.1.7",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
