@@ -3,11 +3,13 @@ import {
   Component,
   ContentChild,
   ElementRef,
+  EventEmitter,
   forwardRef,
   HostListener,
   Input,
   OnDestroy,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -55,6 +57,7 @@ export class ZapDatePicker<T>
   @ViewChild('inputDateSelectValueHolder')
   inputDateSelectValueHolder!: ElementRef;
   @ViewChild('calendar') calendar!: ElementRef;
+  @Output() onChange: EventEmitter<T> = new EventEmitter<T>();
   @Input() label = '';
   @Input() id = '';
   @Input() placeholder = 'Select';
@@ -431,6 +434,7 @@ export class ZapDatePicker<T>
         endDate: dateRange.endDate,
       });
     }
+    this.onChange.emit(this.control.value);
   }
 
   isCurrentMonth(date: Date, month: number, year: number): boolean {

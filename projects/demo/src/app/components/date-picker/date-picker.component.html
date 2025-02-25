@@ -7,6 +7,7 @@
     helpText="Select your date of birth"
     [dropdown]="false"
     shape="curve"
+    (onChange)="onChange($event)"
   ></zap-date-picker>
   <zap-date-picker
     id="some"

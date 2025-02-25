@@ -61,4 +61,8 @@ export class DatePickerComponent {
     this.datePickerControl3.reset();
     this.datePickerControl4.reset();
   }
+
+  onChange(event: any) {
+    console.log(event);
+  }
 }
