@@ -35,6 +35,7 @@ export class DPCalendar implements OnInit {
   @Input() months!: string[];
   @Input() years!: string[];
   @Input() disableWeekends = false;
+  @Input() disableDates!: Date[];
   monthsAndYearRange: string[] = [];
   selectedMonthAndYearRange!: string;
   startDate: Date | null = null;
@@ -194,7 +195,7 @@ export class DPCalendar implements OnInit {
   }
 
   select(date: Date): void {
-    if(this.isDisabled(date)) return;
+    if (this.isDisabled(date)) return;
     if (!this.range) {
       this.startDate = date;
       this.endDate = date;
@@ -302,11 +303,17 @@ export class DPCalendar implements OnInit {
   }
 
   isDisabled(day: Date): boolean {
-    if (this.disableWeekends) {
-      return day.getDay() === 0 || day.getDay() === 6;
-    } else {
-      return false;
+    if (this.disableWeekends && (day.getDay() === 0 || day.getDay() === 6)) {
+      return true;
     }
+
+    if (this.disableDates && this.disableDates.length > 0) {
+      return this.disableDates.some(
+        (date) => date.toDateString() === day.toDateString()
+      );
+    }
+
+    return false;
   }
 
   get classes(): string[] {

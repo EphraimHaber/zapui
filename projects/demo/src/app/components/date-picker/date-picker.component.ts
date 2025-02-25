@@ -54,6 +54,15 @@ export class DatePickerComponent {
       monthsPerView: 1,
     },
   };
+  disableDates: Date[] = (() => {
+    const dates: Date[] = [];
+    const today = new Date();
+    const lastWeek = new Date(today.setDate(today.getDate() - 7));
+    for (let i = 0; i < 7; i++) {
+      dates.push(new Date(lastWeek.setDate(lastWeek.getDate() + 1)));
+    }
+    return dates;
+  })();
 
   reset() {
     this.datePickerControl.reset();

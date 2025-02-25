@@ -91,7 +91,8 @@ export class ZapDatePicker<T>
     'December',
   ];
   @Input() years!: string[];
-  @Input() disableWeekends = false; 
+  @Input() disableWeekends = false;
+  @Input() disableDates!: Date[];
 
   @ContentChild(ZapFormFieldIconDirective, { static: false })
   iconDirective!: ZapFormFieldIconDirective;
