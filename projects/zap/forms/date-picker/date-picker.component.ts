@@ -454,8 +454,23 @@ export class ZapDatePicker<T>
   }
 
   get classes(): string[] {
+    return this.generateClasses();
+  }
+
+  get calendarClasses(): string {
+    const prefixes =[
+      'dp-calendar:',
+    ];
+
+    return this.zapClass.split(' ').filter((cls) => prefixes.some((prefix) => cls.startsWith(prefix))).join(' ');
+  }
+
+  private generateClasses(prefixes: string[] = ['']): string[] {
     return [
       this.shape,
+      ...this.zapClass
+        .split(' ')
+        .filter((cls) => prefixes.some((prefix) => cls.startsWith(prefix))),
       this.size,
       this.zapClass,
       this.iconPosition,

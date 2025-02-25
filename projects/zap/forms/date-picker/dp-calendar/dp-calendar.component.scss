@@ -1,7 +1,7 @@
 .__zap__calendar__container {
   @apply animate-popup relative;
 
-  .calendar-row {
+  .calendar__row {
     @apply flex justify-start gap-4;
   }
 
@@ -123,7 +123,7 @@
   &.wide {
     @apply w-full;
 
-    .calendar-row {
+    .calendar__row {
       @apply w-full;
 
       .__zap__calendar {

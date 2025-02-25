@@ -37,6 +37,11 @@ module.exports = plugin(function ({ addVariant, e }) {
     { name: "option-checked", targetElement: ".__zap__form__control__options .__zap__form__control__option .__zap__form__control__checked" },
     { name: "option-selected", targetElement: ".__zap__form__control__options .__zap__form__control__selected" },
     { name: "option-hovered", targetElement: ".__zap__form__control__options .__zap__form__control__hovered" },
+    { name: "dp", targetElement: ".__zap__form__control__date__picker"},
+    { name: "dp-placeholder", targetElement: ".__zap__form__control__date__picker .__zap__form__control__placeholder"},
+    { name: "dp-icon", targetElement: ".__zap__form__control__date__picker .__zap__form__control__icon"},
+    { name: "dp-calendars", targetElement: ".__zap__calendar__container.multi"},
+    { name: "dp-calendar", targetElement: ".__zap__calendar"},
   ];
 
   variants.forEach((variant) => {

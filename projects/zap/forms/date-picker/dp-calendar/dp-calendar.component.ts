@@ -34,6 +34,7 @@ export class DPCalendar implements OnInit {
   @Input() dropdown = false;
   @Input() months!: string[];
   @Input() years!: string[];
+  @Input() zapClass = '';
   monthsAndYearRange: string[] = [];
   selectedMonthAndYearRange!: string;
   startDate: Date | null = null;
@@ -285,6 +286,6 @@ export class DPCalendar implements OnInit {
   }
 
   get classes(): string[] {
-    return [this.shape, this.size];
+    return [this.shape, this.size, this.zapClass];
   }
 }

@@ -16,7 +16,7 @@
       @if(label) {
       <legend class="sr-only">{{ label }}</legend>
       } @if(control.value) {
-      <span class="__zap__form__control__value">
+      <span>
         {{ selectedValue }}
       </span>
       } @else {
@@ -26,7 +26,7 @@
       }
       <div class="handler">
         @if(icon) {
-        <i [ngClass]="icon"></i>
+        <i [ngClass]="icon" class="__zap__form__control__icon"></i>
         } @else if (iconDirective) {
         <ng-content select="[zapFormFieldIcon]"></ng-content>
         } @else {
@@ -35,6 +35,7 @@
           viewBox="0 0 448 512"
           width="14"
           height="14"
+          class="__zap__form__control__icon"
         >
           <path
             fill="currentColor"
@@ -60,6 +61,7 @@
         [size]="size"
         [shape]="shape"
         [dropdown]="dropdown"
+        [zapClass]="calendarClasses"
         (selectDate)="selectDate($event)"
         (previousMonth)="onPreviousMonth($event)"
         (nextMonth)="onNextMonth($event)"
