@@ -6,17 +6,6 @@ import { routes } from './app.routes';
 
 const ngxConfig: ZapConfig = {
   theme: localStorage.getItem('zapdemo-theme') as 'light' | 'dark',
-  components: {
-    "date-picker": {
-      shape: 'curve'
-    },
-    "dp-calendar": {
-      shape: 'curve'
-    },
-    "dp-calendar-select": {
-      shape: 'curve'
-    }
-  }
 };
 
 export const appConfig: ApplicationConfig = {
