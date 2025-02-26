@@ -9,5 +9,5 @@ import { ZapButton, ZapModal } from 'zap/core';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-
+  modalOpen = false;
 }

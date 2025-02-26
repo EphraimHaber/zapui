@@ -3,7 +3,9 @@ import { HexCode, Padding, ShapeType } from './index';
 export interface DialogConfig {
   shape?: ShapeType;
   styles?: {
-    colors?: Record<string, {
+    colors?: Record<
+      string,
+      {
         bgColor?: HexCode;
         textColor?: HexCode;
         titleColor?: HexCode;
@@ -22,7 +24,9 @@ export interface DialogConfig {
         secondaryBtnBgHoverColor?: HexCode;
         secondaryBtnTextHoverColor?: HexCode;
         secondaryBtnBorderHoverColor?: HexCode;
-      }>;
+        overlayBgColor?: HexCode;
+      }
+    >;
     borderRadius?: string;
     paddingLeft?: string;
     paddingRight?: string;

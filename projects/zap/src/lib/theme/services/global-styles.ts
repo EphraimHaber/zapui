@@ -223,6 +223,10 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'secondary-btn-text-hover-color',
         value: hexToRgba(theme.colors.secondary, 0.8),
       },
+      {
+        label: 'overlay-bg-color',
+        value: hexToRgba(theme.colors.secondary, 0.1),
+      }
     ],
     modal: [
       {
@@ -245,6 +249,10 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'dismiss-hover-color',
         value: hexToRgba(theme.colors.secondary, 0.7),
       },
+      {
+        label: 'overlay-bg-color',
+        value: hexToRgba(theme.colors.secondary, 0.1),
+      }
     ],
     input: [
       {

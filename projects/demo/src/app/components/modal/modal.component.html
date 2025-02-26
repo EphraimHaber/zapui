@@ -1,5 +1,6 @@
-<div class="relative w-full h-full min-h-[30vh]">
-  <zap-modal zapClass="absolute" size="tight">
+<div class="flex items-center justify-center min-h-[30vh]">
+  @if(modalOpen) {
+  <zap-modal size="tight" (close)="modalOpen = !modalOpen" [showOverlay]="true">
     <h2 class="font-semibold">Modal</h2>
     <p class="mt-2">
       Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod
@@ -9,4 +10,6 @@
       <zap-button text="Save changes"></zap-button>
     </div>
   </zap-modal>
+  }
+  <zap-button text="Open Modal" shape="curve" (click)="modalOpen = !modalOpen"></zap-button>
 </div>

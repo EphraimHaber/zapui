@@ -8,4 +8,6 @@ import { ZapButton, ZapDialog, ZapDialogFooterDirective } from 'zap/core';
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
-export class DialogComponent {}
+export class DialogComponent {
+  dialogOpen = false;
+}
