@@ -18,6 +18,9 @@ export * from './style.interface';
 export * from './textarea.interface';
 export * from './toggle.interface';
 export * from './tooltip.interface';
+export * from './date-picker.interface';
+export * from './dp-calendar.interface';
+export * from './dp-calendar-select.interface';
 
 
 

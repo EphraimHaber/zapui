@@ -13,6 +13,9 @@ import {
   ToggleConfig,
   TooltipConfig,
   AccordionConfig,
+  DPCalendarConfig,
+  DatePickerConfig,
+  DPCalendarSelectConfig,
   HexCode,
   ShapeType,
 } from './index';
@@ -36,6 +39,9 @@ export interface ZapConfig {
     accordion?: AccordionConfig;
     select?: SelectConfig;
     tooltip?: TooltipConfig;
+    'date-picker'?: DatePickerConfig;
+    'dp-calendar'?: DPCalendarConfig;
+    'dp-calendar-select'?: DPCalendarSelectConfig;
   };
 }
 

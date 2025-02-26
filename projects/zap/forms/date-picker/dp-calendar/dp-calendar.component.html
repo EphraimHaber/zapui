@@ -12,6 +12,7 @@
       [selected]="selectedMonthAndYearRange"
       [scrollToSelected]="true"
       (selectOption)="handleMonthAndYearRangeSelect($event)"
+      [shape]="shape"
     ></dp-calendar-select>
   </div>
   } 
@@ -43,12 +44,14 @@
             [options]="months"
             [selected]="calendar.month"
             (selectOption)="handleMonthSelect($event)"
+            [shape]="shape"
           ></dp-calendar-select>
           <dp-calendar-select
             [options]="years"
             [selected]="calendar.year.toString()"
             [scrollToSelected]="true"
             (selectOption)="handleYearSelect($event)"
+            [shape]="shape"
           ></dp-calendar-select>
         </div>
         }
