@@ -262,7 +262,7 @@
     .weeks {
       .day {
         &.is__disabled {
-          @apply text-[var(--zap-dp-calendar-day-text-color)] bg-[var(--zap-dp-calendar-day-bg-color)] pointer-events-none;
+          @apply text-[var(--zap-dp-calendar-day-text-color)] bg-[var(--zap-dp-calendar-day-bg-color)] hover:text-[var(--zap-dp-calendar-day-text-color)] hover:bg-[var(--zap-dp-calendar-day-bg-color)] cursor-not-allowed;
         }
       }
     }

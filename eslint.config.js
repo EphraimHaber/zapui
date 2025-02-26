@@ -37,7 +37,8 @@ module.exports = tseslint.config(
         },
       ],
       "@typescript-eslint/no-explicit-any": "off",
-      "@angular-eslint/no-output-on-prefix": "off"
+      "@angular-eslint/no-output-on-prefix": "off",
+      "no-console": ["error", { allow: ["warn", "error"] }]
     },
   },
   {

@@ -8,13 +8,14 @@
     [dropdown]="false"
     shape="curve"
     (onChange)="onChange($event)"
-  ></zap-date-picker>
-  <zap-date-picker
+    ></zap-date-picker>
+    <zap-date-picker
     id="some"
     label="Date picker"
     [formControl]="datePickerControl2"
     helpText="Select your date of birth"
     shape="curve"
+    [disableInactive]="true"
     [disableWeekends]="true"
     [disableDates]="disableDates"
     [disableRanges]="disableRanges"

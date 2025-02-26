@@ -94,6 +94,7 @@ export class ZapDatePicker<T>
   @Input() disableWeekends = false;
   @Input() disableDates!: Date[];
   @Input() disableRanges!: { startDate: Date; endDate: Date }[];
+  @Input() disableInactive = false;
 
   @ContentChild(ZapFormFieldIconDirective, { static: false })
   iconDirective!: ZapFormFieldIconDirective;
