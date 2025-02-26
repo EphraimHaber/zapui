@@ -71,11 +71,11 @@ export class DatePickerComponent {
     {
       startDate: new Date('2025-05-26'),
       endDate: new Date('2025-05-26'),
-    }
+    },
   ];
   minDate = new Date('2025-02-02');
   maxDate = new Date('2025-05-31');
-
+  daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   reset() {
     this.datePickerControl.reset();
     this.datePickerControl2.reset();

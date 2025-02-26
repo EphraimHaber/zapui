@@ -90,6 +90,7 @@ export class ZapDatePicker<T>
     'November',
     'December',
   ];
+  @Input() daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   @Input() years!: string[];
   @Input() disableWeekends = false;
   @Input() disableDates!: Date[];
