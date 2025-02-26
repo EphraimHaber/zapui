@@ -18,7 +18,6 @@ export const lightTheme: ZapTheme = {
     primary: '#FFFFFF',
     secondary: '#09090B',
     tertiary: '#09090B',
-    quaternary: '#e4e4e7',
     success: '#22c55e',
     successText: '#09090B',
     warning: '#eab308',
@@ -29,8 +28,6 @@ export const lightTheme: ZapTheme = {
     infoText: '#FFFFFF',
   },
   fontSize: {
-    '7xl': '4.5rem',
-    '6xl': '3.75rem',
     '5xl': '3rem',
     '4xl': '2.25rem',
     '3xl': '1.875rem',
@@ -49,7 +46,6 @@ export const darkTheme: ZapTheme = {
     primary: '#09090B',
     secondary: '#FFFFFF',
     tertiary: '#FFFFFF',
-    quaternary: '#28282b',
     success: '#22c55e',
     successText: '#09090B',
     warning: '#eab308',
@@ -60,8 +56,6 @@ export const darkTheme: ZapTheme = {
     infoText: '#FFFFFF',
   },
   fontSize: {
-    '7xl': '4.5rem',
-    '6xl': '3.75rem',
     '5xl': '3rem',
     '4xl': '2.25rem',
     '3xl': '1.875rem',
