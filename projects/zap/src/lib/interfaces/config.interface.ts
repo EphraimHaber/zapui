@@ -54,7 +54,6 @@ export interface ZapTheme {
     primary: HexCode;
     secondary: HexCode;
     tertiary: HexCode;
-    quaternary: HexCode;
     success: HexCode;
     successText: HexCode;
     error: HexCode;
@@ -65,8 +64,6 @@ export interface ZapTheme {
     infoText: HexCode;
   };
   fontSize: {
-    '7xl': string;
-    '6xl': string;
     '5xl': string;
     '4xl': string;
     '3xl': string;
