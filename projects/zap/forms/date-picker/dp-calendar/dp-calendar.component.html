@@ -16,7 +16,7 @@
   </div>
   } 
   @for(row of getCalendarRows(); track $index; let rowIndex = $index) {
-  <div class="calendar-row">
+  <div class="calendar__row">
     @for(calendar of row; track $index; let calendarIndex = $index) {
     <div class="__zap__calendar">
       <div class="header">
@@ -94,6 +94,8 @@
             [class.in__range]="isInRange(day)"
             [class.only__range]="isOnlyRangeInThisWeek(day, week)"
             [class.is__disabled]="isDisabled(day)"
+            [class.range__before]="isRangeBefore(day)"
+            [class.range__after]="isRangeAfter(day)"
             (click)="select(day)"
             tabindex="0"
             (keydown.enter)="select(day)"

@@ -360,7 +360,8 @@ export class ZapDatePicker<T>
       }
 
       calendarElement.style.left = `${inputRect.left + scrollX}px`;
-      calendarElement.style.width = this.size === 'wide' ? `${inputRect.width}px` : 'auto';
+      calendarElement.style.width =
+        this.size === 'wide' ? `${inputRect.width}px` : 'auto';
 
       const parentElement = calendarElement.offsetParent as HTMLElement;
       const parentRect = parentElement
@@ -458,10 +459,50 @@ export class ZapDatePicker<T>
   }
 
   get classes(): string[] {
+    return this.generateClasses(
+      [''],
+      [
+        'dpc',
+        'select:',
+        'select-selected:',
+        'options:',
+        'option:',
+        'option-selected:',
+        'option-hovered:',
+      ]
+    );
+  }
+
+  get calendarClasses(): string {
+    const prefixes = [
+      'dpc',
+      'select:',
+      'select-selected:',
+      'options:',
+      'option:',
+      'option-selected:',
+      'option-hovered:',
+    ];
+    return this.zapClass
+      .split(' ')
+      .filter((cls) => prefixes.some((prefix) => cls.startsWith(prefix)))
+      .join(' ');
+  }
+
+  private generateClasses(
+    prefixes: string[] = [''],
+    exclude: string[] = ['']
+  ): string[] {
     return [
       this.shape,
+      ...this.zapClass
+        .split(' ')
+        .filter(
+          (cls) =>
+            prefixes.some((prefix) => cls.startsWith(prefix)) &&
+            !exclude.some((ex) => cls.startsWith(ex))
+        ),
       this.size,
-      this.zapClass,
       this.iconPosition,
       this.control.disabled ? 'disabled' : '',
     ].filter((cls) => cls && cls !== 'default');
