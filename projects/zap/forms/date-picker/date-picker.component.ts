@@ -95,6 +95,10 @@ export class ZapDatePicker<T>
   @Input() disableDates!: Date[];
   @Input() disableRanges!: { startDate: Date; endDate: Date }[];
   @Input() disableInactive = false;
+  @Input() minDate!: Date;
+  @Input() maxDate!: Date;
+  @Input() minYear!: number;
+  @Input() maxYear!: number;
 
   @ContentChild(ZapFormFieldIconDirective, { static: false })
   iconDirective!: ZapFormFieldIconDirective;
@@ -238,12 +242,16 @@ export class ZapDatePicker<T>
 
   private setYears(): void {
     const currentYear = new Date().getFullYear();
-    const years = [];
-    for (let i = currentYear - 100; i <= currentYear + 100; i++) {
-      years.push(i.toString());
-    }
+    const startYear = this.minYear ?? currentYear - 50;
+    const endYear = this.maxYear ?? currentYear + 50;
+  
+    const years = Array.from(
+      { length: endYear - startYear + 1 },
+      (_, index) => (startYear + index).toString()
+    );
+  
     this.years = years;
-  }
+  }  
 
   private setCurrentDate(): void {
     this.currentDate = new Date();

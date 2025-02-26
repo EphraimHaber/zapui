@@ -73,6 +73,8 @@ export class DatePickerComponent {
       endDate: new Date('2025-05-26'),
     }
   ];
+  minDate = new Date('2025-02-02');
+  maxDate = new Date('2025-05-31');
 
   reset() {
     this.datePickerControl.reset();
