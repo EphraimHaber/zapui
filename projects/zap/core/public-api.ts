@@ -4,7 +4,7 @@ export * from './badge/badge.component';
 export * from './chip/chip.component';
 
 export * from './dialog/dialog.component';
-export * from './dialog/dialog-btn.directive';
+export * from './dialog/dialog-footer.directive';
 
 export * from './modal/modal.component';
 

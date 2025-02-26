@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ContentChild,
   EventEmitter,
@@ -8,7 +9,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ZapDialogButtonDirective } from './dialog-btn.directive';
+import { ZapDialogFooterDirective } from './dialog-footer.directive';
 
 @Component({
   selector: 'zap-dialog',
@@ -17,7 +18,7 @@ import { ZapDialogButtonDirective } from './dialog-btn.directive';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
 })
-export class ZapDialog{
+export class ZapDialog implements AfterViewInit {
   @Output() confirm: EventEmitter<void> = new EventEmitter<void>();
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
   @Input() title = 'Are you sure?';
@@ -29,8 +30,36 @@ export class ZapDialog{
   handleEsc(event: KeyboardEvent): void {
     if (event.key === 'Escape' || event.code === 'Escape') this.close.emit();
   }
-  @ContentChild(ZapDialogButtonDirective, { static: false })
-  btnDirective!: ZapDialogButtonDirective;
+  @ContentChild(ZapDialogFooterDirective, { static: false })
+  footerDirective!: ZapDialogFooterDirective;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.handleDirectiveStyle();
+  }
+
+
+  ngAfterViewInit(): void {
+    this.handleDirectiveStyle();
+  }
+
+  private handleDirectiveStyle(): void {
+    if (this.footerDirective && typeof window !== 'undefined') {
+      const windowWidth = window.innerWidth;      
+      if (windowWidth > 640) {
+        this.footerDirective.el.nativeElement.style.display = 'flex';
+        this.footerDirective.el.nativeElement.style.justifyContent = 'flex-end';
+        this.footerDirective.el.nativeElement.style.gap = '1rem';
+        this.footerDirective.el.nativeElement.style.marginTop = 'auto';
+      } else {
+        this.footerDirective.el.nativeElement.style.display = 'grid';
+        this.footerDirective.el.nativeElement.style.gridTemplateColumns =
+          '1fr';
+        this.footerDirective.el.nativeElement.style.gap = '1rem';
+        this.footerDirective.el.nativeElement.style.marginTop = '3rem';
+      }
+    }
+  }
 
   get classes(): string[] {
     return [this.shape, this.position, this.zapClass].filter(
