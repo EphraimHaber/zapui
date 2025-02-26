@@ -16,7 +16,6 @@ export interface RadioConfig {
         bgCheckedColor?: HexCode;
         borderCheckedColor?: HexCode;
         checkedColor?: HexCode;
-        helpTextColor?: HexCode;
       }>;
     borderRadius?: string;
     paddingLeft?: string;
@@ -34,9 +33,5 @@ export interface RadioConfig {
     labelLineHeight?: string;
     letterSpacing?: string;
     labelLetterSpacing?: string;
-    helpTextFontSize?: string;
-    helpTextFontWeight?: string;
-    helpTextLineHeight?: string;
-    helpTextLetterSpacing?: string;
   };
 }
