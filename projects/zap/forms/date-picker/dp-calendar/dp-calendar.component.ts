@@ -38,6 +38,7 @@ export class DPCalendar implements OnInit {
   @Input() disableWeekends = false;
   @Input() disableDates!: Date[];
   @Input() disableRanges!: { startDate: Date; endDate: Date }[];
+  @Input() disableInactive = false;
   monthsAndYearRange: string[] = [];
   selectedMonthAndYearRange!: string;
   startDate: Date | null = null;
@@ -305,6 +306,12 @@ export class DPCalendar implements OnInit {
   }
 
   isDisabled(day: Date): boolean {
+console.log('disableInactive', this.disableInactive);
+
+    if(this.disableInactive && !this.isCurrentMonth(day, this.currentDate.getMonth(), this.currentDate.getFullYear())) {
+      return true;
+    }
+
     if (this.disableWeekends && (day.getDay() === 0 || day.getDay() === 6)) {
       return true;
     }
