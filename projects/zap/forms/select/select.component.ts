@@ -266,7 +266,9 @@ export class ZapSelect<T>
     this.cdr.detectChanges();
     if (this.isOptionListOpen) {
       if (this.search) {
-        this.search.nativeElement.focus();
+        setTimeout(() => {
+          this.search.nativeElement.focus();
+        }, 0);
       }
     } else {
       this.control.markAsTouched();
@@ -386,7 +388,7 @@ export class ZapSelect<T>
 
   override ngOnDestroy(): void {
     super.ngOnDestroy();
-    
+
     if (this.optionList) {
       this.optionList.nativeElement.remove();
     }
