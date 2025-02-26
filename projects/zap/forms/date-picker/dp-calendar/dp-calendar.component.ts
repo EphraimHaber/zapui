@@ -306,8 +306,6 @@ export class DPCalendar implements OnInit {
   }
 
   isDisabled(day: Date): boolean {
-console.log('disableInactive', this.disableInactive);
-
     if(this.disableInactive && !this.isCurrentMonth(day, this.currentDate.getMonth(), this.currentDate.getFullYear())) {
       return true;
     }
