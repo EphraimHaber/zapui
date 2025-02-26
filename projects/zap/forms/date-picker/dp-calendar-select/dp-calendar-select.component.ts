@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'dp-calendar-select',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dp-calendar-select.component.html',
   styleUrl: './dp-calendar-select.component.scss'
 })
@@ -13,6 +14,7 @@ export class DPCalendarSelect {
   @Input() options!: string[];
   @Input() selected!: string;
   @Input() scrollToSelected = false;
+  @Input() shape: 'pill' | 'curve' | 'flat' = 'flat';
   isOptionListOpen = false;
 
   @HostListener('document:click', ['$event'])

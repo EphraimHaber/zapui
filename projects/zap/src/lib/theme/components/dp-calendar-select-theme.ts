@@ -1,3 +1,28 @@
+import { DatePickerConfig } from '../../interfaces';
+import { getShapeCssValues } from '../utils/shape-utils';
+
+export function generateComponentDPCalendarSelectVariables(value: DatePickerConfig) {
+  let cssVariables = '';
+  const dialogShapeValue = value.shape;
+
+  if (dialogShapeValue) {
+    const { shapeCssValue } = getShapeCssValues(
+      dialogShapeValue,
+      'dp-calendar-select'
+    );
+    if (dialogShapeValue === 'pill') {
+      cssVariables += `--zap-dp-calendar-select-border-radius: 1.5rem;\n`;
+      cssVariables += `--zap-dp-calendar-select-options-border-radius: 0.675rem;\n`;
+    } else {
+      cssVariables += `--zap-dp-calendar-select-border-radius: ${shapeCssValue};\n`;
+      cssVariables += `--zap-dp-calendar-select-options-border-radius: ${shapeCssValue};\n`;
+    }
+  }
+
+  return cssVariables;
+}
+
+
 export function getDefaultDPCalendarSelectSizeCssValues(): string {
   return `
         --zap-dp-calendar-select-padding-left: 0.75rem;

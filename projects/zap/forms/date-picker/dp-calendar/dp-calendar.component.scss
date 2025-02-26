@@ -18,10 +18,11 @@
       }
 
       button {
-        @apply border  border-[var(--zap-dp-calendar-handler-border-color)] bg-[var(--zap-dp-calendar-handler-bg-color)] p-2 transition-colors duration-150 ease-linear;
+        @apply border  border-[var(--zap-dp-calendar-handler-border-color)] bg-[var(--zap-dp-calendar-handler-bg-color)] transition-colors duration-150 ease-linear;
         @apply hover:bg-[var(--zap-dp-calendar-handler-bg-hover-color)] hover:border-[var(--zap-dp-calendar-handler-border-hover-color)];
         @apply rounded-[var(--zap-dp-calendar-handler-border-radius)] invisible;
         @apply text-[var(--zap-dp-calendar-handler-color)];
+        @apply pl-[var(--zap-dp-calendar-handler-padding-left)] pr-[var(--zap-dp-calendar-handler-padding-right)] pt-[var(--zap-dp-calendar-handler-padding-top)] pb-[var(--zap-dp-calendar-handler-padding-bottom)];
 
         &.active {
           @apply visible;
@@ -94,6 +95,28 @@
                 @apply content-[''] box-border;
               }
             }
+
+            &::after {
+              @apply rounded-[var(--zap-dp-calendar-day-border-radius)];
+            }
+
+            &.range__after {
+              &::after {
+                @apply rounded-l-[var(--zap-dp-calendar-day-border-radius)] rounded-r-none;
+              }
+            }
+
+            &.range__before {
+              &::after {
+                @apply rounded-r-[var(--zap-dp-calendar-day-border-radius)] rounded-l-none;
+              }
+            }
+
+            &.only__range {
+              &::after {
+                @apply rounded-[var(--zap-dp-calendar-day-border-radius)];
+              }
+            }
           }
         }
 
@@ -107,7 +130,25 @@
               }
 
               &::after {
-                @apply bg-[var(--zap-dp-calendar-in-range-bg-color)];
+                @apply bg-[var(--zap-dp-calendar-in-range-bg-color)] rounded-[var(--zap-dp-calendar-day-border-radius)];
+              }
+
+              &.range__after {
+                &::after {
+                  @apply rounded-l-[var(--zap-dp-calendar-day-border-radius)] rounded-r-none;
+                }
+              }
+
+              &.range__before {
+                &::after {
+                  @apply rounded-r-[var(--zap-dp-calendar-day-border-radius)] rounded-l-none;
+                }
+              }
+
+              &.only__range {
+                &::after {
+                  @apply rounded-[var(--zap-dp-calendar-day-border-radius)];
+                }
               }
             }
           }

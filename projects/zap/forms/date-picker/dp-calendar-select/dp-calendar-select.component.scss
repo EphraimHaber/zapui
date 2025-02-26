@@ -9,6 +9,26 @@
     @apply pl-[var(--zap-dp-calendar-select-padding-left)] pr-[var(--zap-dp-calendar-select-padding-right)] pt-[var(--zap-dp-calendar-select-padding-top)] pb-[var(--zap-dp-calendar-select-padding-bottom)];
     @apply text-[length:var(--zap-dp-calendar-select-font-size)] font-[var(--zap-dp-calendar-select-font-weight)] leading-[var(--zap-dp-calendar-select-line-height)] tracking-[var(--zap-dp-calendar-select-letter-spacing)];
   }
+
+  &.pill {
+    .__zap__form__control__select {
+      @apply rounded-full;
+    }
+
+    .__zap__form__control__options {
+      @apply rounded-xl;
+    }
+  }
+
+  &.curve {
+    .__zap__form__control__select {
+      @apply rounded-md;
+    }
+
+    .__zap__form__control__options {
+      @apply rounded-lg;
+    }
+  }
 }
 
 .__zap__form__control__options {

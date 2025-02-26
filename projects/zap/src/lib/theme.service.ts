@@ -6,7 +6,10 @@ import {
   AlertConfig,
   ButtonConfig,
   ChipConfig,
+  DatePickerConfig,
   DialogConfig,
+  DPCalendarConfig,
+  DPCalendarSelectConfig,
   GlobalConfig,
   InputConfig,
   ModalConfig,
@@ -37,6 +40,9 @@ import { generateComponentCheckboxVariables } from './theme/components/checkbox-
 import { generateComponentTextareaVariables } from './theme/components/textarea-theme';
 import { generateComponentSelectVariables } from './theme/components/select-theme';
 import { generateComponentTooltipVariables } from './theme/components/tooltip-theme';
+import { generateComponentDPVariables } from './theme/components/date-picker-theme';
+import { generateComponentDPCalendarVariables } from './theme/components/dp-calendar-theme';
+import { generateComponentDPCalendarSelectVariables } from './theme/components/dp-calendar-select-theme';
 
 @Injectable({
   providedIn: 'root',
@@ -136,58 +142,75 @@ export class ThemeService {
       for (const [componentKey, value] of Object.entries(config.components)) {
         switch (componentKey) {
           case 'global':
-            cssVariables += generateComponentGlobalVariables(value as GlobalConfig);
+            cssVariables += generateComponentGlobalVariables(
+              value as GlobalConfig
+            );
             break;
           case 'alert':
             cssVariables += generateComponentAlertVariables(
-              value as AlertConfig,
+              value as AlertConfig
             );
             break;
           case 'button':
             cssVariables += generateComponentButtonVariables(
               value as ButtonConfig,
-              root,
+              root
             );
             break;
           case 'chip':
             cssVariables += generateComponentChipVariables(
               value as ChipConfig,
-              root,
+              root
             );
             break;
           case 'dialog':
             cssVariables += generateComponentDialogVariables(
-              value as DialogConfig,
+              value as DialogConfig
             );
             break;
           case 'modal':
             cssVariables += generateComponentModalVariables(
-              value as ModalConfig,
+              value as ModalConfig
             );
             break;
           case 'input':
             cssVariables += generateComponentInputVariables(
-              value as InputConfig,
+              value as InputConfig
             );
             break;
           case 'checkbox':
             cssVariables += generateComponentCheckboxVariables(
-              value as InputConfig,
+              value as InputConfig
             );
             break;
           case 'textarea':
             cssVariables += generateComponentTextareaVariables(
-              value as TextareaConfig,
+              value as TextareaConfig
             );
             break;
           case 'select':
             cssVariables += generateComponentSelectVariables(
-              value as SelectConfig,
+              value as SelectConfig
             );
             break;
           case 'tooltip':
             cssVariables += generateComponentTooltipVariables(
               value as TooltipConfig
+            );
+            break;
+          case 'date-picker':
+            cssVariables += generateComponentDPVariables(
+              value as DatePickerConfig
+            );
+            break;
+          case 'dp-calendar':
+            cssVariables += generateComponentDPCalendarVariables(
+              value as DPCalendarConfig
+            );
+            break;
+          case 'dp-calendar-select':
+            cssVariables += generateComponentDPCalendarSelectVariables(
+              value as DPCalendarSelectConfig
             );
             break;
           default:
