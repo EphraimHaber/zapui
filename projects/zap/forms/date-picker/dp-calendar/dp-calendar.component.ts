@@ -41,11 +41,11 @@ export class DPCalendar implements OnInit {
   @Input() disableInactive = false;
   @Input() minDate!: Date;
   @Input() maxDate!: Date;
+  @Input() daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   monthsAndYearRange: string[] = [];
   selectedMonthAndYearRange!: string;
   startDate: Date | null = null;
   endDate: Date | null = null;
-  daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
   ngOnInit(): void {
     this.setDefaultValues();
