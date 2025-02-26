@@ -127,6 +127,7 @@ export class ZapTooltip implements OnDestroy {
   }
 
   private removeTooltipFromBody(): void {
+    if(typeof window === 'undefined') return;
     const contentElement = this.content.contentElement.nativeElement;
     if (contentElement.dataset.appendedToBody) {
       document.body.removeChild(contentElement);

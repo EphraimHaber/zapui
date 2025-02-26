@@ -1,19 +1,19 @@
 <div class="relative min-h-[30vh]">
   <zap-dialog zapClass="absolute" shape="curve">
-    <zap-button
-      zapDialogButton
-      text="No, cancel"
-      size="base"
-      variant="outlined"
-      shape="curve"
-    ></zap-button>
-    <zap-button
-      zapDialogButton
-      text="Yes, I'm sure"
-      size="base"
-      type="default"
-      shape="curve"
-    ></zap-button>
+    <div zapDialogFooter>
+      <zap-button
+        text="No, cancel"
+        size="wide"
+        variant="outlined"
+        shape="curve"
+      ></zap-button>
+      <zap-button
+        text="Yes, I'm sure"
+        size="wide"
+        type="default"
+        shape="curve"
+      ></zap-button>
+    </div>
     <p class="text-zinc-500">Are you sure you want to delete this item?</p>
   </zap-dialog>
 </div>

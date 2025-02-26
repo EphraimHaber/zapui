@@ -20,12 +20,12 @@
 
   <ng-content></ng-content>
 
+  @if (footerDirective) {
+  <ng-content select="[zapDialogFooter]"></ng-content>
+  } @else {
   <div class="__zap__dialog__footer">
-    @if (btnDirective) {
-    <ng-content select="[zapDialogButton]"></ng-content>
-    } @else {
     <button class="btn secondary" (click)="close.emit()">No, cancel</button>
     <button class="btn primary" (click)="confirm.emit()">Yes, confirm</button>
-    }
   </div>
+  }
 </div>

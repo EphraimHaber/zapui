@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ZapButton, ZapDialog, ZapDialogButtonDirective } from 'zap/core';
+import { ZapButton, ZapDialog, ZapDialogFooterDirective } from 'zap/core';
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [ZapDialog, ZapButton, ZapDialogButtonDirective],
+  imports: [ZapDialog, ZapButton, ZapDialogFooterDirective],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
