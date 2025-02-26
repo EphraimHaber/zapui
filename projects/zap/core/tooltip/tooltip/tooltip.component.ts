@@ -23,49 +23,84 @@ import { ZapTooltipContent } from '../tooltip-content/tooltip-content.component'
   styleUrls: ['./tooltip.component.scss'],
 })
 export class ZapTooltip implements OnDestroy {
-  @Input() shape: 'curve' | 'pill' | 'flat' = 'flat';
-  @Input() position: 'top' | 'bottom' | 'left' | 'right' | 'auto' = 'auto';
-  @ViewChild('tooltip', { static: true }) tooltip!: ElementRef;
   @ContentChild(ZapTooltipHandler) handler!: ZapTooltipHandler;
   @ContentChild(ZapTooltipContent) content!: ZapTooltipContent;
+  @ViewChild('tooltip', { static: true }) tooltip!: ElementRef;
+  @Input() shape: 'curve' | 'pill' | 'flat' = 'flat';
+  @Input() position: 'top' | 'bottom' | 'left' | 'right' | 'auto' = 'auto';
+  private onDocumentMouseMoveBound: (event: MouseEvent) => void;
+  private isHoveringTooltip = false;
+  private isHoveringContent = false;
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    if (
+      this.content.contentElement.nativeElement.style.visibility === 'visible'
+    ) {
+      this.adjustPosition();
+    }
+  }
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(): void {
+    if (
+      this.content.contentElement.nativeElement.style.visibility === 'visible'
+    ) {
+      this.adjustPosition();
+    }
+  }
 
   @HostListener('mouseenter')
   onMouseEnter() {
+    this.isHoveringTooltip = true;
     this.content.show();
     this.adjustPosition();
   }
 
-  @HostListener('window:resize')
-  onWindowResize(): void {
-    if(this.content.contentElement.nativeElement.style.visibility === 'visible') {
-      this.adjustPosition();
+  @HostListener('mouseleave', ['$event'])
+  onMouseLeave(event: MouseEvent) {
+    this.isHoveringTooltip = false;
+    this.checkHoverState(event);
+  }
+
+  constructor() {
+    this.onDocumentMouseMoveBound = this.onDocumentMouseMove.bind(this);
+  }
+
+  private checkHoverState(event: MouseEvent) {
+    if (typeof window === 'undefined' || !event) return;
+
+    const contentElement = this.content.contentElement.nativeElement;
+    const rect = contentElement.getBoundingClientRect();
+    const isHoveringNearContent =
+      event.clientX >= rect.left - 20 &&
+      event.clientX <= rect.right + 10 &&
+      event.clientY >= rect.top - 5 &&
+      event.clientY <= rect.bottom + 5;
+
+    this.isHoveringContent = isHoveringNearContent;
+
+    if (!this.isHoveringTooltip && !this.isHoveringContent) {
+      this.content.hide();
+      this.removeTooltipFromBody();
+      document.removeEventListener('mousemove', this.onDocumentMouseMoveBound);
+    } else {
+      document.addEventListener('mousemove', this.onDocumentMouseMoveBound);
     }
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(): void {
-    if(this.content.contentElement.nativeElement.style.visibility === 'visible') {
-      this.adjustPosition();
-    }
+  private onDocumentMouseMove(event: MouseEvent) {
+    this.checkHoverState(event);
   }
-
-
-  @HostListener('mouseleave')
-  onMouseLeave() {
-    this.content.hide();
-    this.removeTooltipFromBody();
-  }
-
 
   private adjustPosition() {
-    if(typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return;
     const holderElement = this.tooltip.nativeElement;
     const contentElement = this.content.contentElement.nativeElement;
     const holderRect = holderElement.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
     const spaceBelow = viewportHeight - holderRect.bottom;
     const spaceAbove = holderRect.top;
-    
+
     if (!contentElement.dataset.appendedToBody) {
       document.body.appendChild(contentElement);
       contentElement.dataset.appendedToBody = 'true';
@@ -92,42 +127,44 @@ export class ZapTooltip implements OnDestroy {
 
     if (this.position === 'auto') {
       if (spaceAbove < contentRect.height && spaceBelow > contentRect.height) {
-      contentElement.style.top = `${offsetBottom}px`;
-      contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
+        contentElement.style.top = `${offsetBottom}px`;
+        contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
       } else {
-      contentElement.style.top = `${offsetTop - contentRect.height - 5}px`;
-      contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
+        contentElement.style.top = `${offsetTop - contentRect.height - 5}px`;
+        contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
       }
     } else {
       switch (this.position) {
-      case 'top':
-        contentElement.style.top = `${offsetTop - contentRect.height - 5}px`;
-        contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
-        break;
-      case 'bottom':
-        contentElement.style.top = `${offsetBottom}px`;
-        contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
-        break;
-      case 'left':
-        contentElement.style.left = `${
-        offsetLeft - contentRect.width - 5 + holderRect.width
-        }px`;
-        contentElement.style.top = `${
-        offsetTop + holderRect.height / 2 - contentRect.height / 2
-        }px`;
-        break;
-      case 'right':
-        contentElement.style.left = `${offsetLeft + holderRect.width + 5 + holderRect.width}px`;
-        contentElement.style.top = `${
-        offsetTop + holderRect.height / 2 - contentRect.height / 2
-        }px`;
-        break;
+        case 'top':
+          contentElement.style.top = `${offsetTop - contentRect.height - 5}px`;
+          contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
+          break;
+        case 'bottom':
+          contentElement.style.top = `${offsetBottom}px`;
+          contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
+          break;
+        case 'left':
+          contentElement.style.left = `${
+            offsetLeft - contentRect.width - 5 + holderRect.width
+          }px`;
+          contentElement.style.top = `${
+            offsetTop + holderRect.height / 2 - contentRect.height / 2
+          }px`;
+          break;
+        case 'right':
+          contentElement.style.left = `${
+            offsetLeft + holderRect.width + 15 + holderRect.width
+          }px`;
+          contentElement.style.top = `${
+            offsetTop + holderRect.height / 2 - contentRect.height / 2
+          }px`;
+          break;
       }
     }
   }
 
   private removeTooltipFromBody(): void {
-    if(typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return;
     const contentElement = this.content.contentElement.nativeElement;
     if (contentElement.dataset.appendedToBody) {
       document.body.removeChild(contentElement);
@@ -137,5 +174,8 @@ export class ZapTooltip implements OnDestroy {
 
   ngOnDestroy(): void {
     this.removeTooltipFromBody();
+    if (typeof window !== 'undefined') {
+      document.removeEventListener('mousemove', this.onDocumentMouseMoveBound);
+    }
   }
 }
