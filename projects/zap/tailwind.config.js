@@ -81,9 +81,9 @@ module.exports = {
       },
       keyframes: {
         popup: {
-          '0%': { transform: 'scale(0.9)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
+          '0%': { transform: 'scale(0.9)', opacity: '0', transformOrigin: 'center' },
+          '100%': { transform: 'scale(1)', opacity: '1', transformOrigin: 'center' },
+        }
       },
       animation: {
         popup: 'popup 0.1s ease-out',

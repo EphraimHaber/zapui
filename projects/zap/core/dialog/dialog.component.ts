@@ -26,6 +26,7 @@ export class ZapDialog implements AfterViewInit {
   @Input() zapClass = '';
   @Input() shape!: 'curve' | 'pill' | 'flat';
   @Input() position: 'top' | 'default' = 'default';
+  @Input() showOverlay = false;
   @HostListener('document:keydown', ['$event'])
   handleEsc(event: KeyboardEvent): void {
     if (event.key === 'Escape' || event.code === 'Escape') this.close.emit();
