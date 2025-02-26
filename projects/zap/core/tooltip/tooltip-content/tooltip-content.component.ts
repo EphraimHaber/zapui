@@ -20,15 +20,23 @@ export class ZapTooltipContent {
   @ViewChild('content', { static: true }) contentElement!: ElementRef;
   @Input() zapClass = '';
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) {}
 
   show() {
     this.renderer.setStyle(this.contentElement.nativeElement, 'opacity', '1');
-    this.renderer.setStyle(this.contentElement.nativeElement, 'visibility', 'visible');
+    this.renderer.setStyle(
+      this.contentElement.nativeElement,
+      'visibility',
+      'visible'
+    );
   }
 
   hide() {
     this.renderer.setStyle(this.contentElement.nativeElement, 'opacity', '0');
-    this.renderer.setStyle(this.contentElement.nativeElement, 'visibility', 'hidden');
+    this.renderer.setStyle(
+      this.contentElement.nativeElement,
+      'visibility',
+      'hidden'
+    );
   }
 }
