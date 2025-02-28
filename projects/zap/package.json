@@ -22,6 +22,9 @@
     "./plugin": {
       "import": "./plugin/index.js",
       "require": "./plugin/index.js"
+    },
+    "./v4": {
+      "css": "./plugin/v4/plugin.css"
     }
   }
 }
