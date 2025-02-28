@@ -159,6 +159,10 @@ fieldset {
 }
 
 .__zap__form__control__select {
+  &.flat {
+    @apply rounded-none;
+  }
+
   &.pill {
     @apply rounded-full;
   }
@@ -186,6 +190,21 @@ fieldset {
       @apply rounded-full;
     }
   }
+
+  &.flat {
+    .__zap__form__control__options {
+      @apply rounded-none;
+    }
+
+    .checkbox {
+      @apply rounded-none;
+    }
+
+    .__zap__form__control__option {
+      @apply last-of-type:rounded-b-none;
+    }
+  }
+
 
   &.curve {
     .__zap__form__control__options {
