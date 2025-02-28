@@ -90,5 +90,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("./plugin/base")],
+  plugins: [require("@tailwindcss/forms"), require("./tailwind/base")],
 };
