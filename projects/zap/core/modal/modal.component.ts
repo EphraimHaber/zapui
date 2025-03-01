@@ -35,4 +35,8 @@ export class ZapModal {
       this.zapClass,
     ].filter((cls) => cls && cls !== 'default');
   }
+
+  get overlayClasses(): string[] {
+    return this.zapClass.split(' ').filter(cls => cls.startsWith('overlay:'));
+  }
 }

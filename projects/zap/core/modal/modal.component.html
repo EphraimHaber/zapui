@@ -1,4 +1,4 @@
-<div>
+<div [ngClass]="overlayClasses">
   @if(showOverlay) {
   <div class="__zap__overlay" (click)="close.emit()" (keydown.enter)="close.emit()" tabindex="0"></div>
   }

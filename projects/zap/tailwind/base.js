@@ -30,6 +30,7 @@ module.exports = plugin(function ({ addVariant, e }) {
     },
     { name: "chip-text", targetElement: ".chip__text" },
     { name: "chip-icon", targetElement: ".chip__icon" },
+    { name: "overlay", targetElement: ".__zap__overlay" },
     { name: "help-text", targetElement: ".__zap__form__control__help__text" },
     { name: "dialog-title", targetElement: ".__zap__dialog__title" },
     { name: "dialog-content", targetElement: ".__zap__dialog__content p" },

@@ -7,6 +7,7 @@
 @custom-variant textarea-placeholder (.__zap__form__control__textarea::placeholder);
 @custom-variant chip-text (.chip__text);
 @custom-variant chip-icon (.chip__icon);
+@custom-variant overlay (.__zap__overlay);
 @custom-variant help-text (.__zap__form__control__help__text);
 @custom-variant dialog-title (.__zap__dialog__title);
 @custom-variant dialog-content (.__zap__dialog__content p);

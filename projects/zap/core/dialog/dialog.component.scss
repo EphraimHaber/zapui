@@ -1,5 +1,5 @@
 .__zap__overlay {
-  @apply fixed inset-0 z-[298] bg-[var(--zap-dialog-overlay-bg-color)] backdrop-blur-sm;
+  @apply fixed inset-0 z-[298] bg-[var(--zap-dialog-overlay-bg-color)];
   @apply transition-opacity duration-300;
 }
 
