@@ -15,6 +15,7 @@ export class ZapAlert implements AfterViewInit {
   @Input() type: 'success' | 'warning' | 'error' | 'info' | 'default' =
     'default';
   @Input() shape!: 'curve' | 'pill' | 'flat';
+  @Input() variant!: 'default' | 'outlined';
   @Input() icon = '';
   @Input() zapClass = '';
   @ContentChild(ZapIconDirective, { static: false })
@@ -32,6 +33,7 @@ export class ZapAlert implements AfterViewInit {
   get classes() {
     return [
       this.shape,
+      this.variant,
       this.type,
       this.zapClass,
     ]
