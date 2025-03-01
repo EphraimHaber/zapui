@@ -24,8 +24,8 @@ export function getInputSizeCssValues(inputSizeValue: string): string {
   let cssVariables = '';
 
   if (inputSizeValue === 'compact') {
-    cssVariables += `--zap-input-padding-left: 0.5rem;\n`;
-    cssVariables += `--zap-input-padding-right: 0.5rem;\n`;
+    cssVariables += `--zap-input-padding-left: 0.875rem;\n`;
+    cssVariables += `--zap-input-padding-right: 0.875rem;\n`;
     cssVariables += `--zap-input-padding-top: 0.375rem;\n`;
     cssVariables += `--zap-input-padding-bottom: 0.375rem;\n`;
     cssVariables += `--zap-input-icon-font-size: 0.875rem;\n`;
