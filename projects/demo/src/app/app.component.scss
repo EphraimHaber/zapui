@@ -1,5 +1,11 @@
 .wrapper {
+  @apply mx-auto max-w-screen-2xl grid grid-cols-3 py-10 gap-5 mb-10 overflow-hidden;
+
   & > * {
-    @apply flex items-center justify-center border dark:border-zinc-800 border-zinc-500 rounded-xl overflow-hidden px-10 py-20;
+    @apply flex items-center justify-center border dark:border-zinc-700 border-dotted border-zinc-300 rounded-xl overflow-hidden px-10 py-20;
   }
+}
+
+p {
+  @apply text-xl mx-auto max-w-screen-2xl overflow-hidden;
 }
