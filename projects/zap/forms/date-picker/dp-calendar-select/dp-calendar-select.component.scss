@@ -31,8 +31,12 @@
   }
 }
 
+.__zap__form__control__options__container {
+  @apply max-h-max absolute w-full;
+}
+
 .__zap__form__control__options {
-  @apply absolute w-full border block mt-1 z-20 max-h-[250px] overflow-y-auto rounded-[var(--zap-dp-calendar-select-options-border-radius)] border-[var(--zap-dp-calendar-select-options-border-color)] bg-[var(--zap-dp-calendar-select-options-bg-color)] text-[var(--zap-dp-calendar-select-options-text-color)];
+  @apply w-full border block mt-1 z-20 max-h-[250px] overflow-y-auto rounded-[var(--zap-dp-calendar-select-options-border-radius)] border-[var(--zap-dp-calendar-select-options-border-color)] bg-[var(--zap-dp-calendar-select-options-bg-color)] text-[var(--zap-dp-calendar-select-options-text-color)];
   @apply animate-popup;
 
   .__zap__form__control__option {

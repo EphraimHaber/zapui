@@ -33,7 +33,7 @@
       ></ng-container>
       } @else if(selectedOptionValue.length > 0 && !multiselect) {
 
-        {{ getSelected(selectedOptionValue[0]) }}
+      {{ getSelected(selectedOptionValue[0]) }}
 
       } @else if(selectedOptionValue.length > 0 && multiselect) {
       <div class="chips">
@@ -80,7 +80,7 @@
       class="__zap__form__control__options__container"
       [ngClass]="optionsClasses"
     >
-      <div class="__zap__form__control__options">
+      <div class="__zap__form__control__options" zapScrollArea>
         @if(searchable) {
         <fieldset>
           <svg
@@ -153,7 +153,6 @@
         }
       </div>
     </div>
-
     }
   </div>
   @if(helpText) {
@@ -170,3 +169,4 @@
   </div>
   }
 </div>
+

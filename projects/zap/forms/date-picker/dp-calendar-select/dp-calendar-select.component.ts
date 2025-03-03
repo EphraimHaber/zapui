@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 
+import { ZapScrollAreaDirective } from '../../directives/zap-scroll-area.directive';
+
 @Component({
   selector: 'dp-calendar-select',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ZapScrollAreaDirective],
   templateUrl: './dp-calendar-select.component.html',
   styleUrl: './dp-calendar-select.component.scss'
 })
