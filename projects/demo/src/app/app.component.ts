@@ -16,6 +16,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { RadioComponent } from './components/radio/radio.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +38,7 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
     TextareaComponent,
     RadioComponent,
     ThemeSwitcherComponent,
+    ToggleComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
