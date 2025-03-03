@@ -47,6 +47,14 @@ export interface ZapConfig {
 
 export interface GlobalConfig {
   shape?: ShapeType;
+  styles?: {
+    colors?: Record<
+      string,
+      {
+        scrollbarColor?: HexCode;
+      }
+    >;
+  };
 }
 
 export interface ZapTheme {

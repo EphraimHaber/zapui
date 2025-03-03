@@ -37,7 +37,7 @@ export class ZapScrollAreaDirective implements AfterViewInit, OnDestroy {
 
     this.scrollbarThumb = this.renderer.createElement('div');
     this.renderer.setStyle(this.scrollbarThumb, 'width', '100%');
-    this.renderer.setStyle(this.scrollbarThumb, 'background-color', 'var(--zap-scrollbar-color, #888)');
+    this.renderer.setStyle(this.scrollbarThumb, 'background-color', 'var(--zap-global-scrollbar-color, #888)');
     this.renderer.setStyle(this.scrollbarThumb, 'border-radius', '4px');
     this.renderer.setStyle(this.scrollbarThumb, 'position', 'absolute');
     this.renderer.setStyle(this.scrollbarThumb, 'left', '0');
