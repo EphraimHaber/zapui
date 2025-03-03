@@ -349,52 +349,37 @@ export class ZapDatePicker<T>
       const calendarElement = this.calendar.nativeElement;
       const inputElement = this.inputDateSelectValueHolder.nativeElement;
       const inputRect = inputElement.getBoundingClientRect();
-      const calendarRect = calendarElement.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const spaceBelow = viewportHeight - inputRect.bottom;
       const spaceAbove = inputRect.top;
-      const scrollX = window.scrollX;
-
+  
       if (!calendarElement.dataset.appendedToBody) {
         document.body.appendChild(calendarElement);
         calendarElement.dataset.appendedToBody = 'true';
       }
-
+  
       calendarElement.style.position = 'fixed';
-
-      const parent = inputElement.closest(
-        '.__zap__modal__wrapper, .__zap__dialog, .modal, .dialog'
-      );
-      if (parent) {
-        calendarElement.style.zIndex = '999';
-      }
-
-      calendarElement.style.left = `${inputRect.left + scrollX}px`;
-      calendarElement.style.width =
-        this.size === 'wide' ? `${inputRect.width}px` : 'auto';
-
-      const parentElement = calendarElement.offsetParent as HTMLElement;
-      const parentRect = parentElement
-        ? parentElement.getBoundingClientRect()
-        : { top: 0, left: 0 };
-      const offsetLeft = inputRect.left - parentRect.left;
-      const offsetTop = inputRect.top - parentRect.top;
-      const offsetBottom = inputRect.bottom - parentRect.top;
-      calendarElement.style.left = `${offsetLeft}px`;
-
-      const dynamicHeight = calendarRect.height;
-
+      calendarElement.style.left = `${inputRect.left}px`;
+      calendarElement.style.width = this.size === 'wide' ? `${inputRect.width}px` : 'auto';
+  
+      calendarElement.style.visibility = 'hidden';
+      calendarElement.style.display = 'block';
+      const optionListHeight = calendarElement.scrollHeight;
+      calendarElement.style.visibility = 'visible';
+  
       if (this.position === 'auto') {
-        if (spaceBelow < dynamicHeight && spaceAbove > dynamicHeight) {
-          calendarElement.style.top = `${offsetTop - dynamicHeight - 5}px`;
+        if (spaceBelow < optionListHeight && spaceAbove > optionListHeight) {
+          calendarElement.style.top = `${inputRect.top - optionListHeight - 5}px`;
         } else {
-          calendarElement.style.top = `${offsetBottom}px`;
+          calendarElement.style.top = `${inputRect.bottom}px`;
         }
       } else if (this.position === 'top') {
-        calendarElement.style.top = `${offsetTop - dynamicHeight - 5}px`;
+        calendarElement.style.top = `${inputRect.top - optionListHeight - 5}px`;
       } else {
-        calendarElement.style.top = `${offsetBottom}px`;
+        calendarElement.style.top = `${inputRect.bottom}px`;
       }
+  
+      calendarElement.style.zIndex = '999';
     }
   }
 

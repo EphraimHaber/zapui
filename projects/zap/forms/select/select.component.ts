@@ -232,7 +232,6 @@ export class ZapSelect<T>
       optionListElement.style.zIndex = '999';
     }
   }
-  
 
   checkIfEmpty(): void {
     this.control.valueChanges.subscribe((value) => {
