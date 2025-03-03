@@ -82,8 +82,7 @@ fieldset {
   @apply transition-all duration-150 ease-linear;
 
   &.open {
-    @apply rotate-180;
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateY(50%);
   }
 }
 
