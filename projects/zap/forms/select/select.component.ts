@@ -199,55 +199,37 @@ export class ZapSelect<T>
       const optionListElement = this.optionList.nativeElement;
       const inputElement = this.inputSelectValueHolder.nativeElement;
       const inputRect = inputElement.getBoundingClientRect();
-      const optionListRect = optionListElement.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const spaceBelow = viewportHeight - inputRect.bottom;
       const spaceAbove = inputRect.top;
-
+  
       if (!optionListElement.dataset.appendedToBody) {
         document.body.appendChild(optionListElement);
         optionListElement.dataset.appendedToBody = 'true';
       }
-
+  
       optionListElement.style.position = 'fixed';
-
-      const parent = inputElement.closest(
-        '.__zap__modal__wrapper, .__zap__dialog, .modal, .dialog, .__zap__form__control__calendar'
-      );
-      if (parent) {
-        optionListElement.style.zIndex = '999';
-      }
-
-      optionListElement.style.left = `${inputRect.left + window.scrollX}px`;
+      optionListElement.style.left = `${inputRect.left}px`;
       optionListElement.style.width = `${inputRect.width}px`;
-
-      const parentElement = optionListElement.offsetParent as HTMLElement;
-      const parentRect = parentElement
-        ? parentElement.getBoundingClientRect()
-        : { top: 0, left: 0 };
-      const offsetLeft = inputRect.left - parentRect.left;
-      const offsetTop = inputRect.top - parentRect.top;
-      const offsetBottom = inputRect.bottom - parentRect.top;
-      optionListElement.style.left = `${offsetLeft}px`;
-
+  
+      optionListElement.style.visibility = 'hidden';
+      optionListElement.style.display = 'block';
+      const optionListHeight = optionListElement.scrollHeight;
+      optionListElement.style.visibility = 'visible';
+  
       if (this.position === 'auto') {
-        if (
-          spaceBelow < optionListRect.height &&
-          spaceAbove > optionListRect.height
-        ) {
-          optionListElement.style.top = `${
-            offsetTop - optionListRect.height - 5
-          }px`;
+        if (spaceBelow < optionListHeight && spaceAbove > optionListHeight) {
+          optionListElement.style.top = `${inputRect.top - optionListHeight - 5}px`;
         } else {
-          optionListElement.style.top = `${offsetBottom}px`;
+          optionListElement.style.top = `${inputRect.bottom}px`;
         }
       } else if (this.position === 'top') {
-        optionListElement.style.top = `${
-          offsetTop - optionListRect.height - 5
-        }px`;
+        optionListElement.style.top = `${inputRect.top - optionListHeight - 5}px`;
       } else {
-        optionListElement.style.top = `${offsetBottom}px`;
+        optionListElement.style.top = `${inputRect.bottom}px`;
       }
+  
+      optionListElement.style.zIndex = '999';
     }
   }
 

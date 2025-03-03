@@ -27,7 +27,7 @@ export class ZapTooltip implements OnDestroy {
   @ContentChild(ZapTooltipContent) content!: ZapTooltipContent;
   @ViewChild('tooltip', { static: true }) tooltip!: ElementRef;
   @Input() shape: 'curve' | 'pill' | 'flat' = 'flat';
-  @Input() position: 'top' | 'bottom' | 'left' | 'right' | 'auto' = 'auto';
+  @Input() position: 'top' | 'bottom' | 'left' | 'right' | 'auto' = 'top';
   private onDocumentMouseMoveBound: (event: MouseEvent) => void;
   private isHoveringTooltip = false;
   private isHoveringContent = false;
@@ -117,46 +117,40 @@ export class ZapTooltip implements OnDestroy {
       contentElement.style.zIndex = '999';
     }
 
-    const parentElement = contentElement.offsetParent as HTMLElement;
-    const parentRect = parentElement
-      ? parentElement.getBoundingClientRect()
-      : { top: 0, left: 0 };
-    const offsetLeft = holderRect.left - parentRect.left;
-    const offsetTop = holderRect.top - parentRect.top;
-    const offsetBottom = holderRect.bottom - parentRect.top;
+    const contentHeight = contentElement.scrollHeight;
 
     if (this.position === 'auto') {
-      if (spaceAbove < contentRect.height && spaceBelow > contentRect.height) {
-        contentElement.style.top = `${offsetBottom}px`;
-        contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
+      if (spaceAbove < contentHeight && spaceBelow > contentHeight) {
+        contentElement.style.top = `${holderRect.top + contentHeight - 5}px`;
+        contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`;
       } else {
-        contentElement.style.top = `${offsetTop - contentRect.height - 5}px`;
-        contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
-      }
+        contentElement.style.top = `${holderRect.top - contentHeight - 5}px`;
+        contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`;
+      } 
     } else {
       switch (this.position) {
         case 'top':
-          contentElement.style.top = `${offsetTop - contentRect.height - 5}px`;
-          contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
+          contentElement.style.top = `${holderRect.top - contentHeight - 5}px`;
+          contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`;
           break;
         case 'bottom':
-          contentElement.style.top = `${offsetBottom}px`;
-          contentElement.style.left = `${offsetLeft + holderRect.width / 2}px`;
+          contentElement.style.top = `${holderRect.top + contentHeight - 5}px`;
+          contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`;
           break;
         case 'left':
           contentElement.style.left = `${
-            offsetLeft - contentRect.width - 5 + holderRect.width
+            holderRect.left - contentRect.width - 5 + holderRect.width
           }px`;
           contentElement.style.top = `${
-            offsetTop + holderRect.height / 2 - contentRect.height / 2
+            holderRect.top + holderRect.height / 2 - contentRect.height / 2
           }px`;
           break;
         case 'right':
           contentElement.style.left = `${
-            offsetLeft + holderRect.width + 15 + holderRect.width
+            holderRect.left + holderRect.width + 15 + holderRect.width
           }px`;
           contentElement.style.top = `${
-            offsetTop + holderRect.height / 2 - contentRect.height / 2
+            holderRect.top + holderRect.height / 2 - contentRect.height / 2
           }px`;
           break;
       }
