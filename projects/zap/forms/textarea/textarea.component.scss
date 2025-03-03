@@ -27,6 +27,14 @@ label {
   &.curve {
     @apply textarea:rounded-lg;
   }
+
+  &.flat {
+    @apply textarea:rounded-none;
+  }
+
+  &.pill {
+    @apply textarea:rounded-xl;
+  }
 }
 
 textarea:disabled {

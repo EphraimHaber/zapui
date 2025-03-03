@@ -19,6 +19,11 @@ export function getShapeCssValues(
     curve: '0.375rem',
   };
 
+  const textareaShapeValues: Record<string, string> = {
+    pill: '0.75rem',
+    curve: '0.25rem',
+  };
+
   const modalDialogShapeValues: Record<string, string> = {
     pill: '1rem',
     curve: '0.5rem',
@@ -33,6 +38,8 @@ export function getShapeCssValues(
     shapeCssValue = modalDialogShapeValues[shapeValue] || shapeCssValue;
   } else if (component === 'checkbox') {
     shapeCssValue = checkboxValues[shapeValue] || shapeCssValue;
+  } else if (component === 'textarea') {
+    shapeCssValue = textareaShapeValues[shapeValue] || shapeCssValue;
   } else {
     shapeCssValue = shapeValues[shapeValue] || shapeCssValue;
   } 

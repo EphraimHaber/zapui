@@ -34,7 +34,7 @@ export class ZapTextarea<T> extends ControlValueAccessorDirective<T> implements 
   @Input() id = '';
   @Input() rows = '10';
   @Input() zapClass = '';
-  @Input() shape: 'curve' | 'flat' = 'flat';
+  @Input() shape!: 'curve' | 'flat' | 'pill';
   @Input() customErrorMessages: Record<string, string> = {};
   @Input() placeholder = '';
   @Input() resize: 'none' | 'vertical' | 'horizontal' | 'auto' = 'none';
