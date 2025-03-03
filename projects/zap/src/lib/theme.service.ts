@@ -217,14 +217,12 @@ export class ThemeService {
             break;
         }
 
-        if (componentKey !== 'global' && 'styles' in value) {
-          if (value.styles) {
-            cssVariables += generateComponentStylesVariables(
-              value.styles,
-              componentKey,
-              this.config
-            );
-          }
+        if (value.styles) {
+          cssVariables += generateComponentStylesVariables(
+            value.styles,
+            componentKey,
+            this.config
+          );
         }
       }
     }

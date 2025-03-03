@@ -27,6 +27,7 @@ import {
   ZapFormFieldIconDirective,
   ZapLabelDirective,
 } from '../public-api';
+import { ZapScrollAreaDirective } from '../directives/zap-scroll-area.directive';
 
 @Component({
   selector: 'zap-select',
@@ -36,6 +37,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     ValidationErrorComponent,
+    ZapScrollAreaDirective
   ],
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
