@@ -1,7 +1,7 @@
 .__zap__checkbox__control {
   @apply w-full flex flex-col gap-y-2;
   @apply items-start;
-  @apply input:focus-within:outline-0;
+  @apply input:focus-within:outline-none;
 
   fieldset {
     @apply flex items-center gap-x-3;

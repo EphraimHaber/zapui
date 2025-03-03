@@ -44,7 +44,7 @@ fieldset {
 
 .__zap__form__control__select {
   @apply w-full border border-[var(--zap-select-border-color)] bg-[var(--zap-select-bg-color)] hover:bg-[var(--zap-select-bg-hover-color)] text-[var(--zap-select-text-color)] hover:border-[var(--zap-select-border-hover-color)] hover:text-[var(--zap-select-text-hover-color)];
-  @apply focus-within:outline-0;
+  @apply focus-within:outline-none;
   @apply cursor-pointer relative rounded-[var(--zap-select-border-radius)];
   @apply pl-[var(--zap-select-padding-left)] pr-[var(--zap-select-padding-right)] pt-[var(--zap-select-padding-top)] pb-[var(--zap-select-padding-bottom)];
   @apply text-[length:var(--zap-select-font-size)] font-[var(--zap-select-font-weight)] leading-[var(--zap-select-line-height)] tracking-[var(--zap-select-letter-spacing)];
@@ -52,7 +52,7 @@ fieldset {
 
 .__zap__form__control__search {
   @apply w-full pl-10 border-b bg-[var(--zap-select-search-bg-color)] hover:bg-[var(--zap-select-search-bg-hover-color)] text-[var(--zap-select-search-text-color)] hover:text-[var(--zap-select-search-text-hover-color)] border-[var(--zap-select-search-border-color)] hover:border-[var(--zap-select-search-border-hover-color)];
-  @apply focus-within:outline-0;
+  @apply focus-within:outline-none focus-within:ring-0;
   @apply pl-[var(--zap-select-search-padding-left)] pr-[var(--zap-select-search-padding-right)] pt-[var(--zap-select-search-padding-top)] pb-[var(--zap-select-search-padding-bottom)];
 
   &::placeholder {

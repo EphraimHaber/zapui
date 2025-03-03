@@ -4,7 +4,7 @@
   .__zap__form__control__select {
     @apply relative;
     @apply w-full border border-[var(--zap-dp-calendar-select-border-color)] bg-[var(--zap-dp-calendar-select-bg-color)] hover:bg-[var(--zap-dp-calendar-select-bg-hover-color)] text-[var(--zap-dp-calendar-select-text-color)] hover:border-[var(--zap-dp-calendar-select-border-hover-color)] hover:text-[var(--zap-dp-calendar-select-text-hover-color)];
-    @apply focus-within:outline-0;
+    @apply focus-within:outline-none;
     @apply cursor-pointer relative rounded-[var(--zap-dp-calendar-select-border-radius)];
     @apply pl-[var(--zap-dp-calendar-select-padding-left)] pr-[var(--zap-dp-calendar-select-padding-right)] pt-[var(--zap-dp-calendar-select-padding-top)] pb-[var(--zap-dp-calendar-select-padding-bottom)];
     @apply text-[length:var(--zap-dp-calendar-select-font-size)] font-[var(--zap-dp-calendar-select-font-weight)] leading-[var(--zap-dp-calendar-select-line-height)] tracking-[var(--zap-dp-calendar-select-letter-spacing)];

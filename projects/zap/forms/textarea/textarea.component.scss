@@ -4,7 +4,7 @@
 
 textarea {
   @apply w-full bg-transparent border;
-  @apply focus-within:outline-0;
+  @apply focus-within:outline-none;
   @apply px-3 py-2 resize-none;
   @apply rounded-[var(--zap-textarea-border-radius)] border-[var(--zap-textarea-border-color)] bg-[var(--zap-textarea-bg-color)] text-[var(--zap-textarea-text-color)] hover:bg-[var(--zap-textarea-bg-hover-color)] hover:border-[var(--zap-textarea-border-hover-color)] hover:text-[var(--zap-textarea-text-hover-color)];
   @apply pl-[var(--zap-textarea-padding-left)] pr-[var(--zap-textarea-padding-right)] pt-[var(--zap-textarea-padding-top)] pb-[var(--zap-textarea-padding-bottom)];
