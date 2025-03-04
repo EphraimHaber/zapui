@@ -13,7 +13,7 @@
         } @else if (labelDirective) {
         <ng-content select="[zapLabel]"></ng-content>
         } @if(helpText) {
-        <p>{{ helpText }}</p>
+        <p class="__zap__form__control__help__text">{{ helpText }}</p>
         } @else if (helpTextDirective) {
         <ng-content select="[zapFormFieldHelpText]"></ng-content>
         }
