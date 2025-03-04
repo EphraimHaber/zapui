@@ -1,6 +1,6 @@
 {
   "name": "zapui",
-  "version": "0.0.0-dev-alpha.0",
+  "version": "0.0.0-alpha.0",
   "description": "Zap UI Library",
   "license": "MIT",
   "peerDependencies": {
