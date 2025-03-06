@@ -98,6 +98,24 @@ To maintain a clean and consistent codebase, adhere to the following conventions
 
 ---
 
+## Setting Up Locally  
+
+1. **Clone the repository** and navigate to the `zapui` root directory.  
+2. Install dependencies:  
+   ```
+   npm install
+   ```  
+3. Start the library in **watch mode**:  
+   ```
+   npm run build:lib:watch
+   ```  
+4. Navigate to the `projects/demo` directory and run the demo app:  
+   ```
+   ng serve
+   ```  
+
+---
+
 ## Reporting Bugs
 Use GitHub’s [issue tracker](https://github.com/zapuilib/zapui/issues) to report bugs.
 
