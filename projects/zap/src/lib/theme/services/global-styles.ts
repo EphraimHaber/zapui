@@ -197,7 +197,7 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       },
       {
         label: 'primary-btn-text-hover-color',
-        value: hexToRgba(theme.colors.primary, 0.9),
+        value: hexToRgba(theme.colors.errorText, 0.9),
       },
       {
         label: 'secondary-btn-bg-color',
