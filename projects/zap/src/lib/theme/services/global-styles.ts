@@ -185,7 +185,7 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       },
       {
         label: 'primary-btn-text-color',
-        value: theme.colors.primary,
+        value: theme.colors.errorText,
       },
       {
         label: 'primary-btn-bg-hover-color',
