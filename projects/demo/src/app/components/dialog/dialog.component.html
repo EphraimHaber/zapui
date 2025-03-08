@@ -1,6 +1,6 @@
 @if(dialogOpen) {
-<zap-dialog shape="curve" (close)="dialogOpen = !dialogOpen" [showOverlay]="true">
-  <div zapDialogFooter >
+<zap-dialog shape="pill" (close)="dialogOpen = !dialogOpen" [showOverlay]="true">
+  <!-- <div zapDialogFooter >
     <zap-button
       text="No, cancel"
       size="wide"
@@ -13,7 +13,7 @@
       type="default"
       shape="curve"
     ></zap-button>
-  </div>
+  </div> -->
   <p class="text-zinc-500">Are you sure you want to delete this item?</p>
 </zap-dialog>
 }
