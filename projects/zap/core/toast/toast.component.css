@@ -1,0 +1,33 @@
+.__zap__toast {
+  @apply relative border border-secondary/10 py-4 pl-5 pr-8 rounded-md shadow-md;
+  @apply flex items-center justify-between;
+
+  .__zap__toast__content {
+    .__zap__toast__header {
+    }
+
+    .__zap__toast__description {
+      @apply text-sm text-secondary/50;
+    }
+  }
+
+  .__zap__toast__actions {
+    .btn {
+      @apply border border-secondary/10 px-3 py-1.5 rounded-md text-sm transition-colors duration-300 ease-in-out;
+    }
+  }
+
+  .handler {
+    @apply absolute top-2 right-2 hidden cursor-pointer;
+
+    svg {
+      @apply h-4 w-4 fill-current;
+    }
+  }
+
+  &:hover {
+    .handler {
+      @apply block;
+    }
+  }
+}
