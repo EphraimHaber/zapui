@@ -27,7 +27,7 @@ export class ZapTooltip implements OnDestroy {
   @ContentChild(ZapTooltipContent) content!: ZapTooltipContent;
   @ViewChild('tooltip', { static: true }) tooltip!: ElementRef;
   @Input() shape: 'curve' | 'pill' | 'flat' = 'flat';
-  @Input() position: 'top' | 'bottom' | 'left' | 'right' | 'auto' = 'top';
+  @Input() position: 'top' | 'bottom' | 'left' | 'right' | 'auto' = 'auto';
   private onDocumentMouseMoveBound: (event: MouseEvent) => void;
   private isHoveringTooltip = false;
   private isHoveringContent = false;

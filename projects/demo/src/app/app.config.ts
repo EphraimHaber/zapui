@@ -10,7 +10,7 @@ const ngxConfig: ZapConfig = {
     global: {
       shape: 'curve',
     },
-  }
+  },
 };
 
 export const appConfig: ApplicationConfig = {

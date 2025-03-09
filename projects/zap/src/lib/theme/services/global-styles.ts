@@ -1,21 +1,5 @@
-import { getDefaultAlertSizeCssValues } from '../components/alert-theme';
-import { getDefaultBadgeSizeCssValues } from '../components/badge-theme';
-import { getDefaultButtonSizeCssValues } from '../components/button-theme';
-import { getDefaultChipSizeCssValues } from '../components/chip-theme';
-import { getDefaultDialogSizeCssValues } from '../components/dialog-theme';
-import { getDefaultModalSizeCssValues } from '../components/modal-theme';
-import { getDefaultInputSizeCssValues } from '../components/input-theme';
-import { getDefaultCheckboxSizeCssValues } from '../components/checkbox-theme';
-import { getDefaultRadioSizeCssValues } from '../components/radio-theme';
-import { getDefaultTextareaSizeCssValues } from '../components/textarea-theme';
-import { getDefaultToggleSizeCssValues } from '../components/toggle-theme';
-import { getDefaultAccordionSizeCssValues } from '../components/accordion-theme';
-import { getDefaultSelectSizeCssValues } from '../components/select-theme';
-import { getDefaultTooltipSizeCssValues } from '../components/tooltip-theme';
 import { ZapTheme } from '../../interfaces/config.interface';
 import { hexToRgba } from '../utils/base-theme-utils';
-import { getDefaultDatePickerSizeCssValues } from '../components/date-picker-theme';
-import { getDefaultDPCalendarSelectSizeCssValues } from '../components/dp-calendar-select-theme';
 
 /**
  * This function generates the global styles for the all the components
@@ -47,6 +31,42 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'dismiss-hover-color',
         value: hexToRgba(theme.colors.primary, 0.7),
       },
+      {
+        label: 'padding-left',
+        value: '1rem',
+      },
+      {
+        label: 'padding-right',
+        value: '1rem',
+      },
+      {
+        label: 'padding-top',
+        value: '1rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '1rem',
+      },
+      {
+        label: 'font-size',
+        value: '1rem',
+      },
+      {
+        label: 'icon-height',
+        value: '1rem',
+      },
+      {
+        label: 'icon-width',
+        value: '1rem',
+      },
+      {
+        label: 'dismiss-icon-width',
+        value: '1rem',
+      },
+      {
+        label: 'dismiss-icon-height',
+        value: '1rem',
+      },
     ],
     badge: [
       {
@@ -64,6 +84,34 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'border-radius',
         value: 'calc(infinity * 1px)',
+      },
+      {
+        label: 'padding-left',
+        value: '0rem',
+      },
+      {
+        label: 'padding-right',
+        value: '0rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0rem',
+      },
+      {
+        label: 'font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'width',
+        value: '1.5rem',
+      },
+      {
+        label: 'height',
+        value: '1.5rem',
       },
     ],
     button: [
@@ -115,6 +163,26 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'disabled-border-color',
         value: hexToRgba(theme.colors.tertiary, 0),
       },
+      {
+        label: 'padding-left',
+        value: '1rem',
+      },
+      {
+        label: 'padding-right',
+        value: '1rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'font-size',
+        value: '1rem',
+      },
     ],
     chip: [
       {
@@ -148,6 +216,34 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'dismiss-hover-color',
         value: hexToRgba(theme.colors.primary, 0.7),
+      },
+      {
+        label: 'padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-right',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.25rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.25rem',
+      },
+      {
+        label: 'font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'dismiss-height',
+        value: '0.875rem',
+      },
+      {
+        label: 'dismiss-width',
+        value: '0.875rem',
       },
     ],
     dialog: [
@@ -226,7 +322,55 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'overlay-bg-color',
         value: hexToRgba(theme.colors.secondary, 0.1),
-      }
+      },
+      {
+        label: 'padding-left',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-right',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-top',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '1.25rem',
+      },
+      {
+        label: 'title-font-size',
+        value: '1.25rem',
+      },
+      {
+        label: 'title-font-weight',
+        value: '600',
+      },
+      {
+        label: 'dismiss-font-size',
+        value: '1rem',
+      },
+      {
+        label: 'font-size',
+        value: '1rem',
+      },
+      {
+        label: 'dismiss-font-weight',
+        value: '600',
+      },
+      {
+        label: 'font-weight',
+        value: '400',
+      },
+      {
+        label: 'dismiss-height',
+        value: '1rem',
+      },
+      {
+        label: 'dismiss-width',
+        value: '1rem',
+      },
     ],
     modal: [
       {
@@ -252,7 +396,43 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'overlay-bg-color',
         value: hexToRgba(theme.colors.secondary, 0.1),
-      }
+      },
+      {
+        label: 'padding-left',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-right',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-top',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '1.25rem',
+      },
+      {
+        label: 'dismiss-font-size',
+        value: '1rem',
+      },
+      {
+        label: 'dismiss-font-weight',
+        value: '400',
+      },
+      {
+        label: 'max-width',
+        value: '100%',
+      },
+      {
+        label: 'dismiss-height',
+        value: '1rem',
+      },
+      {
+        label: 'dismiss-width',
+        value: '1rem',
+      },
     ],
     input: [
       {
@@ -294,6 +474,38 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'help-text-color',
         value: hexToRgba(theme.colors.secondary, 0.5),
+      },
+      {
+        label: 'padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-right',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'width',
+        value: '100%',
+      },
+      {
+        label: 'icon-font-size',
+        value: '1rem',
+      },
+      {
+        label: 'icon-line-height',
+        value: 'auto',
+      },
+      {
+        label: 'help-text-font-size',
+        value: '0.875rem',
       },
     ],
     checkbox: [
@@ -337,6 +549,34 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'border-focus-color',
         value: theme.colors.tertiary,
       },
+      {
+        label: 'width',
+        value: '1.25rem',
+      },
+      {
+        label: 'height',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.25rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.25rem',
+      },
+      {
+        label: 'border-width',
+        value: '0.125rem',
+      },
     ],
     radio: [
       {
@@ -370,6 +610,14 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'border-focus-color',
         value: theme.colors.tertiary,
+      },
+      {
+        label: 'width',
+        value: '1.25rem',
+      },
+      {
+        label: 'height',
+        value: '1.25rem',
       },
     ],
     textarea: [
@@ -409,6 +657,38 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'help-text-color',
         value: hexToRgba(theme.colors.secondary, 0.5),
       },
+      {
+        label: 'padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-right',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'width',
+        value: '100%',
+      },
+      {
+        label: 'icon-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'icon-line-height',
+        value: 'auto',
+      },
+      {
+        label: 'help-text-font-size',
+        value: '0.875rem',
+      },
     ],
     toggle: [
       {
@@ -443,6 +723,30 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'help-text-color',
         value: hexToRgba(theme.colors.secondary, 0.5),
       },
+      {
+        label: 'height',
+        value: '1.5rem',
+      },
+      {
+        label: 'width',
+        value: '2.75rem',
+      },
+      {
+        label: 'roller-height',
+        value: '1rem',
+      },
+      {
+        label: 'roller-width',
+        value: '1rem',
+      },
+      {
+        label: 'help-text-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'roller-offset',
+        value: '0.325rem',
+      },
     ],
     accordion: [
       {
@@ -464,6 +768,22 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'content-text-color',
         value: theme.colors.secondary,
+      },
+      {
+        label: 'header-padding-top',
+        value: '0.75rem',
+      },
+      {
+        label: 'header-padding-bottom',
+        value: '0.75rem',
+      },
+      {
+        label: 'content-padding-top',
+        value: '0.25rem',
+      },
+      {
+        label: 'content-padding-bottom',
+        value: '1rem',
       },
     ],
     select: [
@@ -659,6 +979,134 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'help-text-color',
         value: hexToRgba(theme.colors.secondary, 0.5),
       },
+      {
+        label: 'padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-right',
+        value: '1.325rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'search-padding-left',
+        value: '2.25rem',
+      },
+      {
+        label: 'search-padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'search-padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'search-padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'font-size',
+        value: '1rem',
+      },
+      {
+        label: 'option-padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'option-padding-right',
+        value: '0.75rem',
+      },
+      {
+        label: 'option-padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'option-padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'chip-padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'chip-padding-right',
+        value: '1.25rem',
+      },
+      {
+        label: 'chip-padding-top',
+        value: '0.12rem',
+      },
+      {
+        label: 'chip-padding-bottom',
+        value: '0.12rem',
+      },
+      {
+        label: 'chip-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'chip-dismiss-font-size',
+        value: '0.75rem',
+      },
+      {
+        label: 'checkbox-width',
+        value: '1.25rem',
+      },
+      {
+        label: 'checkbox-height',
+        value: '1.25rem',
+      },
+      {
+        label: 'checkbox-padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'checkbox-padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'checkbox-padding-top',
+        value: '0.25rem',
+      },
+      {
+        label: 'checkbox-padding-bottom',
+        value: '0.25rem',
+      },
+      {
+        label: 'checkbox-border-width',
+        value: '0.125rem',
+      },
+      {
+        label: 'help-text-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'icon-font-size',
+        value: '1rem',
+      },
+      {
+        label: 'checkbox-checked-height',
+        value: '1rem',
+      },
+      {
+        label: 'checkbox-checked-width',
+        value: '1rem',
+      },
+      {
+        label: 'chip-dismiss-height',
+        value: '0.725rem',
+      },
+      {
+        label: 'chip-dismiss-width',
+        value: '0.725rem',
+      },
     ],
     tooltip: [
       {
@@ -676,6 +1124,22 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'content-border-color',
         value: hexToRgba(theme.colors.secondary, 0.1),
+      },
+      {
+        label: 'content-padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'content-padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'content-padding-top',
+        value: '0.25rem',
+      },
+      {
+        label: 'content-padding-bottom',
+        value: '0.25rem',
       },
     ],
     'date-picker': [
@@ -738,6 +1202,34 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'disabled-help-text-color',
         value: hexToRgba(theme.colors.secondary, 0.5),
+      },
+      {
+        label: 'padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-right',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'font-size',
+        value: '0.5rem',
+      },
+      {
+        label: 'help-text-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'icon-font-size',
+        value: '1rem',
       },
     ],
     'dp-calendar': [
@@ -901,6 +1393,62 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'selected-text-hover-color',
         value: hexToRgba(theme.colors.secondary, 0.5),
       },
+      {
+        label: 'handler-height',
+        value: '1rem',
+      },
+      {
+        label: 'handler-width',
+        value: '1rem',
+      },
+      {
+        label: 'day-height',
+        value: '2.65rem',
+      },
+      {
+        label: 'day-width',
+        value: '2.65rem',
+      },
+      {
+        label: 'day-of-week-height',
+        value: '2.5rem',
+      },
+      {
+        label: 'day-of-week-width',
+        value: '2.5rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'padding-left',
+        value: '0.25rem',
+      },
+      {
+        label: 'padding-right',
+        value: '0.25rem',
+      },
+      {
+        label: 'handler-padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'handler-padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'handler-padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'handler-padding-bottom',
+        value: '0.5rem',
+      },
     ],
     'dp-calendar-select': [
       {
@@ -1007,6 +1555,126 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'search-bg-color',
         value: theme.colors.primary,
       },
+      {
+        label: 'padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'padding-right',
+        value: '2rem',
+      },
+      {
+        label: 'padding-top',
+        value: '0.375rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '0.375rem',
+      },
+      {
+        label: 'search-padding-left',
+        value: '2.25rem',
+      },
+      {
+        label: 'search-padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'search-padding-top',
+        value: '0.5rem',
+      },
+      {
+        label: 'search-padding-bottom',
+        value: '0.5rem',
+      },
+      {
+        label: 'font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'option-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'option-padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'option-padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'option-padding-top',
+        value: '0.375rem',
+      },
+      {
+        label: 'option-padding-bottom',
+        value: '0.375rem',
+      },
+      {
+        label: 'chip-padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'chip-padding-right',
+        value: '1.25rem',
+      },
+      {
+        label: 'chip-padding-top',
+        value: '0.12rem',
+      },
+      {
+        label: 'chip-padding-bottom',
+        value: '0.12rem',
+      },
+      {
+        label: 'chip-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'chip-dismiss-font-size',
+        value: '0.75rem',
+      },
+      {
+        label: 'checkbox-width',
+        value: '1.25rem',
+      },
+      {
+        label: 'checkbox-height',
+        value: '1.25rem',
+      },
+      {
+        label: 'checkbox-padding-left',
+        value: '0.5rem',
+      },
+      {
+        label: 'checkbox-padding-right',
+        value: '0.5rem',
+      },
+      {
+        label: 'checkbox-padding-top',
+        value: '0.25rem',
+      },
+      {
+        label: 'checkbox-padding-bottom',
+        value: '0.25rem',
+      },
+      {
+        label: 'checkbox-border-width',
+        value: '0.125rem',
+      },
+      {
+        label: 'help-text-font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'icon-font-size',
+        value: '1rem',
+      },
+      {
+        label: 'selected-font-size',
+        value: '0.875rem',
+      },
     ],
   };
   for (const [component, stylesArray] of Object.entries(styles)) {
@@ -1015,23 +1683,6 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       cssVariables += `--zap-${component}-${style['label']}: ${styleExist};\n`;
     }
   }
-
-  cssVariables += getDefaultAlertSizeCssValues();
-  cssVariables += getDefaultBadgeSizeCssValues();
-  cssVariables += getDefaultButtonSizeCssValues();
-  cssVariables += getDefaultChipSizeCssValues();
-  cssVariables += getDefaultDialogSizeCssValues();
-  cssVariables += getDefaultModalSizeCssValues();
-  cssVariables += getDefaultInputSizeCssValues();
-  cssVariables += getDefaultCheckboxSizeCssValues();
-  cssVariables += getDefaultRadioSizeCssValues();
-  cssVariables += getDefaultTextareaSizeCssValues();
-  cssVariables += getDefaultToggleSizeCssValues();
-  cssVariables += getDefaultAccordionSizeCssValues();
-  cssVariables += getDefaultSelectSizeCssValues();
-  cssVariables += getDefaultTooltipSizeCssValues();
-  cssVariables += getDefaultDatePickerSizeCssValues();
-  cssVariables += getDefaultDPCalendarSelectSizeCssValues();
 
   return cssVariables;
 }
