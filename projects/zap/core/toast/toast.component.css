@@ -1,19 +1,24 @@
 .__zap__toast {
-  @apply relative border border-secondary/10 py-4 pl-5 pr-8 rounded-md shadow-md;
-  @apply flex items-center justify-between;
+  @apply relative border border-[var(--zap-toast-border-color)] bg-[var(--zap-toast-bg-color)] rounded-[var(--zap-toast-border-radius)] shadow-md;
+  @apply flex items-center justify-between text-[var(--zap-toast-text-color)];
+  @apply pl-[var(--zap-toast-padding-left)] pr-[var(--zap-toast-padding-right)] pt-[var(--zap-toast-padding-top)] pb-[var(--zap-toast-padding-bottom)];
 
   .__zap__toast__content {
-    .__zap__toast__header {
+    .__zap__toast__title {
+      @apply text-[var(--zap-toast-title-color)];
     }
 
-    .__zap__toast__description {
-      @apply text-sm text-secondary/50;
+    .__zap__toast__text {
+      @apply text-sm text-[var(--zap-toast-text-color)];
     }
   }
 
   .__zap__toast__actions {
     .btn {
-      @apply border border-secondary/10 px-3 py-1.5 rounded-md text-sm transition-colors duration-300 ease-in-out;
+      @apply border rounded-[var(--zap-toast-btn-border-radius)] text-sm transition-colors duration-300 ease-in-out;
+      @apply border-[var(--zap-toast-btn-border-color)] hover:border-[var(--zap-toast-btn-border-hover-color)] text-[var(--zap-toast-btn-text-color)] hover:text-[var(--zap-toast-btn-text-hover-color)];
+      @apply bg-[var(--zap-toast-bg-color)] hover:bg-[var(--zap-toast-bg-hover-color)];
+      @apply pl-[var(--zap-toast-btn-padding-left)] pr-[var(--zap-toast-btn-padding-right)] pt-[var(--zap-toast-btn-padding-top)] pb-[var(--zap-toast-btn-padding-bottom)];
     }
   }
 
@@ -21,13 +26,43 @@
     @apply absolute top-2 right-2 hidden cursor-pointer;
 
     svg {
-      @apply h-4 w-4 fill-current;
+      @apply h-4 w-4 fill-[var(--zap-toast-dismiss-color)] hover:fill-[var(--zap-toast-dismiss-hover-color)];
     }
   }
 
   &:hover {
     .handler {
       @apply block;
+    }
+  }
+
+  &.curve {
+    @apply rounded-lg;
+
+    .__zap__toast__actions {
+      .btn {
+        @apply rounded-lg;
+      }
+    }
+  }
+
+  &.pill {
+    @apply rounded-2xl;
+
+    .__zap__toast__actions {
+      .btn {
+        @apply rounded-full;
+      }
+    }
+  }
+
+  &.flat {
+    @apply rounded-none;
+
+    .__zap__toast__actions {
+      .btn {
+        @apply rounded-none;
+      }
     }
   }
 }

@@ -21,7 +21,4 @@ export * from './tooltip.interface';
 export * from './date-picker.interface';
 export * from './dp-calendar.interface';
 export * from './dp-calendar-select.interface';
-
-
-
-
+export * from './toast.interface';

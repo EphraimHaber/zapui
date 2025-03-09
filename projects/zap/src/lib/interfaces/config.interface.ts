@@ -18,6 +18,7 @@ import {
   DPCalendarSelectConfig,
   HexCode,
   ShapeType,
+  ToastConfig,
 } from './index';
 
 export interface ZapConfig {
@@ -42,6 +43,7 @@ export interface ZapConfig {
     'date-picker'?: DatePickerConfig;
     'dp-calendar'?: DPCalendarConfig;
     'dp-calendar-select'?: DPCalendarSelectConfig;
+    toast?: ToastConfig;
   };
 }
 

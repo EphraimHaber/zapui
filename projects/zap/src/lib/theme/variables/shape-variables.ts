@@ -11,6 +11,16 @@ export function getShapeVariable(
       pill: '0.75rem',
       curve: '0.25rem',
     },
+    toast: {
+      pill: '1rem',
+      curve: '0.375rem',
+      elements: {
+        btn: {
+          pill: 'calc(infinity * 1px)',
+          curve: '0.375rem',
+        },
+      }
+    },
     modal: {
       pill: '1rem',
       curve: '0.5rem',

@@ -1,13 +1,16 @@
-<div class="__zap__toast">
+<div class="__zap__toast" [ngClass]="classes">
   <div class="__zap__toast__content">
-    <p class="__zap__toast__header">Schedule catchup</p>
-    <p class="__zap__toast__description">
-      Friday, February 10, 2023 at 5:57 PM
-    </p>
+    @if(title){
+    <p class="__zap__toast__title">{{ title }}</p>
+    } @if(text) {
+    <p class="__zap__toast__text">{{ text }}</p>
+    }
   </div>
+  @if(action) {
   <div class="__zap__toast__actions">
-    <button class="btn">Undo</button>
+    <button class="btn">{{ action }}</button>
   </div>
+  }
   <div class="handler" tabindex="0">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
       <path
