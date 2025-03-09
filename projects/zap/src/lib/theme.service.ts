@@ -2,47 +2,17 @@ import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 import { NGX_ZAP_CONFIG } from './tokens/zap.tokens';
-import {
-  AlertConfig,
-  ButtonConfig,
-  ChipConfig,
-  DatePickerConfig,
-  DialogConfig,
-  DPCalendarConfig,
-  DPCalendarSelectConfig,
-  GlobalConfig,
-  InputConfig,
-  ModalConfig,
-  SelectConfig,
-  TextareaConfig,
-  TooltipConfig,
-  ZapConfig,
-  ZapTheme,
-} from './interfaces';
+import { GlobalConfig, ZapConfig, ZapTheme } from './interfaces';
 import {
   lightTheme,
   defaultConfig,
   darkTheme,
 } from './constants/default-config.constants';
-import { generateComponentButtonVariables } from './theme/components/button-theme';
 import { deepEqual } from './theme/utils/base-theme-utils';
 import { generateColorVariables } from './theme/utils/color-utils';
-import { generateComponentGlobalVariables } from './theme/components/global-theme';
 import { generateFontSizeVariables } from './theme/utils/font-utils';
 import { generateGlobalStylesVariables } from './theme/services/global-styles';
-import { generateComponentStylesVariables } from './theme/services/component-styles';
-import { generateComponentAlertVariables } from './theme/components/alert-theme';
-import { generateComponentChipVariables } from './theme/components/chip-theme';
-import { generateComponentDialogVariables } from './theme/components/dialog-theme';
-import { generateComponentModalVariables } from './theme/components/modal-theme';
-import { generateComponentInputVariables } from './theme/components/input-theme';
-import { generateComponentCheckboxVariables } from './theme/components/checkbox-theme';
-import { generateComponentTextareaVariables } from './theme/components/textarea-theme';
-import { generateComponentSelectVariables } from './theme/components/select-theme';
-import { generateComponentTooltipVariables } from './theme/components/tooltip-theme';
-import { generateComponentDPVariables } from './theme/components/date-picker-theme';
-import { generateComponentDPCalendarVariables } from './theme/components/dp-calendar-theme';
-import { generateComponentDPCalendarSelectVariables } from './theme/components/dp-calendar-select-theme';
+import { getShapeVariable, getSizeVariables, generateComponentGlobalVariables } from './theme/variables';
 
 @Injectable({
   providedIn: 'root',
@@ -140,93 +110,48 @@ export class ThemeService {
 
     if (config.components) {
       for (const [componentKey, value] of Object.entries(config.components)) {
-        switch (componentKey) {
-          case 'global':
-            cssVariables += generateComponentGlobalVariables(
-              value as GlobalConfig
-            );
-            break;
-          case 'alert':
-            cssVariables += generateComponentAlertVariables(
-              value as AlertConfig
-            );
-            break;
-          case 'button':
-            cssVariables += generateComponentButtonVariables(
-              value as ButtonConfig,
-              root
-            );
-            break;
-          case 'chip':
-            cssVariables += generateComponentChipVariables(
-              value as ChipConfig,
-              root
-            );
-            break;
-          case 'dialog':
-            cssVariables += generateComponentDialogVariables(
-              value as DialogConfig
-            );
-            break;
-          case 'modal':
-            cssVariables += generateComponentModalVariables(
-              value as ModalConfig
-            );
-            break;
-          case 'input':
-            cssVariables += generateComponentInputVariables(
-              value as InputConfig
-            );
-            break;
-          case 'checkbox':
-            cssVariables += generateComponentCheckboxVariables(
-              value as InputConfig
-            );
-            break;
-          case 'textarea':
-            cssVariables += generateComponentTextareaVariables(
-              value as TextareaConfig
-            );
-            break;
-          case 'select':
-            cssVariables += generateComponentSelectVariables(
-              value as SelectConfig
-            );
-            break;
-          case 'tooltip':
-            cssVariables += generateComponentTooltipVariables(
-              value as TooltipConfig
-            );
-            break;
-          case 'date-picker':
-            cssVariables += generateComponentDPVariables(
-              value as DatePickerConfig
-            );
-            break;
-          case 'dp-calendar':
-            cssVariables += generateComponentDPCalendarVariables(
-              value as DPCalendarConfig
-            );
-            break;
-          case 'dp-calendar-select':
-            cssVariables += generateComponentDPCalendarSelectVariables(
-              value as DPCalendarSelectConfig
-            );
-            break;
-          default:
-            break;
-        }
-
-        if (value.styles) {
-          cssVariables += generateComponentStylesVariables(
-            value.styles,
-            componentKey,
-            this.config
-          );
-        }
+        cssVariables += this.generateComponentVariables(componentKey, value);
       }
     }
 
     return cssVariables;
+  }
+
+  private generateComponentVariables(componentKey: string, value: any): string {
+    let variables = '';
+
+    if (componentKey === 'global') {
+      variables += generateComponentGlobalVariables(value as GlobalConfig);
+    }
+
+    if ('shape' in value && value.shape) {
+      variables += this.generateShapeVariables(componentKey, value.shape);
+    }
+
+    if ('size' in value && value.size) {
+      variables += getSizeVariables(value.size, componentKey);
+    }
+
+    return variables;
+  }
+
+  private generateShapeVariables(componentKey: string, shape: any): string {
+    const shapeMap = new Map([
+      ['date-picker', ['dp-calendar', 'dp-calendar-select']],
+      ['dp-calendar', ['dp-calendar-select']],
+    ]);
+
+    let variables = '';
+
+    if (shapeMap.has(componentKey)) {
+      const relatedComponents = shapeMap.get(componentKey) || [];
+      relatedComponents.forEach((component) => {
+        variables += getShapeVariable(shape, component);
+      });
+    }
+
+    variables += getShapeVariable(shape, componentKey);
+
+    return variables;
   }
 }
