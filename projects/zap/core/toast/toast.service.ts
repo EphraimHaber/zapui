@@ -5,7 +5,6 @@ import {
   createComponent,
   EnvironmentInjector,
   signal,
-  computed,
   DestroyRef,
   inject,
 } from '@angular/core';
@@ -16,16 +15,11 @@ import { TOAST_STYLES, TOAST_DURATION } from './toast.constant';
 
 type ToastPosition = 'top' | 'bottom';
 
-
 @Injectable({ providedIn: 'root' })
 export class ZapToastService {
   private lastToastTime = signal<number>(0);
   private activeToastRef = signal<ComponentRef<ZapToast> | null>(null);
   private readonly destroyRef = inject(DestroyRef);
-
-  private isQuickSuccession = computed(
-    () => Date.now() - this.lastToastTime() < TOAST_DURATION
-  );
 
   constructor(
     private appRef: ApplicationRef,
