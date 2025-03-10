@@ -1,7 +1,8 @@
 .__zap__toast {
   @apply relative border border-[var(--zap-toast-border-color)] bg-[var(--zap-toast-bg-color)] rounded-[var(--zap-toast-border-radius)] shadow-sm;
-  @apply flex items-center justify-between gap-x-3 text-[var(--zap-toast-text-color)];
-  @apply pl-[var(--zap-toast-padding-left)] pr-[var(--zap-toast-padding-right)] pt-[var(--zap-toast-padding-top)] pb-[var(--zap-toast-padding-bottom)];
+  @apply flex items-center justify-between gap-x-10 text-[var(--zap-toast-text-color)];
+  @apply pl-[var(--zap-toast-padding-left)] pr-[var(--zap-toast-padding-right)] pt-[var(--zap-toast-padding-top)] pb-[var(--zap-toast-padding-bottom)] origin-bottom select-none touch-none;
+  @apply max-sm:flex-col max-sm:items-start max-sm:gap-x-0 max-sm:gap-y-3;
 
   .__zap__toast__content {
     .__zap__toast__title {
@@ -38,11 +39,11 @@
   }
 
   &.curve {
-    @apply rounded-lg;
+    @apply rounded-md;
 
     .__zap__toast__actions {
       .btn {
-        @apply rounded-lg;
+        @apply rounded-md;
       }
     }
   }
@@ -87,7 +88,6 @@
     }
 
     .handler {
-  
       svg {
         @apply fill-errorText hover:fill-errorText/80;
       }

@@ -1,26 +1,93 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  ElementRef,
+  Output,
+  EventEmitter,
+  HostListener,
+} from '@angular/core';
 
 @Component({
   selector: 'zap-toast',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './toast.component.html',
-  styleUrl: './toast.component.css'
+  styleUrl: './toast.component.scss',
 })
 export class ZapToast {
-  @Input() title! : string;
-  @Input() text! : string;
+  @Output() dismiss: EventEmitter<void> = new EventEmitter<void>();
+  @Output() actioned?: any = new EventEmitter<void>();
+  @Input() title!: string;
+  @Input() text!: string;
   @Input() action!: string;
   @Input() shape!: 'pill' | 'flat' | 'curve';
   @Input() zapClass!: string;
   @Input() type: 'error' | 'default' = 'default';
+  private isDragging = false;
+  private startX = 0;
+  private currentX = 0;
+  private readonly DISMISS_THRESHOLD = 100;
+
+  @HostListener('mousedown', ['$event'])
+  @HostListener('touchstart', ['$event'])
+  onDragStart(event: MouseEvent | TouchEvent) {
+    this.isDragging = true;
+    this.startX = this.getEventX(event);
+    this.el.nativeElement.style.transition = 'none';
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  @HostListener('document:touchmove', ['$event'])
+  onDrag(event: MouseEvent | TouchEvent) {
+    if (!this.isDragging) return;
+
+    const x = this.getEventX(event);
+    this.currentX = x - this.startX;
+
+    if (this.currentX < 0) this.currentX = 0;
+
+    this.el.nativeElement.style.transform = `translateX(${this.currentX}px)`;
+  }
+
+  @HostListener('document:mouseup')
+  @HostListener('document:touchend')
+  onDragEnd() {
+    if (!this.isDragging) return;
+
+    this.isDragging = false;
+    this.el.nativeElement.style.transition = 'all 0.3s ease-in-out';
+
+    if (this.currentX >= this.DISMISS_THRESHOLD) {
+      this.handleDismiss();
+    } else {
+      this.el.nativeElement.style.transform = 'translateX(0)';
+    }
+  }
+
+  constructor(private el: ElementRef) {}
+
+  private getEventX(event: MouseEvent | TouchEvent): number {
+    return event instanceof MouseEvent
+      ? event.clientX
+      : event.touches[0].clientX;
+  }
 
   get classes(): string[] {
-    return [
-      this.shape,
-      this.type,
-      this.zapClass
-    ].filter((cls) => cls && cls !== 'default');
+    return [this.shape, this.type, this.zapClass].filter(
+      (cls) => cls && cls !== 'default'
+    );
+  }
+
+  handleDismiss() {
+    this.dismiss.emit();
+  }
+
+  handleActionClick() {    
+    if (this.actioned instanceof EventEmitter) {
+      this.actioned.emit();
+    } else if (typeof this.actioned === 'function') {
+      this.actioned();
+    }
   }
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ZapButton, ZapToast } from 'zap/core';
+import { Component, Input } from '@angular/core';
+import { ZapButton, ZapToast, ZapToastService } from 'zap/core';
 
 @Component({
   selector: 'app-toast',
@@ -9,11 +9,30 @@ import { ZapButton, ZapToast } from 'zap/core';
   styleUrl: './toast.component.scss',
 })
 export class ToastComponent {
-  show = false;
+  @Input() service: boolean = false;
   title = 'Schedule a meeting';
   text = 'Friday, February 10, 2023 at 5:57 PM';
   action = 'Undo';
+
+  constructor(private toastService: ZapToastService) {}
+
+  handleDismiss() {
+    window.alert('Dismissed!');
+    this.toastService.dismiss();
+  }
+
   showToast() {
-    this.show = true;
+    this.toastService.show({
+      actioned: this.handleDismiss.bind(this),
+      title: 'Uh oh! Something went wrong.',
+      text: 'Error occurred while saving your changes.',
+      action: 'Try again',
+      shape: 'curve',
+      type: 'default',
+    });
+  }
+
+  handleActionClick() {
+    window.alert('Action clicked!');
   }
 }
