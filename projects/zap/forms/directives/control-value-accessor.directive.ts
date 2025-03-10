@@ -71,8 +71,7 @@ export class ControlValueAccessorDirective<T>
             .form as FormControl;
           break;
       }
-    } catch (error) {
-      console.error(error);
+    } catch {
       this.control = new FormControl();
     }
   }
