@@ -14,11 +14,13 @@ export class ZapToast {
   @Input() action!: string;
   @Input() shape!: 'pill' | 'flat' | 'curve';
   @Input() zapClass!: string;
+  @Input() type: 'error' | 'default' = 'default';
 
   get classes(): string[] {
     return [
       this.shape,
+      this.type,
       this.zapClass
-    ].filter(Boolean);
+    ].filter((cls) => cls && cls !== 'default');
   }
 }

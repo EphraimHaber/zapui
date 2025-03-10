@@ -1,6 +1,6 @@
 .__zap__toast {
-  @apply relative border border-[var(--zap-toast-border-color)] bg-[var(--zap-toast-bg-color)] rounded-[var(--zap-toast-border-radius)] shadow-md;
-  @apply flex items-center justify-between text-[var(--zap-toast-text-color)];
+  @apply relative border border-[var(--zap-toast-border-color)] bg-[var(--zap-toast-bg-color)] rounded-[var(--zap-toast-border-radius)] shadow-sm;
+  @apply flex items-center justify-between gap-x-3 text-[var(--zap-toast-text-color)];
   @apply pl-[var(--zap-toast-padding-left)] pr-[var(--zap-toast-padding-right)] pt-[var(--zap-toast-padding-top)] pb-[var(--zap-toast-padding-bottom)];
 
   .__zap__toast__content {
@@ -15,7 +15,7 @@
 
   .__zap__toast__actions {
     .btn {
-      @apply border rounded-[var(--zap-toast-btn-border-radius)] text-sm transition-colors duration-300 ease-in-out;
+      @apply border rounded-[var(--zap-toast-btn-border-radius)] text-sm transition-colors duration-150 ease-in-out;
       @apply border-[var(--zap-toast-btn-border-color)] hover:border-[var(--zap-toast-btn-border-hover-color)] text-[var(--zap-toast-btn-text-color)] hover:text-[var(--zap-toast-btn-text-hover-color)];
       @apply bg-[var(--zap-toast-bg-color)] hover:bg-[var(--zap-toast-bg-hover-color)];
       @apply pl-[var(--zap-toast-btn-padding-left)] pr-[var(--zap-toast-btn-padding-right)] pt-[var(--zap-toast-btn-padding-top)] pb-[var(--zap-toast-btn-padding-bottom)];
@@ -63,6 +63,33 @@
     .__zap__toast__actions {
       .btn {
         @apply rounded-none;
+      }
+    }
+  }
+
+  &.error {
+    @apply bg-error border-error;
+
+    .__zap__toast__content {
+     .__zap__toast__title {
+        @apply text-errorText;
+      }
+
+    .__zap__toast__text {
+        @apply text-errorText/70;
+      }
+    }
+
+    .__zap__toast__actions {
+      .btn {
+        @apply text-errorText border-errorText bg-error hover:bg-error hover:text-errorText/80 hover:border-errorText/80;
+      }
+    }
+
+    .handler {
+  
+      svg {
+        @apply fill-errorText hover:fill-errorText/80;
       }
     }
   }

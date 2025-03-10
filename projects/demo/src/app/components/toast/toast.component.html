@@ -8,5 +8,6 @@
 </div> -->
 
 @if(!show) {
-<zap-toast  [title]="title" [text]="text" [action]="action" class="w-full"></zap-toast>
+<!-- <zap-toast  [title]="title" [text]="text" [action]="action" class="w-full"></zap-toast> -->
+<zap-toast  [title]="'Uh oh, something went wrong'" [text]="'Error occured when saving your data'" [action]="'Try again'"  type="error" class="w-full"></zap-toast>
 }

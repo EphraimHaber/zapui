@@ -1752,6 +1752,10 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'font-size',
         value: '0.875rem',
+      },
+      {
+        label: 'btn-font-size',
+        value: '0.875rem',
       }
     ]
   };
