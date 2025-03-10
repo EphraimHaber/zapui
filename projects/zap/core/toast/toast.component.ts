@@ -8,6 +8,8 @@ import {
   HostListener,
 } from '@angular/core';
 
+import { DISMISS_THRESHOLD } from './toast.constant';
+
 @Component({
   selector: 'zap-toast',
   standalone: true,
@@ -27,8 +29,6 @@ export class ZapToast {
   private isDragging = false;
   private startX = 0;
   private currentX = 0;
-  private readonly DISMISS_THRESHOLD = 100;
-
   @HostListener('mousedown', ['$event'])
   @HostListener('touchstart', ['$event'])
   onDragStart(event: MouseEvent | TouchEvent) {
@@ -36,7 +36,6 @@ export class ZapToast {
     this.startX = this.getEventX(event);
     this.el.nativeElement.style.transition = 'none';
   }
-
   @HostListener('document:mousemove', ['$event'])
   @HostListener('document:touchmove', ['$event'])
   onDrag(event: MouseEvent | TouchEvent) {
@@ -49,7 +48,6 @@ export class ZapToast {
 
     this.el.nativeElement.style.transform = `translateX(${this.currentX}px)`;
   }
-
   @HostListener('document:mouseup')
   @HostListener('document:touchend')
   onDragEnd() {
@@ -58,7 +56,7 @@ export class ZapToast {
     this.isDragging = false;
     this.el.nativeElement.style.transition = 'all 0.3s ease-in-out';
 
-    if (this.currentX >= this.DISMISS_THRESHOLD) {
+    if (this.currentX >= DISMISS_THRESHOLD) {
       this.handleDismiss();
     } else {
       this.el.nativeElement.style.transform = 'translateX(0)';

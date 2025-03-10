@@ -12,40 +12,19 @@ import {
 
 import { ZapToast } from './toast.component';
 import { ZapToastInterface } from './toast.interface';
+import { TOAST_STYLES, TOAST_DURATION } from './toast.constant';
 
 type ToastPosition = 'top' | 'bottom';
 
-const TOAST_STYLES = {
-  base: {
-    position: 'fixed',
-    zIndex: '9999',
-    transition: 'all 0.3s ease-in-out',
-  },
-  positions: {
-    top: {
-      top: '20px',
-      left: '20px',
-      right: '20px',
-      bottom: 'auto',
-    },
-    bottom: {
-      top: 'auto',
-      left: 'auto',
-      bottom: '20px',
-      right: '20px',
-    },
-  },
-} as const;
 
 @Injectable({ providedIn: 'root' })
 export class ZapToastService {
-  private readonly TOAST_DURATION = 5000;
   private lastToastTime = signal<number>(0);
   private activeToastRef = signal<ComponentRef<ZapToast> | null>(null);
   private readonly destroyRef = inject(DestroyRef);
 
   private isQuickSuccession = computed(
-    () => Date.now() - this.lastToastTime() < this.TOAST_DURATION
+    () => Date.now() - this.lastToastTime() < TOAST_DURATION
   );
 
   constructor(
@@ -81,7 +60,7 @@ export class ZapToastService {
     setTimeout(() => {
       cleanup();
       this.hide(toastComponentRef);
-    }, this.TOAST_DURATION);
+    }, TOAST_DURATION);
 
     this.activeToastRef.set(toastComponentRef);
   }
