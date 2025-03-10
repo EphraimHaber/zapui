@@ -123,11 +123,7 @@ export class ZapToastService {
   show(config: ZapToastInterface) {
     try {
       if (this.activeToastRef()) {
-        if (this.isQuickSuccession()) {
-          this.dismissImmediately(this.activeToastRef()!);
-        } else {
-          this.hide(this.activeToastRef()!);
-        }
+        this.dismissImmediately(this.activeToastRef()!);
       }
 
       this.lastToastTime.set(Date.now());
