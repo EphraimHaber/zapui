@@ -23,6 +23,8 @@ export class ZapDialog implements AfterViewInit {
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
   @Input() title = 'Are you sure?';
   @Input() text = '';
+  @Input() closeAction = 'No, cancel';
+  @Input() confirmAction = 'Yes, confirm';
   @Input() zapClass = '';
   @Input() shape!: 'curve' | 'pill' | 'flat';
   @Input() position: 'top' | 'default' = 'default';
