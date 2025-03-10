@@ -5,11 +5,11 @@
 
   .__zap__toast__content {
     .__zap__toast__title {
-      @apply text-[var(--zap-toast-title-color)];
+      @apply text-[length:var(--zap-toast-title-font-size)] font-[var(--zap-toast-title-font-weight)] leading-[var(--zap-toast-title-line-height)] tracking-[var(--zap-toast-title-letter-spacing)]  text-[var(--zap-toast-title-color)];
     }
 
     .__zap__toast__text {
-      @apply text-sm text-[var(--zap-toast-text-color)];
+      @apply text-[length:var(--zap-toast-font-size)] font-[var(--zap-toast-font-weight)] leading-[var(--zap-toast-line-height)] tracking-[var(--zap-toast-letter-spacing)]  text-[var(--zap-toast-text-color)];
     }
   }
 
@@ -19,6 +19,7 @@
       @apply border-[var(--zap-toast-btn-border-color)] hover:border-[var(--zap-toast-btn-border-hover-color)] text-[var(--zap-toast-btn-text-color)] hover:text-[var(--zap-toast-btn-text-hover-color)];
       @apply bg-[var(--zap-toast-bg-color)] hover:bg-[var(--zap-toast-bg-hover-color)];
       @apply pl-[var(--zap-toast-btn-padding-left)] pr-[var(--zap-toast-btn-padding-right)] pt-[var(--zap-toast-btn-padding-top)] pb-[var(--zap-toast-btn-padding-bottom)];
+      @apply text-[length:var(--zap-toast-btn-font-size)] font-[var(--zap-toast-btn-font-weight)] leading-[var(--zap-toast-btn-line-height)] tracking-[var(--zap-toast-btn-letter-spacing)];
     }
   }
 

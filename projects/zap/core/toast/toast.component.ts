@@ -13,10 +13,12 @@ export class ZapToast {
   @Input() text! : string;
   @Input() action!: string;
   @Input() shape!: 'pill' | 'flat' | 'curve';
+  @Input() zapClass!: string;
 
   get classes(): string[] {
     return [
       this.shape,
+      this.zapClass
     ].filter(Boolean);
   }
 }

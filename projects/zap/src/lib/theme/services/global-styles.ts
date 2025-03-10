@@ -1749,6 +1749,10 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         label: 'btn-padding-bottom',
         value: '0.375rem',
       },
+      {
+        label: 'font-size',
+        value: '0.875rem',
+      }
     ]
   };
   for (const [component, stylesArray] of Object.entries(styles)) {

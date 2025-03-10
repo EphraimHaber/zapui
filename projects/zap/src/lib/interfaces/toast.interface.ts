@@ -25,6 +25,17 @@ export interface ToastConfig {
     btnPaddingTop?: string;
     btnPaddingBottom?: string;
     btnPadding?: Padding;
-    
+    fontSize?: string;
+    titleFontSize?: string;
+    fontWeight?: string;
+    titleFontWeight?: string;
+    lineHeight?: string;
+    titleLineHeight?: string;
+    letterSpacing?: string;
+    titleLetterSpacing?: string;
+    btnFontSize?: string;
+    btnFontWeight?: string;
+    btnLineHeight?: string;
+    btnLetterSpacing?: string;
   };
 }

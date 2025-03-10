@@ -134,6 +134,18 @@ module.exports = plugin(function ({ addVariant, e }) {
       name: "dpc-button",
       targetElement: ".__zap__calendar .header button",
     },
+    {
+      name: 'toast-title',
+      targetElement: ".__zap__toast__title"
+    },
+    {
+      name: 'toast-text',
+      targetElement: ".__zap__toast__text"
+    },
+    {
+      name: 'toast-btn',
+      targetElement: ".__zap__toast__actions .btn"
+    },
   ];
 
   variants.forEach((variant) => {

@@ -40,3 +40,6 @@
 @custom-variant dpc-range-active (.__zap__calendar .day.in__range.this__month:not(.selected));
 @custom-variant dpc-day-disabled (.__zap__calendar .day.is__disabled);
 @custom-variant dpc-button (.__zap__calendar .header button);
+@custom-variant toast-title (.__zap__toast__title);
+@custom-variant toast-text (.__zap__toast__text);
+@custom-variant toast-btn (.__zap__toast__actions .btn);

@@ -1,4 +1,5 @@
 <div class="__zap__toast" [ngClass]="classes">
+  @if(title || text || action) {
   <div class="__zap__toast__content">
     @if(title){
     <p class="__zap__toast__title">{{ title }}</p>
@@ -10,7 +11,10 @@
   <div class="__zap__toast__actions">
     <button class="btn">{{ action }}</button>
   </div>
+  } } @else {
+  <ng-content></ng-content>
   }
+
   <div class="handler" tabindex="0">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
       <path
