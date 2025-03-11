@@ -46,7 +46,9 @@ export class ZapToast {
 
     if (this.currentX < 0) this.currentX = 0;
 
-    this.el.nativeElement.style.transform = `translateX(${this.currentX}px)`;
+    if (this.el.nativeElement.parentElement === document.body) {
+      this.el.nativeElement.style.transform = `translateX(${this.currentX}px)`;
+    }
   }
   @HostListener('document:mouseup')
   @HostListener('document:touchend')
