@@ -5,5 +5,6 @@ export interface ZapToastInterface {
   shape?: 'pill' | 'flat' | 'curve';
   zapClass?: string;
   type?: 'error' | 'default';
+  duration?: number;
   actioned?: () => any;
 }
