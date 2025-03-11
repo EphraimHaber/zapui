@@ -26,6 +26,10 @@ export class ZapToastService {
   ) {}
 
   private createToast(config: ZapToastInterface) {
+    if (this.activeToastRef()) {
+      this.dismissImmediately(this.activeToastRef()!);
+    }
+
     const toastComponentRef = createComponent(ZapToast, {
       environmentInjector: this.injector,
     });
@@ -50,12 +54,14 @@ export class ZapToastService {
       this.hide(toastComponentRef);
     });
 
-    setTimeout(() => {
-      cleanup();
-      this.hide(toastComponentRef);
-    }, config.duration || TOAST_DURATION);
-
     this.activeToastRef.set(toastComponentRef);
+
+    setTimeout(() => {
+      if (this.activeToastRef() === toastComponentRef) {
+        cleanup();
+        this.hide(toastComponentRef);
+      }
+    }, config.duration || TOAST_DURATION);
   }
 
   private applyStyles(element: HTMLElement): void {
@@ -66,9 +72,10 @@ export class ZapToastService {
   }
 
   private setupPositionHandling(element: HTMLElement): () => void {
-    if(typeof window === 'undefined') return () => {
+    if (typeof window === 'undefined') return () => {
       return;
     };
+
     const updatePosition = () => {
       const position: ToastPosition =
         window.innerWidth < 640 ? 'top' : 'bottom';
@@ -94,9 +101,7 @@ export class ZapToastService {
   private dismissImmediately(toastRef: ComponentRef<ZapToast>) {
     if (!toastRef || !toastRef.location) return;
     const element = toastRef.location.nativeElement;
-    if (element && element.parentNode === document.body) {
-      document.body.removeChild(element);
-    }
+    element.parentNode?.removeChild(element);
     toastRef.destroy();
     this.activeToastRef.set(null);
   }
@@ -109,11 +114,11 @@ export class ZapToastService {
     element.style.opacity = '0';
 
     setTimeout(() => {
-      if (element && element.parentNode === document.body) {
-        document.body.removeChild(element);
+      if (this.activeToastRef() === toastRef) {
+        element.parentNode?.removeChild(element);
+        toastRef.destroy();
+        this.activeToastRef.set(null);
       }
-      toastRef.destroy();
-      this.activeToastRef.set(null);
     }, 300);
   }
 
@@ -125,9 +130,6 @@ export class ZapToastService {
 
   show(config: ZapToastInterface) {
     try {
-      if (this.activeToastRef()) {
-        this.dismissImmediately(this.activeToastRef()!);
-      }
       this.createToast(config);
     } catch (error) {
       console.error('Failed to show toast:', error);
