@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.0-alpha.5
+- Fixed: Maximum width of `18.75rem` used for toast text element starting from screen size sm
+- Fixed: Minimum width of `25rem` used for toast component starting from screen size sm
+- New: Added support for custom `duration` of the toast component
+
 ## 0.0.0-alpha.4
 - Fixed: Resolved console error related to Angular Control Value Accessor implementation
 - Fixed: Resolved Tailwind plugin configuration issues in demo application
