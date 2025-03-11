@@ -24,9 +24,8 @@ export class ToastComponent {
   showToast() {
     this.toastService.show({
       actioned: this.handleDismiss.bind(this),
-      title: 'Uh oh! Something went wrong.',
-      text: 'This is a toast text to show something has happened, This is a toast text to show something has happened',
-      action: 'Try again',
+      title: 'Uh oh!',
+      text: 'This is a toast',
       shape: 'curve',
       type: 'default',
     });
