@@ -11,6 +11,7 @@
 
     .__zap__toast__text {
       @apply text-[length:var(--zap-toast-font-size)] font-[var(--zap-toast-font-weight)] leading-[var(--zap-toast-line-height)] tracking-[var(--zap-toast-letter-spacing)]  text-[var(--zap-toast-text-color)];
+      @apply sm:max-w-[300px]
     }
   }
 
