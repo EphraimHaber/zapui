@@ -6,3 +6,5 @@ leverages the power of Tailwind CSS to provide a set of pre-designed
 components and utilities that can be easily integrated into your projects.
 Whether you're building a small project or a large-scale application, Zap UI
 helps you maintain a cohesive look and feel throughout your application.
+
+Check out our [documentation](https://zapui.togethercreative.co.uk/) for detailed guides and examples.
