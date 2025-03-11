@@ -8,17 +8,18 @@
   .__zap__toast__content {
     .__zap__toast__title {
       @apply text-[length:var(--zap-toast-title-font-size)] font-[var(--zap-toast-title-font-weight)] leading-[var(--zap-toast-title-line-height)] tracking-[var(--zap-toast-title-letter-spacing)]  text-[var(--zap-toast-title-color)];
+      @apply py-0 my-0;
     }
 
     .__zap__toast__text {
       @apply text-[length:var(--zap-toast-font-size)] font-[var(--zap-toast-font-weight)] leading-[var(--zap-toast-line-height)] tracking-[var(--zap-toast-letter-spacing)]  text-[var(--zap-toast-text-color)];
-      @apply sm:max-w-[18.75rem];
+      @apply sm:max-w-[18.75rem] py-0 my-0;
     }
   }
 
   .__zap__toast__actions {
     .btn {
-      @apply border rounded-[var(--zap-toast-btn-border-radius)] text-sm transition-colors duration-150 ease-in-out;
+      @apply cursor-pointer border rounded-[var(--zap-toast-btn-border-radius)] text-sm transition-colors duration-150 ease-in-out;
       @apply border-[var(--zap-toast-btn-border-color)] hover:border-[var(--zap-toast-btn-border-hover-color)] text-[var(--zap-toast-btn-text-color)] hover:text-[var(--zap-toast-btn-text-hover-color)];
       @apply bg-[var(--zap-toast-bg-color)] hover:bg-[var(--zap-toast-bg-hover-color)];
       @apply pl-[var(--zap-toast-btn-padding-left)] pr-[var(--zap-toast-btn-padding-right)] pt-[var(--zap-toast-btn-padding-top)] pb-[var(--zap-toast-btn-padding-bottom)];
