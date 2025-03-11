@@ -17,7 +17,6 @@ type ToastPosition = 'top' | 'bottom';
 
 @Injectable({ providedIn: 'root' })
 export class ZapToastService {
-  private lastToastTime = signal<number>(0);
   private activeToastRef = signal<ComponentRef<ZapToast> | null>(null);
   private readonly destroyRef = inject(DestroyRef);
 
@@ -54,7 +53,7 @@ export class ZapToastService {
     setTimeout(() => {
       cleanup();
       this.hide(toastComponentRef);
-    }, TOAST_DURATION);
+    }, config.duration || TOAST_DURATION);
 
     this.activeToastRef.set(toastComponentRef);
   }
@@ -67,6 +66,9 @@ export class ZapToastService {
   }
 
   private setupPositionHandling(element: HTMLElement): () => void {
+    if(typeof window === 'undefined') return () => {
+      return;
+    };
     const updatePosition = () => {
       const position: ToastPosition =
         window.innerWidth < 640 ? 'top' : 'bottom';
@@ -91,6 +93,10 @@ export class ZapToastService {
 
   private dismissImmediately(toastRef: ComponentRef<ZapToast>) {
     if (!toastRef || !toastRef.location) return;
+    const element = toastRef.location.nativeElement;
+    if (element && element.parentNode === document.body) {
+      document.body.removeChild(element);
+    }
     toastRef.destroy();
     this.activeToastRef.set(null);
   }
@@ -103,6 +109,9 @@ export class ZapToastService {
     element.style.opacity = '0';
 
     setTimeout(() => {
+      if (element && element.parentNode === document.body) {
+        document.body.removeChild(element);
+      }
       toastRef.destroy();
       this.activeToastRef.set(null);
     }, 300);
@@ -119,8 +128,6 @@ export class ZapToastService {
       if (this.activeToastRef()) {
         this.dismissImmediately(this.activeToastRef()!);
       }
-
-      this.lastToastTime.set(Date.now());
       this.createToast(config);
     } catch (error) {
       console.error('Failed to show toast:', error);
