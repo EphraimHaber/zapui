@@ -3,6 +3,7 @@
   @apply flex items-center justify-between gap-x-10 text-[var(--zap-toast-text-color)];
   @apply pl-[var(--zap-toast-padding-left)] pr-[var(--zap-toast-padding-right)] pt-[var(--zap-toast-padding-top)] pb-[var(--zap-toast-padding-bottom)] origin-bottom select-none touch-none;
   @apply max-sm:flex-col max-sm:items-start max-sm:gap-x-0 max-sm:gap-y-3;
+  @apply sm:min-w-[25rem];
 
   .__zap__toast__content {
     .__zap__toast__title {
@@ -11,6 +12,7 @@
 
     .__zap__toast__text {
       @apply text-[length:var(--zap-toast-font-size)] font-[var(--zap-toast-font-weight)] leading-[var(--zap-toast-line-height)] tracking-[var(--zap-toast-letter-spacing)]  text-[var(--zap-toast-text-color)];
+      @apply sm:max-w-[18.75rem];
     }
   }
 
