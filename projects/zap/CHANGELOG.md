@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.0-alpha.6
+- Latest release of alpha version
+- Fixed: Swipe is disabled for component only toast elements
+- Enhanced: Removed padding and marging from title and text elements of toast component
+
 ## 0.0.0-alpha.5
 - Fixed: Maximum width of `18.75rem` used for toast text element starting from screen size sm
 - Fixed: Minimum width of `25rem` used for toast component starting from screen size sm
