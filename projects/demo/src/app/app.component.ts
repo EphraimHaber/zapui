@@ -17,6 +17,7 @@ import { TextareaComponent } from './components/textarea/textarea.component';
 import { RadioComponent } from './components/radio/radio.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +39,8 @@ import { ToggleComponent } from './components/toggle/toggle.component';
     TextareaComponent,
     RadioComponent,
     ThemeSwitcherComponent,
-    ToggleComponent
+    ToggleComponent,
+    ToastComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

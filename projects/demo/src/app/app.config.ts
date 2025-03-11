@@ -10,6 +10,9 @@ const ngxConfig: ZapConfig = {
     global: {
       shape: 'curve',
     },
+    toast: {
+      // shape: 'curve',
+    }
   },
 };
 

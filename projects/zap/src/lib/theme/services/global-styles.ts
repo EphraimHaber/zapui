@@ -1676,6 +1676,88 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
         value: '0.875rem',
       },
     ],
+    toast: [
+      {
+        label: 'bg-color',
+        value: theme.colors.primary,
+      },
+      {
+        label: 'title-color',
+        value: theme.colors.secondary,
+      },
+      {
+        label: 'text-color',
+        value: hexToRgba(theme.colors.secondary, 0.5),
+      },
+      {
+        label: 'border-color',
+        value: hexToRgba(theme.colors.secondary, 0.1),
+      },
+      {
+        label: 'btn-border-color',
+        value: hexToRgba(theme.colors.secondary, 0.1),
+      },
+      {
+        label: 'btn-border-hover-color',
+        value: hexToRgba(theme.colors.secondary, 0.2),
+      },
+      {
+        label: 'btn-text-color',
+        value: hexToRgba(theme.colors.secondary, 0.8),
+      },
+      {
+        label: 'btn-text-hover-color',
+        value: theme.colors.secondary,
+      },
+      {
+        label: 'dismiss-color',
+        value: hexToRgba(theme.colors.secondary, 0.5),
+      },
+      {
+        label: 'dismiss-hover-color',
+        value: hexToRgba(theme.colors.secondary, 0.3),
+      },
+      {
+        label: 'padding-left',
+        value: '1.25rem',
+      },
+      {
+        label: 'padding-right',
+        value: '2rem',
+      },
+      {
+        label: 'padding-top',
+        value: '1rem',
+      },
+      {
+        label: 'padding-bottom',
+        value: '1rem',
+      },
+      {
+        label: 'btn-padding-left',
+        value: '0.75rem',
+      },
+      {
+        label: 'btn-padding-right',
+        value: '0.75rem',
+      },
+      {
+        label: 'btn-padding-top',
+        value: '0.375rem',
+      },
+      {
+        label: 'btn-padding-bottom',
+        value: '0.375rem',
+      },
+      {
+        label: 'font-size',
+        value: '0.875rem',
+      },
+      {
+        label: 'btn-font-size',
+        value: '0.875rem',
+      }
+    ]
   };
   for (const [component, stylesArray] of Object.entries(styles)) {
     for (const style of stylesArray) {
