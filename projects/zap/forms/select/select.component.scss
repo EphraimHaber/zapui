@@ -8,6 +8,16 @@
   &.compact {
     .__zap__form__control__select {
       @apply text-sm py-1.5 px-2;
+
+      &.left {
+        @apply pl-10;
+      }
+    }
+
+    .chips {
+      .chip {
+        @apply py-0;
+      }
     }
   }
 
@@ -217,10 +227,6 @@ fieldset {
   }
 
   &.compact {
-    .checkbox {
-      @apply h-4 w-3;
-    }
-
     .__zap__form__control__option {
       @apply text-sm px-2 py-1.5;
     }
