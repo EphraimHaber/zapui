@@ -78,6 +78,10 @@ export function getSizeVariables(sizeValue: string, component: string): string {
     return '';
   }
 
+  if (!config[sizeValue as keyof typeof config]) {
+    return '';
+  }
+
   cssVariables += Object.entries(config[sizeValue as keyof typeof config])
     .map(([key, value]) => `--zap-${component}-${key}: ${value};`)
     .join('\n');
