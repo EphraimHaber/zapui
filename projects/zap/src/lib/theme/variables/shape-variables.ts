@@ -1,7 +1,4 @@
-export function getShapeVariable(
-  shapeValue: string,
-  component: string
-): string {
+export function getShapeVariable(shapeValue: string, component: string): string {
   const configList = {
     default: {
       pill: 'calc(infinity * 1px)',
@@ -19,7 +16,7 @@ export function getShapeVariable(
           pill: 'calc(infinity * 1px)',
           curve: '0.375rem',
         },
-      }
+      },
     },
     modal: {
       pill: '1rem',
@@ -87,7 +84,7 @@ export function getShapeVariable(
           pill: '0.675rem',
           curve: '0.375rem',
         },
-      }
+      },
     },
     tooltip: {
       pill: 'calc(infinity * 1px)',
@@ -100,33 +97,31 @@ export function getShapeVariable(
         handler: {
           pill: 'calc(infinity * 1px)',
           curve: '0.25rem',
-        }
-      }
-    }
-  };
-  let cssVariables = '';
+        },
+      },
+    },
+  }
+  let cssVariables = ''
 
   const componentConfig: any =
-    configList[component as keyof typeof configList] || configList.default;
+    configList[component as keyof typeof configList] || configList.default
 
   if (componentConfig.elements) {
     Object.keys(componentConfig.elements).forEach((element: string) => {
-      const elementConfig = componentConfig.elements[element];
+      const elementConfig = componentConfig.elements[element]
       if (shapeValue === 'flat') {
-        cssVariables += `--zap-${component}-${element}-border-radius: 0;\n`;
+        cssVariables += `--zap-${component}-${element}-border-radius: 0;\n`
       } else if (elementConfig[shapeValue as keyof typeof elementConfig]) {
         cssVariables += `--zap-${component}-${element}-border-radius: ${
           elementConfig[shapeValue as keyof typeof elementConfig]
-        };\n`;
+        };\n`
       }
-    });
+    })
   }
 
   cssVariables += `--zap-${component}-border-radius: ${
-    shapeValue === 'flat'
-      ? '0'
-      : componentConfig[shapeValue as keyof typeof componentConfig]
-  };\n`;
+    shapeValue === 'flat' ? '0' : componentConfig[shapeValue as keyof typeof componentConfig]
+  };\n`
 
-  return cssVariables;
+  return cssVariables
 }

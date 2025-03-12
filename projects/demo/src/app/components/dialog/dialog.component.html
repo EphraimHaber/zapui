@@ -1,21 +1,11 @@
-@if(dialogOpen) {
-<zap-dialog shape="curve" (close)="dialogOpen = !dialogOpen" [showOverlay]="true">
-  <div zapDialogFooter >
-    <zap-button
-      text="No, cancel"
-      size="wide"
-      variant="outlined"
-      shape="curve"
-    ></zap-button>
-    <zap-button
-      text="Yes, I'm sure"
-      size="wide"
-      type="default"
-      shape="curve"
-    ></zap-button>
-  </div>
-  <p class="text-zinc-500">Are you sure you want to delete this item?</p>
-</zap-dialog>
+@if (dialogOpen) {
+  <zap-dialog shape="curve" (close)="dialogOpen = !dialogOpen" [showOverlay]="true">
+    <div zapDialogFooter>
+      <zap-button text="No, cancel" size="wide" variant="outlined" shape="curve"></zap-button>
+      <zap-button text="Yes, I'm sure" size="wide" type="default" shape="curve"></zap-button>
+    </div>
+    <p class="text-zinc-500">Are you sure you want to delete this item?</p>
+  </zap-dialog>
 }
 <div class="flex justify-center items-center h-[30vh]">
   <zap-button
@@ -23,6 +13,5 @@
     size="wide"
     type="default"
     shape="curve"
-    (click)="dialogOpen = !dialogOpen"
-  ></zap-button>
+    (click)="dialogOpen = !dialogOpen"></zap-button>
 </div>

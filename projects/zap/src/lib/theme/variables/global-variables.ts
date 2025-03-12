@@ -1,5 +1,5 @@
-import { GlobalConfig } from '../../interfaces/config.interface';
-import { getShapeVariable } from './shape-variables';
+import { GlobalConfig } from '../../interfaces/config.interface'
+import { getShapeVariable } from './shape-variables'
 
 export function generateComponentGlobalVariables(config: GlobalConfig): string {
   const components = [
@@ -17,16 +17,16 @@ export function generateComponentGlobalVariables(config: GlobalConfig): string {
     'dp-calendar',
     'date-picker',
     'dp-calendar-select',
-    'toast'
-  ];
-  let cssVariables = '';
+    'toast',
+  ]
+  let cssVariables = ''
 
   for (const component of components) {
-    const shapeValue = config.shape;
+    const shapeValue = config.shape
 
     if (shapeValue) {
-      cssVariables += getShapeVariable(shapeValue, component);
+      cssVariables += getShapeVariable(shapeValue, component)
     }
   }
-  return cssVariables;
+  return cssVariables
 }

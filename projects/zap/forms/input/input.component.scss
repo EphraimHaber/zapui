@@ -57,7 +57,6 @@
         @apply pl-10;
       }
     }
-    
   }
 
   &.curve {
@@ -89,7 +88,7 @@
     @apply m-0;
   }
 
-  input[type="number"] {
+  input[type='number'] {
     -moz-appearance: textfield;
   }
 }

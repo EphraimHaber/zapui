@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
+  content: ['./src/**/*.{html,ts}'],
   safelist: [
     {
       pattern: /(bg-|text-|fill-|border-|stroke-|from-|to-|via-).*/,
@@ -59,24 +59,24 @@ module.exports = {
             : `rgb(var(--zap-color-info-text))`,
       },
       fontSize: {
-        "7xl": "var(--zap-font-size-7xl)",
-        "6xl": "var(--zap-font-size-6xl)",
-        "5xl": "var(--zap-font-size-5xl)",
-        "4xl": "var(--zap-font-size-4xl)",
-        "3xl": "var(--zap-font-size-3xl)",
-        "2xl": "var(--zap-font-size-2xl)",
-        xl: "var(--zap-font-size-xl)",
-        lg: "var(--zap-font-size-lg)",
-        md: "var(--zap-font-size-md)",
-        sm: "var(--zap-font-size-sm)",
-        xs: "var(--zap-font-size-xs)",
-        xxs: "var(--zap-font-size-xxs)",
+        '7xl': 'var(--zap-font-size-7xl)',
+        '6xl': 'var(--zap-font-size-6xl)',
+        '5xl': 'var(--zap-font-size-5xl)',
+        '4xl': 'var(--zap-font-size-4xl)',
+        '3xl': 'var(--zap-font-size-3xl)',
+        '2xl': 'var(--zap-font-size-2xl)',
+        xl: 'var(--zap-font-size-xl)',
+        lg: 'var(--zap-font-size-lg)',
+        md: 'var(--zap-font-size-md)',
+        sm: 'var(--zap-font-size-sm)',
+        xs: 'var(--zap-font-size-xs)',
+        xxs: 'var(--zap-font-size-xxs)',
       },
       fontFamily: {
         icon: ['"Font Awesome 6 Pro"'],
       },
       screens: {
-        xxs: "320px",
+        xxs: '320px',
         xs: '375px',
       },
       keyframes: {
@@ -100,5 +100,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("./tailwind/base")],
-};
+  plugins: [require('@tailwindcss/forms'), require('./tailwind/base')],
+}

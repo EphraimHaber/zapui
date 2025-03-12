@@ -8,9 +8,7 @@
     "inlineSources": true,
     "strictPropertyInitialization": false,
     "types": ["node"],
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": [
-    "**/*.spec.ts"
-  ]
+  "exclude": ["**/*.spec.ts"]
 }
