@@ -12,7 +12,7 @@ const ngxConfig: ZapConfig = {
     },
     toast: {
       // shape: 'curve',
-    }
+    },
   },
 };
 

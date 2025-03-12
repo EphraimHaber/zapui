@@ -6,14 +6,14 @@
   &.nounderline {
     @apply hover:no-underline;
   }
-  
+
   svg {
     @apply transition-all duration-150 ease-linear;
-    
+
     path {
       @apply fill-current;
     }
-    
+
     &.open {
       @apply transform;
       transform: rotate(180deg);

@@ -1,10 +1,7 @@
 import { ZapTheme } from '../../interfaces/config.interface';
 import { convertColorToRgb, hexToRgb, toKebabCase } from './base-theme-utils';
 
-export function generateColorVariables(
-  theme: ZapTheme,
-  root: HTMLElement
-): string {
+export function generateColorVariables(theme: ZapTheme, root: HTMLElement): string {
   let cssVariables = '';
 
   Object.entries(theme.colors || {}).forEach(([key, value]) => {
@@ -17,10 +14,7 @@ export function generateColorVariables(
   return cssVariables;
 }
 
-export function getExistingColor(
-  root: HTMLElement,
-  key: string,
-): string {
-    const existingColor = root.style.getPropertyValue(`--zap-color-${key}`).trim();
-    return convertColorToRgb(existingColor);
+export function getExistingColor(root: HTMLElement, key: string): string {
+  const existingColor = root.style.getPropertyValue(`--zap-color-${key}`).trim();
+  return convertColorToRgb(existingColor);
 }

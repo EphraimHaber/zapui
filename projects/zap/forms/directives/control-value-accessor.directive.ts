@@ -1,11 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Directive,
-  Inject,
-  Injector,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { ChangeDetectorRef, Directive, Inject, Injector, OnInit, OnDestroy } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -21,9 +14,7 @@ import { distinctUntilChanged, startWith, Subject, takeUntil, tap } from 'rxjs';
 @Directive({
   selector: '[libControlValueAccessor]',
 })
-export class ControlValueAccessorDirective<T>
-  implements OnInit, ControlValueAccessor, OnDestroy
-{
+export class ControlValueAccessorDirective<T> implements OnInit, ControlValueAccessor, OnDestroy {
   control!: FormControl;
   isRequired = false;
 
@@ -36,7 +27,7 @@ export class ControlValueAccessorDirective<T>
 
   constructor(
     @Inject(Injector) private injector: Injector,
-    protected cdr: ChangeDetectorRef
+    protected cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -62,13 +53,12 @@ export class ControlValueAccessorDirective<T>
               distinctUntilChanged(),
               tap((val) => {
                 this.writeValue(val);
-              })
+              }),
             )
             .subscribe();
           break;
         default:
-          this.control = (formControl as FormControlDirective)
-            .form as FormControl;
+          this.control = (formControl as FormControlDirective).form as FormControl;
           break;
       }
     } catch {
@@ -96,7 +86,7 @@ export class ControlValueAccessorDirective<T>
           fn(val);
           this.control?.updateValueAndValidity();
           this.onValueChange(val);
-        })
+        }),
       )
       .subscribe();
   }

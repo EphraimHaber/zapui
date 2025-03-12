@@ -67,22 +67,15 @@ export class DPCalendar implements OnInit {
         const endMonthIndex = (i + this.monthsPerView - 1) % this.months.length;
         const endMonth = this.months[endMonthIndex];
         const endYear =
-          i + this.monthsPerView - 1 >= this.months.length
-            ? parseInt(year) + 1
-            : parseInt(year);
+          i + this.monthsPerView - 1 >= this.months.length ? parseInt(year) + 1 : parseInt(year);
 
-        this.monthsAndYearRange.push(
-          `${startMonth} ${parseInt(year)} - ${endMonth} ${endYear}`
-        );
+        this.monthsAndYearRange.push(`${startMonth} ${parseInt(year)} - ${endMonth} ${endYear}`);
       }
     }
 
-    this.selectedMonthAndYearRange = `${this.currentMonth} ${
-      this.currentYear
-    } - ${
+    this.selectedMonthAndYearRange = `${this.currentMonth} ${this.currentYear} - ${
       this.months[
-        (this.months.indexOf(this.currentMonth) + this.monthsPerView - 1) %
-          this.months.length
+        (this.months.indexOf(this.currentMonth) + this.monthsPerView - 1) % this.months.length
       ]
     } ${this.currentYear}`;
   }
@@ -96,11 +89,7 @@ export class DPCalendar implements OnInit {
   }[][] {
     const months = [];
     for (let i = 0; i < this.monthsPerView; i++) {
-      const date = new Date(
-        this.currentYear,
-        this.currentDate.getMonth() + i,
-        1
-      );
+      const date = new Date(this.currentYear, this.currentDate.getMonth() + i, 1);
       const month = date.toLocaleString('default', { month: 'long' });
       const year = date.getFullYear();
       const monthIndex = date.getMonth();
@@ -124,9 +113,7 @@ export class DPCalendar implements OnInit {
 
     for (let i = 0; i < firstDayOfMonth.getDay(); i++) {
       const prevMonthDay = new Date(firstDayOfMonth);
-      prevMonthDay.setDate(
-        firstDayOfMonth.getDate() - (firstDayOfMonth.getDay() - i)
-      );
+      prevMonthDay.setDate(firstDayOfMonth.getDate() - (firstDayOfMonth.getDay() - i));
       currentWeek.push(prevMonthDay);
     }
 
@@ -143,8 +130,7 @@ export class DPCalendar implements OnInit {
       while (currentWeek.length < 7) {
         const nextMonthDay = new Date(lastDayOfMonth);
         nextMonthDay.setDate(
-          lastDayOfMonth.getDate() +
-            (currentWeek.length - lastDayOfMonth.getDay())
+          lastDayOfMonth.getDate() + (currentWeek.length - lastDayOfMonth.getDay()),
         );
         currentWeek.push(nextMonthDay);
       }
@@ -178,15 +164,13 @@ export class DPCalendar implements OnInit {
     if (!this.startDate && !this.endDate) return false;
     const dateString = date.toDateString();
     return (
-      dateString === this.startDate?.toDateString() ||
-      dateString === this.endDate?.toDateString()
+      dateString === this.startDate?.toDateString() || dateString === this.endDate?.toDateString()
     );
   }
 
   isInRange(date: Date): boolean {
     if (!this.startDate || !this.endDate) return false;
-    if (this.startDate.toDateString() === this.endDate.toDateString())
-      return false;
+    if (this.startDate.toDateString() === this.endDate.toDateString()) return false;
     return date >= this.startDate && date <= this.endDate;
   }
 
@@ -233,12 +217,9 @@ export class DPCalendar implements OnInit {
   goToPreviousMonth(): void {
     this.previousMonth.emit(this.monthsPerView);
     if (!this.range || this.monthsPerView <= 1) return;
-    const currentIndex = this.monthsAndYearRange.indexOf(
-      this.selectedMonthAndYearRange
-    );
+    const currentIndex = this.monthsAndYearRange.indexOf(this.selectedMonthAndYearRange);
     if (currentIndex > 0) {
-      this.selectedMonthAndYearRange =
-        this.monthsAndYearRange[currentIndex - 1];
+      this.selectedMonthAndYearRange = this.monthsAndYearRange[currentIndex - 1];
 
       const [start] = this.selectedMonthAndYearRange.split(' - ');
       const startMonth = start.split(' ')[0];
@@ -258,12 +239,9 @@ export class DPCalendar implements OnInit {
     this.nextMonth.emit(this.monthsPerView);
     if (!this.range || this.monthsPerView <= 1) return;
 
-    const currentIndex = this.monthsAndYearRange.indexOf(
-      this.selectedMonthAndYearRange
-    );
+    const currentIndex = this.monthsAndYearRange.indexOf(this.selectedMonthAndYearRange);
     if (currentIndex < this.monthsAndYearRange.length - 1) {
-      this.selectedMonthAndYearRange =
-        this.monthsAndYearRange[currentIndex + 1];
+      this.selectedMonthAndYearRange = this.monthsAndYearRange[currentIndex + 1];
 
       const [start] = this.selectedMonthAndYearRange.split(' - ');
       const startMonth = start.split(' ')[0];
@@ -308,15 +286,18 @@ export class DPCalendar implements OnInit {
   }
 
   isDisabled(day: Date): boolean {
-    if(this.minDate && day < this.minDate) {
-      return true;
-    }
-    
-    if(this.maxDate && day > this.maxDate) {
+    if (this.minDate && day < this.minDate) {
       return true;
     }
 
-    if(this.disableInactive && !this.isCurrentMonth(day, this.currentDate.getMonth(), this.currentDate.getFullYear())) {
+    if (this.maxDate && day > this.maxDate) {
+      return true;
+    }
+
+    if (
+      this.disableInactive &&
+      !this.isCurrentMonth(day, this.currentDate.getMonth(), this.currentDate.getFullYear())
+    ) {
       return true;
     }
 
@@ -327,9 +308,7 @@ export class DPCalendar implements OnInit {
     if (
       this.disableDates &&
       this.disableDates.length > 0 &&
-      this.disableDates.some(
-        (date) => date.toDateString() === day.toDateString()
-      )
+      this.disableDates.some((date) => date.toDateString() === day.toDateString())
     ) {
       return true;
     }
@@ -346,13 +325,22 @@ export class DPCalendar implements OnInit {
     return false;
   }
   isRangeBefore(date: Date): boolean {
-    return this.startDate !== null && this.endDate !== null && date > this.startDate && date <= this.endDate;
+    return (
+      this.startDate !== null &&
+      this.endDate !== null &&
+      date > this.startDate &&
+      date <= this.endDate
+    );
   }
 
   isRangeAfter(date: Date): boolean {
-    return this.startDate !== null && this.endDate !== null && date >= this.startDate && date < this.endDate;
+    return (
+      this.startDate !== null &&
+      this.endDate !== null &&
+      date >= this.startDate &&
+      date < this.endDate
+    );
   }
-
 
   get classes(): string[] {
     return [this.shape, this.size, this.zapClass];

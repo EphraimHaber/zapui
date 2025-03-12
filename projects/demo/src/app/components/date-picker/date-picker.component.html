@@ -6,9 +6,8 @@
     [formControl]="datePickerControl"
     helpText="Select your date of birth"
     [dropdown]="false"
-    (onChange)="onChange($event)"
-    ></zap-date-picker>
-    <zap-date-picker
+    (onChange)="onChange($event)"></zap-date-picker>
+  <zap-date-picker
     id="some"
     label="Date picker"
     [formControl]="datePickerControl2"
@@ -16,15 +15,13 @@
     [disableInactive]="true"
     [disableWeekends]="true"
     [disableDates]="disableDates"
-    [disableRanges]="disableRanges"
-  ></zap-date-picker>
+    [disableRanges]="disableRanges"></zap-date-picker>
   <zap-date-picker
     label="Range date picker"
     [range]="true"
     [breakpoints]="breakpoints"
     [formControl]="datePickerControl3"
-    [dropdown]="false"
-  >
+    [dropdown]="false">
   </zap-date-picker>
   <zap-date-picker
     label="Range date picker"
@@ -34,7 +31,6 @@
     shape="curve"
     [minDate]="minDate"
     [maxDate]="maxDate"
-    [daysOfWeek]="daysOfWeek"
-  >
+    [daysOfWeek]="daysOfWeek">
   </zap-date-picker>
 </div>

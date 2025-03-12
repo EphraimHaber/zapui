@@ -34,13 +34,7 @@ describe('ZapButton', () => {
     component.variant = 'outlined';
     component.zapClass = 'custom-class';
     fixture.detectChanges();
-    expect(component.classes).toEqual([
-      'success',
-      'pill',
-      'compact',
-      'outlined',
-      'custom-class',
-    ]);
+    expect(component.classes).toEqual(['success', 'pill', 'compact', 'outlined', 'custom-class']);
   });
 
   it('should set icon styles correctly after view init', () => {
@@ -53,9 +47,7 @@ describe('ZapButton', () => {
     component.icononly = false;
     component.ngAfterViewInit();
     expect(component.iconDirective.el.nativeElement.style.order).toBe('1');
-    expect(component.iconDirective.el.nativeElement.style.marginLeft).toBe(
-      '8px'
-    );
+    expect(component.iconDirective.el.nativeElement.style.marginLeft).toBe('8px');
   });
 
   it('should disable the button when disabled input is true', () => {
@@ -82,9 +74,7 @@ describe('ZapButton', () => {
     component.icononly = false;
     component.ngAfterViewInit();
     expect(component.iconDirective.el.nativeElement.style.order).toBe('0');
-    expect(component.iconDirective.el.nativeElement.style.marginRight).toBe(
-      '8px'
-    );
+    expect(component.iconDirective.el.nativeElement.style.marginRight).toBe('8px');
   });
 
   it('should apply the correct variant class', () => {

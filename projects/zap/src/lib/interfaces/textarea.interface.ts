@@ -3,7 +3,9 @@ import { HexCode, Padding, ShapeType } from './index';
 export interface TextareaConfig {
   shape?: ShapeType;
   styles?: {
-    colors?: Record<string, {
+    colors?: Record<
+      string,
+      {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -18,7 +20,8 @@ export interface TextareaConfig {
         textFocusColor?: HexCode;
         iconColor?: HexCode;
         helpTextColor?: HexCode;
-      }>;
+      }
+    >;
     borderRadius?: string;
     paddingLeft?: string;
     paddingRight?: string;

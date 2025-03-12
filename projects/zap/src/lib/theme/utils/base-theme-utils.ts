@@ -42,7 +42,6 @@ export function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-
 export function hexToRgb(hex: string): string {
   let r = 0,
     g = 0,
@@ -79,15 +78,9 @@ export function rgbaToRgbNumber(rgba: string): string {
   return '';
 }
 
-
 export function deepEqual(obj1: Record<string, unknown>, obj2: Record<string, unknown>): boolean {
   if (obj1 === obj2) return true;
-  if (
-    typeof obj1 !== 'object' ||
-    typeof obj2 !== 'object' ||
-    obj1 === null ||
-    obj2 === null
-  ) {
+  if (typeof obj1 !== 'object' || typeof obj2 !== 'object' || obj1 === null || obj2 === null) {
     return false;
   }
 
@@ -98,7 +91,8 @@ export function deepEqual(obj1: Record<string, unknown>, obj2: Record<string, un
 
   for (const key of keys1) {
     if (!keys2.includes(key)) return false;
-    if (!deepEqual(obj1[key] as Record<string, unknown>, obj2[key] as Record<string, unknown>)) return false;
+    if (!deepEqual(obj1[key] as Record<string, unknown>, obj2[key] as Record<string, unknown>))
+      return false;
   }
 
   return true;
@@ -114,12 +108,11 @@ function rgbToHex(color: string): string {
   return '';
 }
 function rgbNumberToHex(color: string): string {
-  const rgb = color.split(',').map(num => parseInt(num.trim()));
-  
+  const rgb = color.split(',').map((num) => parseInt(num.trim()));
+
   if (rgb.length !== 3) {
-   return '';
+    return '';
   }
   const [r, g, b] = rgb;
   return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
 }
-

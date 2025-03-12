@@ -6,7 +6,7 @@ import { ZapButton, ZapModal } from 'zap/core';
   standalone: true,
   imports: [ZapModal, ZapButton],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.scss'
+  styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
   modalOpen = false;

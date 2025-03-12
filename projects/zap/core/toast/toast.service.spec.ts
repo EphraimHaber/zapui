@@ -9,7 +9,7 @@ describe('ZapToastService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ZapToastService]
+      providers: [ZapToastService],
     });
     service = TestBed.inject(ZapToastService);
   });
@@ -36,5 +36,3 @@ describe('ZapToastService', () => {
     expect(service['activeToastRef']()).toBeNull();
   }));
 });
-
-

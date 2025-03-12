@@ -67,7 +67,8 @@ button {
   }
 
   &.icononly {
-    i,svg {
+    i,
+    svg {
       @apply mx-0;
     }
 

@@ -1,4 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ContentChild,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ZapIconDirective } from '../public-api';
@@ -12,8 +20,7 @@ import { ZapIconDirective } from '../public-api';
 })
 export class ZapAlert implements AfterViewInit {
   @Output() dismiss: EventEmitter<void> = new EventEmitter<void>();
-  @Input() type: 'success' | 'warning' | 'error' | 'info' | 'default' =
-    'default';
+  @Input() type: 'success' | 'warning' | 'error' | 'info' | 'default' = 'default';
   @Input() shape!: 'curve' | 'pill' | 'flat';
   @Input() variant!: 'default' | 'outlined';
   @Input() icon = '';
@@ -31,12 +38,7 @@ export class ZapAlert implements AfterViewInit {
   }
 
   get classes() {
-    return [
-      this.shape,
-      this.variant,
-      this.type,
-      this.zapClass,
-    ]
+    return [this.shape, this.variant, this.type, this.zapClass]
       .filter((cls) => cls && cls !== 'default')
       .join(' ');
   }

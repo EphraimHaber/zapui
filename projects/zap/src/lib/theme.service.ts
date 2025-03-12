@@ -3,16 +3,16 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 import { NGX_ZAP_CONFIG } from './tokens/zap.tokens';
 import { GlobalConfig, ZapConfig, ZapTheme } from './interfaces';
-import {
-  lightTheme,
-  defaultConfig,
-  darkTheme,
-} from './constants/default-config.constants';
+import { lightTheme, defaultConfig, darkTheme } from './constants/default-config.constants';
 import { deepEqual } from './theme/utils/base-theme-utils';
 import { generateColorVariables } from './theme/utils/color-utils';
 import { generateFontSizeVariables } from './theme/utils/font-utils';
 import { generateGlobalStylesVariables } from './theme/services/global-styles';
-import { getShapeVariable, getSizeVariables, generateComponentGlobalVariables } from './theme/variables';
+import {
+  getShapeVariable,
+  getSizeVariables,
+  generateComponentGlobalVariables,
+} from './theme/variables';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class ThemeService {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: object,
-    @Optional() @Inject(NGX_ZAP_CONFIG) private config: ZapConfig
+    @Optional() @Inject(NGX_ZAP_CONFIG) private config: ZapConfig,
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
@@ -38,8 +38,7 @@ export class ThemeService {
     const config = this.config || defaultConfig;
     if (
       this.activeTheme !== undefined &&
-      (this.activeTheme === customTheme ||
-        (this.activeTheme === config.theme && !customTheme))
+      (this.activeTheme === customTheme || (this.activeTheme === config.theme && !customTheme))
     ) {
       return;
     }
@@ -49,10 +48,7 @@ export class ThemeService {
     if (customTheme && typeof customTheme === 'object') {
       if (
         typeof customTheme === 'object' &&
-        deepEqual(
-          customTheme,
-          this.config.theme as unknown as Record<string, unknown>
-        )
+        deepEqual(customTheme, this.config.theme as unknown as Record<string, unknown>)
       ) {
         return;
       }
@@ -85,8 +81,7 @@ export class ThemeService {
   }
 
   private removeExistingStyleElement(): void {
-    const existingStyleElement =
-      this.document.getElementById('zap-theme-styles');
+    const existingStyleElement = this.document.getElementById('zap-theme-styles');
     if (existingStyleElement) {
       existingStyleElement.remove();
     }
@@ -98,11 +93,7 @@ export class ThemeService {
     return styleElement;
   }
 
-  private generateCssVariables(
-    theme: ZapTheme,
-    config: ZapConfig,
-    root: HTMLElement
-  ): string {
+  private generateCssVariables(theme: ZapTheme, config: ZapConfig, root: HTMLElement): string {
     let cssVariables = '';
     cssVariables += generateColorVariables(theme, root);
     cssVariables += generateFontSizeVariables(theme);

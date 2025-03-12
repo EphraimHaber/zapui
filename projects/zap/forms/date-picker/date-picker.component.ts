@@ -12,11 +12,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { ControlValueAccessorDirective } from '../directives/control-value-accessor.directive';
@@ -33,13 +29,7 @@ import {
 @Component({
   selector: 'zap-date-picker',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ValidationErrorComponent,
-    DPCalendar,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ValidationErrorComponent, DPCalendar],
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss',
   providers: [
@@ -159,21 +149,15 @@ export class ZapDatePicker<T>
   ngAfterViewInit() {
     if (this.iconDirective) {
       this.iconDirective.el.nativeElement.style.height =
-        this.size === 'compact'
-          ? '14px'
-          : 'var(--zap-date-picker-icon-font-size)';
+        this.size === 'compact' ? '14px' : 'var(--zap-date-picker-icon-font-size)';
       this.iconDirective.el.nativeElement.style.fontSize =
-        this.size === 'compact'
-          ? '14px'
-          : 'var(--zap-date-picker-icon-font-size)';
-      this.iconDirective.el.nativeElement.style.color =
-        'var(--zap-date-picker-icon-color)';
+        this.size === 'compact' ? '14px' : 'var(--zap-date-picker-icon-font-size)';
+      this.iconDirective.el.nativeElement.style.color = 'var(--zap-date-picker-icon-color)';
       this.iconDirective.el.nativeElement.style.marginRight =
         this.iconPosition === 'left' ? '8px' : '0';
       this.iconDirective.el.nativeElement.style.marginLeft =
         this.iconPosition === 'right' ? '8px' : '0';
-      this.iconDirective.el.nativeElement.style.order =
-        this.iconPosition === 'right' ? '1' : '0';
+      this.iconDirective.el.nativeElement.style.order = this.iconPosition === 'right' ? '1' : '0';
       this.iconDirective.el.nativeElement.style.position = 'absolute';
       this.iconDirective.el.nativeElement.style.top = '50%';
       this.iconDirective.el.nativeElement.style.transform = 'translateY(-50%)';
@@ -197,8 +181,7 @@ export class ZapDatePicker<T>
     }
 
     if (this.labelDirective) {
-      this.labelDirective.el.nativeElement.style.color =
-        'var(--zap-date-picker-label-color)';
+      this.labelDirective.el.nativeElement.style.color = 'var(--zap-date-picker-label-color)';
       this.labelDirective.el.nativeElement.style.fontSize =
         'var(--zap-date-picker-label-font-size)';
       this.labelDirective.el.nativeElement.style.fontWeight =
@@ -232,12 +215,8 @@ export class ZapDatePicker<T>
       return `${formatDate(
         this.control.value.startDate,
         this.dateFormat,
-        this.locale
-      )} - ${formatDate(
-        this.control.value.endDate,
-        this.dateFormat,
-        this.locale
-      )}`;
+        this.locale,
+      )} - ${formatDate(this.control.value.endDate, this.dateFormat, this.locale)}`;
     }
   }
 
@@ -245,14 +224,13 @@ export class ZapDatePicker<T>
     const currentYear = new Date().getFullYear();
     const startYear = this.minYear ?? currentYear - 50;
     const endYear = this.maxYear ?? currentYear + 50;
-  
-    const years = Array.from(
-      { length: endYear - startYear + 1 },
-      (_, index) => (startYear + index).toString()
+
+    const years = Array.from({ length: endYear - startYear + 1 }, (_, index) =>
+      (startYear + index).toString(),
     );
-  
+
     this.years = years;
-  }  
+  }
 
   private setCurrentDate(): void {
     this.currentDate = new Date();
@@ -298,11 +276,7 @@ export class ZapDatePicker<T>
     if (this.breakpoints) return;
     this.breakpoints = {
       default: {
-        monthsPerView: this.monthsPerView
-          ? this.monthsPerView
-          : this.range
-          ? 2
-          : 1,
+        monthsPerView: this.monthsPerView ? this.monthsPerView : this.range ? 2 : 1,
         maxPerRow: this.maxPerRow ? this.maxPerRow : this.range ? 2 : 1,
       },
       '1024': {
@@ -352,21 +326,21 @@ export class ZapDatePicker<T>
       const viewportHeight = window.innerHeight;
       const spaceBelow = viewportHeight - inputRect.bottom;
       const spaceAbove = inputRect.top;
-  
+
       if (!calendarElement.dataset.appendedToBody) {
         document.body.appendChild(calendarElement);
         calendarElement.dataset.appendedToBody = 'true';
       }
-  
+
       calendarElement.style.position = 'fixed';
       calendarElement.style.left = `${inputRect.left}px`;
       calendarElement.style.width = this.size === 'wide' ? `${inputRect.width}px` : 'auto';
-  
+
       calendarElement.style.visibility = 'hidden';
       calendarElement.style.display = 'block';
       const optionListHeight = calendarElement.scrollHeight;
       calendarElement.style.visibility = 'visible';
-  
+
       if (this.position === 'auto') {
         if (spaceBelow < optionListHeight && spaceAbove > optionListHeight) {
           calendarElement.style.top = `${inputRect.top - optionListHeight - 5}px`;
@@ -378,7 +352,7 @@ export class ZapDatePicker<T>
       } else {
         calendarElement.style.top = `${inputRect.bottom}px`;
       }
-  
+
       calendarElement.style.zIndex = '999';
     }
   }
@@ -392,7 +366,7 @@ export class ZapDatePicker<T>
     this.currentDate = new Date(
       this.currentDate.getFullYear(),
       this.currentDate.getMonth() - offset,
-      1
+      1,
     );
     this.updateCalendar();
   }
@@ -401,7 +375,7 @@ export class ZapDatePicker<T>
     this.currentDate = new Date(
       this.currentDate.getFullYear(),
       this.currentDate.getMonth() + offset,
-      1
+      1,
     );
     this.updateCalendar();
   }
@@ -411,10 +385,7 @@ export class ZapDatePicker<T>
     this.updateCalendar();
   }
 
-  selectDate(dateRange: {
-    startDate: Date | null;
-    endDate: Date | null;
-  }): void {
+  selectDate(dateRange: { startDate: Date | null; endDate: Date | null }): void {
     if (this.control.disabled) return;
     this.toggleCalendar();
     if (!this.range) {
@@ -464,7 +435,7 @@ export class ZapDatePicker<T>
         'option:',
         'option-selected:',
         'option-hovered:',
-      ]
+      ],
     );
   }
 
@@ -484,10 +455,7 @@ export class ZapDatePicker<T>
       .join(' ');
   }
 
-  private generateClasses(
-    prefixes: string[] = [''],
-    exclude: string[] = ['']
-  ): string[] {
+  private generateClasses(prefixes: string[] = [''], exclude: string[] = ['']): string[] {
     return [
       this.shape,
       ...this.zapClass
@@ -495,7 +463,7 @@ export class ZapDatePicker<T>
         .filter(
           (cls) =>
             prefixes.some((prefix) => cls.startsWith(prefix)) &&
-            !exclude.some((ex) => cls.startsWith(ex))
+            !exclude.some((ex) => cls.startsWith(ex)),
         ),
       this.size,
       this.iconPosition,

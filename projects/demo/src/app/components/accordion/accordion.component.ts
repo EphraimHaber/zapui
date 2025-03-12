@@ -9,12 +9,7 @@ import {
 @Component({
   selector: 'app-accordion',
   standalone: true,
-  imports: [
-    ZapAccordionGroup,
-    ZapAccordionHeader,
-    ZapAccordionContent,
-    ZapAccordionItem,
-  ],
+  imports: [ZapAccordionGroup, ZapAccordionHeader, ZapAccordionContent, ZapAccordionItem],
   templateUrl: './accordion.component.html',
   styleUrl: './accordion.component.scss',
 })

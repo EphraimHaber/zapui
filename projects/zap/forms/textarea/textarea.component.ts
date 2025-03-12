@@ -1,9 +1,5 @@
 import { AfterViewInit, Component, ContentChild, forwardRef, Input } from '@angular/core';
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { ControlValueAccessorDirective } from '../directives/control-value-accessor.directive';
@@ -13,12 +9,7 @@ import { ZapFormFieldHelpTextDirective, ZapLabelDirective } from '../public-api'
 @Component({
   selector: 'zap-textarea',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ValidationErrorComponent,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ValidationErrorComponent],
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss'],
   providers: [
@@ -47,18 +38,25 @@ export class ZapTextarea<T> extends ControlValueAccessorDirective<T> implements 
   ngAfterViewInit() {
     if (this.helpTextDirective) {
       this.helpTextDirective.el.nativeElement.style.color = 'var(--zap-textarea-help-text-color)';
-      this.helpTextDirective.el.nativeElement.style.fontSize = 'var(--zap-textarea-help-text-font-size)';
-      this.helpTextDirective.el.nativeElement.style.fontWeight = 'var(--zap-textarea-help-text-font-weight)';
-      this.helpTextDirective.el.nativeElement.style.lineHeight = 'var(--zap-textarea-help-text-line-height)';
-      this.helpTextDirective.el.nativeElement.style.letterSpacing = 'var(--zap-textarea-help-text-letter-spacing)';
+      this.helpTextDirective.el.nativeElement.style.fontSize =
+        'var(--zap-textarea-help-text-font-size)';
+      this.helpTextDirective.el.nativeElement.style.fontWeight =
+        'var(--zap-textarea-help-text-font-weight)';
+      this.helpTextDirective.el.nativeElement.style.lineHeight =
+        'var(--zap-textarea-help-text-line-height)';
+      this.helpTextDirective.el.nativeElement.style.letterSpacing =
+        'var(--zap-textarea-help-text-letter-spacing)';
     }
 
     if (this.labelDirective) {
       this.labelDirective.el.nativeElement.style.color = 'var(--zap-textarea-label-color)';
       this.labelDirective.el.nativeElement.style.fontSize = 'var(--zap-textarea-label-font-size)';
-      this.labelDirective.el.nativeElement.style.fontWeight = 'var(--zap-textarea-label-font-weight)';
-      this.labelDirective.el.nativeElement.style.lineHeight = 'var(--zap-textarea-label-line-height)';
-      this.labelDirective.el.nativeElement.style.letterSpacing = 'var(--zap-textarea-label-letter-spacing)';
+      this.labelDirective.el.nativeElement.style.fontWeight =
+        'var(--zap-textarea-label-font-weight)';
+      this.labelDirective.el.nativeElement.style.lineHeight =
+        'var(--zap-textarea-label-line-height)';
+      this.labelDirective.el.nativeElement.style.letterSpacing =
+        'var(--zap-textarea-label-letter-spacing)';
     }
   }
 
@@ -72,8 +70,6 @@ export class ZapTextarea<T> extends ControlValueAccessorDirective<T> implements 
   }
 
   get classes(): string[] {
-    return [this.shape, this.zapClass].filter(
-      (cls) => cls && cls !== 'default'
-    );
+    return [this.shape, this.zapClass].filter((cls) => cls && cls !== 'default');
   }
 }

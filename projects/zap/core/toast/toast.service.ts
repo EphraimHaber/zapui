@@ -22,7 +22,7 @@ export class ZapToastService {
 
   constructor(
     private appRef: ApplicationRef,
-    private injector: EnvironmentInjector
+    private injector: EnvironmentInjector,
   ) {}
 
   private createToast(config: ZapToastInterface) {
@@ -72,13 +72,13 @@ export class ZapToastService {
   }
 
   private setupPositionHandling(element: HTMLElement): () => void {
-    if (typeof window === 'undefined') return () => {
-      return;
-    };
+    if (typeof window === 'undefined')
+      return () => {
+        return;
+      };
 
     const updatePosition = () => {
-      const position: ToastPosition =
-        window.innerWidth < 640 ? 'top' : 'bottom';
+      const position: ToastPosition = window.innerWidth < 640 ? 'top' : 'bottom';
       Object.assign(element.style, TOAST_STYLES.positions[position]);
 
       element.style.transform =

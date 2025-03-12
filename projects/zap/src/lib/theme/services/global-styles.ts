@@ -1756,8 +1756,8 @@ export function generateGlobalStylesVariables(theme: ZapTheme): string {
       {
         label: 'btn-font-size',
         value: '0.875rem',
-      }
-    ]
+      },
+    ],
   };
   for (const [component, stylesArray] of Object.entries(styles)) {
     for (const style of stylesArray) {

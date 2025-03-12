@@ -8,9 +8,7 @@ export function initializeTheme(themeService: ThemeService): () => void {
   return () => themeService.applyTheme();
 }
 
-export function provideZapOptions(
-  config: ZapConfig = defaultConfig
-): EnvironmentProviders {
+export function provideZapOptions(config: ZapConfig = defaultConfig): EnvironmentProviders {
   return makeEnvironmentProviders([
     { provide: NGX_ZAP_CONFIG, useValue: config },
     ThemeService,

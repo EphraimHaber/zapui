@@ -20,7 +20,6 @@ export const TOAST_STYLES = {
   },
 } as const;
 
-
 export const TOAST_DURATION = 5000;
 
 export const DISMISS_THRESHOLD = 300;

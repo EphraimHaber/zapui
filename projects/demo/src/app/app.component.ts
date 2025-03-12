@@ -40,7 +40,7 @@ import { ToastComponent } from './components/toast/toast.component';
     RadioComponent,
     ThemeSwitcherComponent,
     ToggleComponent,
-    ToastComponent
+    ToastComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

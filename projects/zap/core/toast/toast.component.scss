@@ -75,11 +75,11 @@
     @apply bg-error border-error;
 
     .__zap__toast__content {
-     .__zap__toast__title {
+      .__zap__toast__title {
         @apply text-errorText;
       }
 
-    .__zap__toast__text {
+      .__zap__toast__text {
         @apply text-errorText/70;
       }
     }

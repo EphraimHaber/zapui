@@ -13,11 +13,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { ControlValueAccessorDirective } from '../directives/control-value-accessor.directive';
@@ -37,7 +33,7 @@ import { ZapScrollAreaDirective } from '../directives/zap-scroll-area.directive'
     FormsModule,
     ReactiveFormsModule,
     ValidationErrorComponent,
-    ZapScrollAreaDirective
+    ZapScrollAreaDirective,
   ],
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
@@ -56,9 +52,7 @@ export class ZapSelect<T>
   @ViewChild('inputSelectValueHolder') inputSelectValueHolder!: ElementRef;
   @ViewChild('optionList') optionList!: ElementRef;
   @ViewChild('search') search!: ElementRef;
-  @Output() onChange: EventEmitter<string[] | string> = new EventEmitter<
-    string[] | string
-  >();
+  @Output() onChange: EventEmitter<string[] | string> = new EventEmitter<string[] | string>();
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
   @Output() onReset: EventEmitter<void> = new EventEmitter<void>();
   @Input() label = '';
@@ -106,14 +100,12 @@ export class ZapSelect<T>
         this.size === 'compact' ? '14px' : 'var(--zap-select-icon-font-size)';
       this.iconDirective.el.nativeElement.style.fontSize =
         this.size === 'compact' ? '14px' : 'var(--zap-select-icon-font-size)';
-      this.iconDirective.el.nativeElement.style.color =
-        'var(--zap-select-icon-color)';
+      this.iconDirective.el.nativeElement.style.color = 'var(--zap-select-icon-color)';
       this.iconDirective.el.nativeElement.style.marginRight =
         this.iconPosition === 'left' ? '8px' : '0';
       this.iconDirective.el.nativeElement.style.marginLeft =
         this.iconPosition === 'right' ? '8px' : '0';
-      this.iconDirective.el.nativeElement.style.order =
-        this.iconPosition === 'right' ? '1' : '0';
+      this.iconDirective.el.nativeElement.style.order = this.iconPosition === 'right' ? '1' : '0';
       this.iconDirective.el.nativeElement.style.position = 'absolute';
       this.iconDirective.el.nativeElement.style.top = '50%';
       this.iconDirective.el.nativeElement.style.transform = 'translateY(-50%)';
@@ -124,8 +116,7 @@ export class ZapSelect<T>
     }
 
     if (this.helpTextDirective) {
-      this.helpTextDirective.el.nativeElement.style.color =
-        'var(--zap-select-help-text-color)';
+      this.helpTextDirective.el.nativeElement.style.color = 'var(--zap-select-help-text-color)';
       this.helpTextDirective.el.nativeElement.style.fontSize =
         'var(--zap-select-help-text-font-size)';
       this.helpTextDirective.el.nativeElement.style.fontWeight =
@@ -137,14 +128,10 @@ export class ZapSelect<T>
     }
 
     if (this.labelDirective) {
-      this.labelDirective.el.nativeElement.style.color =
-        'var(--zap-select-label-color)';
-      this.labelDirective.el.nativeElement.style.fontSize =
-        'var(--zap-select-label-font-size)';
-      this.labelDirective.el.nativeElement.style.fontWeight =
-        'var(--zap-select-label-font-weight)';
-      this.labelDirective.el.nativeElement.style.lineHeight =
-        'var(--zap-select-label-line-height)';
+      this.labelDirective.el.nativeElement.style.color = 'var(--zap-select-label-color)';
+      this.labelDirective.el.nativeElement.style.fontSize = 'var(--zap-select-label-font-size)';
+      this.labelDirective.el.nativeElement.style.fontWeight = 'var(--zap-select-label-font-weight)';
+      this.labelDirective.el.nativeElement.style.lineHeight = 'var(--zap-select-label-line-height)';
       this.labelDirective.el.nativeElement.style.letterSpacing =
         'var(--zap-select-label-letter-spacing)';
     }
@@ -189,10 +176,7 @@ export class ZapSelect<T>
 
   handleDefaultValue(): void {
     if (this.control.value) {
-      this.selectedOptionValue = [
-        ...this.selectedOptionValue,
-        this.control.value,
-      ];
+      this.selectedOptionValue = [...this.selectedOptionValue, this.control.value];
     }
   }
 
@@ -204,21 +188,21 @@ export class ZapSelect<T>
       const viewportHeight = window.innerHeight;
       const spaceBelow = viewportHeight - inputRect.bottom;
       const spaceAbove = inputRect.top;
-  
+
       if (!optionListElement.dataset.appendedToBody) {
         document.body.appendChild(optionListElement);
         optionListElement.dataset.appendedToBody = 'true';
       }
-  
+
       optionListElement.style.position = 'fixed';
       optionListElement.style.left = `${inputRect.left}px`;
       optionListElement.style.width = `${inputRect.width}px`;
-  
+
       optionListElement.style.visibility = 'hidden';
       optionListElement.style.display = 'block';
       const optionListHeight = optionListElement.scrollHeight;
       optionListElement.style.visibility = 'visible';
-  
+
       if (this.position === 'auto') {
         if (spaceBelow < optionListHeight && spaceAbove > optionListHeight) {
           optionListElement.style.top = `${inputRect.top - optionListHeight - 5}px`;
@@ -230,7 +214,7 @@ export class ZapSelect<T>
       } else {
         optionListElement.style.top = `${inputRect.bottom}px`;
       }
-  
+
       optionListElement.style.zIndex = '999';
     }
   }
@@ -264,14 +248,12 @@ export class ZapSelect<T>
 
   handleSearch(event: Event): void {
     if (this.control.disabled) return;
-    const searchTerm = (event.target as HTMLInputElement).value
-      .trim()
-      .toLowerCase();
+    const searchTerm = (event.target as HTMLInputElement).value.trim().toLowerCase();
     if (this.async) {
       this.onSearch.emit(searchTerm);
     } else {
       this.filteredOptions = this.options.filter((option) =>
-        option.label.toLowerCase().includes(searchTerm)
+        option.label.toLowerCase().includes(searchTerm),
       );
     }
     this.cdr.detectChanges();
@@ -283,7 +265,7 @@ export class ZapSelect<T>
     if (this.multiselect) {
       if (this.selectedOptionValue.includes(option.value)) {
         this.selectedOptionValue = this.selectedOptionValue.filter(
-          (value) => value !== option.value
+          (value) => value !== option.value,
         );
       } else {
         this.selectedOptionValue = [...this.selectedOptionValue, option.value];
@@ -303,9 +285,7 @@ export class ZapSelect<T>
   cancelOption(event: any, value: any): void {
     event.stopPropagation();
     if (this.multiselect) {
-      this.selectedOptionValue = this.selectedOptionValue.filter(
-        (option) => option !== value
-      );
+      this.selectedOptionValue = this.selectedOptionValue.filter((option) => option !== value);
       this.control.setValue(this.selectedOptionValue);
       this.onChange.emit(this.selectedOptionValue);
     }

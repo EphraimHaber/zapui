@@ -1,2 +1,10 @@
-npm run lint
-npm run test
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run linting, formatting, and tests
+npm run prettier || exit 1
+npm run lint || exit 1
+npm run test || exit 1
+
+# Stage the formatted files
+git add .

@@ -1,8 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ContentChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ContentChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ZapAccordionHeader } from '../accordion-header/accordion-header.component';

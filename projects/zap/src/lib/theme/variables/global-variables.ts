@@ -17,7 +17,7 @@ export function generateComponentGlobalVariables(config: GlobalConfig): string {
     'dp-calendar',
     'date-picker',
     'dp-calendar-select',
-    'toast'
+    'toast',
   ];
   let cssVariables = '';
 

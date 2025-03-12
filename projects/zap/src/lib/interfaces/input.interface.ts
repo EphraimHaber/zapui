@@ -4,7 +4,9 @@ export interface InputConfig {
   shape?: ShapeType;
   size?: 'compact' | 'base';
   styles?: {
-    colors?: Record<string, {
+    colors?: Record<
+      string,
+      {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -15,7 +17,8 @@ export interface InputConfig {
         textFocusColor?: HexCode;
         iconColor?: HexCode;
         helpTextColor?: HexCode;
-      }>;
+      }
+    >;
     borderRadius?: string;
     paddingLeft?: string;
     paddingRight?: string;

@@ -2,7 +2,9 @@ import { HexCode, Padding } from './index';
 
 export interface RadioConfig {
   styles?: {
-    colors?: Record<string, {
+    colors?: Record<
+      string,
+      {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -16,7 +18,8 @@ export interface RadioConfig {
         bgCheckedColor?: HexCode;
         borderCheckedColor?: HexCode;
         checkedColor?: HexCode;
-      }>;
+      }
+    >;
     borderRadius?: string;
     paddingLeft?: string;
     paddingRight?: string;

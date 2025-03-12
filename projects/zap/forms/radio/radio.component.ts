@@ -9,12 +9,7 @@ import { ZapLabelDirective } from '../public-api';
 @Component({
   selector: 'zap-radio',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ValidationErrorComponent,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ValidationErrorComponent],
   templateUrl: './radio.component.html',
   styleUrls: ['./radio.component.scss'],
   providers: [
@@ -40,13 +35,12 @@ export class ZapRadio<T> extends ControlValueAccessorDirective<T> implements Aft
       this.labelDirective.el.nativeElement.style.fontSize = 'var(--zap-radio-label-font-size)';
       this.labelDirective.el.nativeElement.style.fontWeight = 'var(--zap-radio-label-font-weight)';
       this.labelDirective.el.nativeElement.style.lineHeight = 'var(--zap-radio-label-line-height)';
-      this.labelDirective.el.nativeElement.style.letterSpacing = 'var(--zap-radio-label-letter-spacing)';
+      this.labelDirective.el.nativeElement.style.letterSpacing =
+        'var(--zap-radio-label-letter-spacing)';
     }
   }
 
   get classes(): string[] {
-    return [this.variant, this.zapClass].filter(
-      (cls) => cls && cls !== 'default'
-    );
+    return [this.variant, this.zapClass].filter((cls) => cls && cls !== 'default');
   }
 }

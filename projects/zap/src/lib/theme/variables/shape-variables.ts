@@ -1,7 +1,4 @@
-export function getShapeVariable(
-  shapeValue: string,
-  component: string
-): string {
+export function getShapeVariable(shapeValue: string, component: string): string {
   const configList = {
     default: {
       pill: 'calc(infinity * 1px)',
@@ -19,7 +16,7 @@ export function getShapeVariable(
           pill: 'calc(infinity * 1px)',
           curve: '0.375rem',
         },
-      }
+      },
     },
     modal: {
       pill: '1rem',
@@ -87,7 +84,7 @@ export function getShapeVariable(
           pill: '0.675rem',
           curve: '0.375rem',
         },
-      }
+      },
     },
     tooltip: {
       pill: 'calc(infinity * 1px)',
@@ -100,9 +97,9 @@ export function getShapeVariable(
         handler: {
           pill: 'calc(infinity * 1px)',
           curve: '0.25rem',
-        }
-      }
-    }
+        },
+      },
+    },
   };
   let cssVariables = '';
 
@@ -123,9 +120,7 @@ export function getShapeVariable(
   }
 
   cssVariables += `--zap-${component}-border-radius: ${
-    shapeValue === 'flat'
-      ? '0'
-      : componentConfig[shapeValue as keyof typeof componentConfig]
+    shapeValue === 'flat' ? '0' : componentConfig[shapeValue as keyof typeof componentConfig]
   };\n`;
 
   return cssVariables;

@@ -1,5 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 import { ZapScrollAreaDirective } from '../../directives/zap-scroll-area.directive';
 
@@ -8,7 +17,7 @@ import { ZapScrollAreaDirective } from '../../directives/zap-scroll-area.directi
   standalone: true,
   imports: [CommonModule, ZapScrollAreaDirective],
   templateUrl: './dp-calendar-select.component.html',
-  styleUrl: './dp-calendar-select.component.scss'
+  styleUrl: './dp-calendar-select.component.scss',
 })
 export class DPCalendarSelect {
   @ViewChild('select') elementRef!: ElementRef;
@@ -30,7 +39,9 @@ export class DPCalendarSelect {
   constructor(private cdr: ChangeDetectorRef) {}
 
   scrollToSelectedOption(): void {
-    const selectedOption = this.elementRef?.nativeElement.querySelector('.__zap__form__control__selected');    
+    const selectedOption = this.elementRef?.nativeElement.querySelector(
+      '.__zap__form__control__selected',
+    );
     if (selectedOption) {
       selectedOption.scrollIntoView({ block: 'center' });
     }
@@ -38,7 +49,7 @@ export class DPCalendarSelect {
 
   toggleOptionList(): void {
     this.isOptionListOpen = !this.isOptionListOpen;
-    if(this.isOptionListOpen) {
+    if (this.isOptionListOpen) {
       this.cdr.detectChanges();
     }
     if (this.scrollToSelected && this.isOptionListOpen) {

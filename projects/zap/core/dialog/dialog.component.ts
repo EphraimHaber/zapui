@@ -41,14 +41,13 @@ export class ZapDialog implements AfterViewInit {
     this.handleDirectiveStyle();
   }
 
-
   ngAfterViewInit(): void {
     this.handleDirectiveStyle();
   }
 
   private handleDirectiveStyle(): void {
     if (this.footerDirective && typeof window !== 'undefined') {
-      const windowWidth = window.innerWidth;      
+      const windowWidth = window.innerWidth;
       if (windowWidth > 640) {
         this.footerDirective.el.nativeElement.style.display = 'flex';
         this.footerDirective.el.nativeElement.style.justifyContent = 'flex-end';
@@ -56,8 +55,7 @@ export class ZapDialog implements AfterViewInit {
         this.footerDirective.el.nativeElement.style.marginTop = 'auto';
       } else {
         this.footerDirective.el.nativeElement.style.display = 'grid';
-        this.footerDirective.el.nativeElement.style.gridTemplateColumns =
-          '1fr';
+        this.footerDirective.el.nativeElement.style.gridTemplateColumns = '1fr';
         this.footerDirective.el.nativeElement.style.gap = '1rem';
         this.footerDirective.el.nativeElement.style.marginTop = '3rem';
       }
@@ -65,12 +63,10 @@ export class ZapDialog implements AfterViewInit {
   }
 
   get classes(): string[] {
-    return [this.shape, this.position, this.zapClass].filter(
-      (cls) => cls && cls !== 'default'
-    );
+    return [this.shape, this.position, this.zapClass].filter((cls) => cls && cls !== 'default');
   }
 
   get overlayClasses(): string[] {
-    return this.zapClass.split(' ').filter(cls => cls.startsWith('overlay:'));
+    return this.zapClass.split(' ').filter((cls) => cls.startsWith('overlay:'));
   }
 }

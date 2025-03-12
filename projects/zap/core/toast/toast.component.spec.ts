@@ -9,7 +9,7 @@ describe('ZapToast', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ZapToast]
+      imports: [ZapToast],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ZapToast);
@@ -92,7 +92,7 @@ describe('ZapToast', () => {
 
     beforeEach(() => {
       mockEvent = new MouseEvent('mousedown', {
-        clientX: 0
+        clientX: 0,
       });
     });
 
@@ -103,22 +103,22 @@ describe('ZapToast', () => {
 
     it('should update position while dragging', () => {
       component.onDragStart(mockEvent);
-      
+
       const moveEvent = new MouseEvent('mousemove', {
-        clientX: 100
+        clientX: 100,
       });
-      
+
       component.onDrag(moveEvent);
       expect(fixture.nativeElement.style.transform).toBe('translateX(100px)');
     });
 
     it('should not allow negative drag values', () => {
       component.onDragStart(mockEvent);
-      
+
       const moveEvent = new MouseEvent('mousemove', {
-        clientX: -100
+        clientX: -100,
       });
-      
+
       component.onDrag(moveEvent);
       expect(fixture.nativeElement.style.transform).toBe('translateX(0px)');
     });
@@ -126,27 +126,27 @@ describe('ZapToast', () => {
     it('should dismiss when dragged beyond threshold', () => {
       spyOn(component.dismiss, 'emit');
       component.onDragStart(mockEvent);
-      
+
       const moveEvent = new MouseEvent('mousemove', {
-        clientX: DISMISS_THRESHOLD + 100
+        clientX: DISMISS_THRESHOLD + 100,
       });
-      
+
       component.onDrag(moveEvent);
       component.onDragEnd();
-      
+
       expect(component.dismiss.emit).toHaveBeenCalled();
     });
 
     it('should reset position when not dragged beyond threshold', () => {
       component.onDragStart(mockEvent);
-      
+
       const moveEvent = new MouseEvent('mousemove', {
-        clientX: DISMISS_THRESHOLD - 50
+        clientX: DISMISS_THRESHOLD - 50,
       });
-      
+
       component.onDrag(moveEvent);
       component.onDragEnd();
-      
+
       expect(fixture.nativeElement.style.transform).toBe('translateX(0px)');
     });
   });
@@ -170,17 +170,17 @@ describe('ZapToast', () => {
       component.action = 'Action';
       fixture.detectChanges();
       const actionButton = fixture.nativeElement.querySelector('.__zap__toast__actions button');
-      expect(actionButton.textContent).toBe('Action');
+      expect(actionButton.textContent.trim()).toBe('Action');
     });
 
     it('should handle action button click', () => {
       spyOn(component.actioned, 'emit');
       component.action = 'Action';
       fixture.detectChanges();
-      
+
       const actionButton = fixture.nativeElement.querySelector('.__zap__toast__actions button');
       actionButton.click();
-      
+
       expect(component.actioned.emit).toHaveBeenCalled();
     });
 

@@ -34,17 +34,13 @@ export class ZapTooltip implements OnDestroy {
 
   @HostListener('window:resize')
   onWindowResize(): void {
-    if (
-      this.content.contentElement.nativeElement.style.visibility === 'visible'
-    ) {
+    if (this.content.contentElement.nativeElement.style.visibility === 'visible') {
       this.adjustPosition();
     }
   }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(): void {
-    if (
-      this.content.contentElement.nativeElement.style.visibility === 'visible'
-    ) {
+    if (this.content.contentElement.nativeElement.style.visibility === 'visible') {
       this.adjustPosition();
     }
   }
@@ -111,7 +107,7 @@ export class ZapTooltip implements OnDestroy {
     contentElement.style.position = 'fixed';
 
     const parent = holderElement.closest(
-      '.__zap__modal__wrapper, .__zap__dialog, .modal, .dialog, .__zap__form__control__calendar'
+      '.__zap__modal__wrapper, .__zap__dialog, .modal, .dialog, .__zap__form__control__calendar',
     );
     if (parent) {
       contentElement.style.zIndex = '999';
@@ -126,7 +122,7 @@ export class ZapTooltip implements OnDestroy {
       } else {
         contentElement.style.top = `${holderRect.top - contentHeight - 5}px`;
         contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`;
-      } 
+      }
     } else {
       switch (this.position) {
         case 'top':

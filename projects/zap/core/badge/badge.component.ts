@@ -20,10 +20,6 @@ export class ZapBadge {
   }
 
   get classes(): string[] {
-    return [
-      this.type,
-      this.variant,
-      this.zapClass,
-    ].filter((cls) => cls && cls !== 'default');
+    return [this.type, this.variant, this.zapClass].filter((cls) => cls && cls !== 'default');
   }
 }

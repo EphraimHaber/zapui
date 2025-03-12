@@ -1,4 +1,4 @@
-import { Padding } from "./padding.type";
+import { Padding } from './padding.type';
 
 export interface CommonStyles {
   borderRadius?: string;

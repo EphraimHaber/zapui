@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ContentChildren,
-  Input,
-  QueryList,
-} from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { ZapAccordionItem } from '../accordion-item/accordion-item.component';
 
 @Component({

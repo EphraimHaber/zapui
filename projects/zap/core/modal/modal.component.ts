@@ -29,14 +29,10 @@ export class ZapModal {
   }
 
   get classes(): string[] {
-    return [
-      this.shape,
-      this.size,
-      this.zapClass,
-    ].filter((cls) => cls && cls !== 'default');
+    return [this.shape, this.size, this.zapClass].filter((cls) => cls && cls !== 'default');
   }
 
   get overlayClasses(): string[] {
-    return this.zapClass.split(' ').filter(cls => cls.startsWith('overlay:'));
+    return this.zapClass.split(' ').filter((cls) => cls.startsWith('overlay:'));
   }
 }

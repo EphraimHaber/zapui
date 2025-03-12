@@ -1,4 +1,4 @@
-import { ZapTheme } from "../../interfaces/config.interface";
+import { ZapTheme } from '../../interfaces/config.interface';
 
 export function generateFontSizeVariables(theme: ZapTheme): string {
   let cssVariables = '';

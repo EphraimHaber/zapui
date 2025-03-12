@@ -1,7 +1,4 @@
-export function handlePaddingStyles(
-  componentKey: string,
-  value: string
-): string | undefined {
+export function handlePaddingStyles(componentKey: string, value: string): string | undefined {
   let cssVariables = '';
   let pt;
   let pr;

@@ -1,12 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  ElementRef,
-  Output,
-  EventEmitter,
-  HostListener,
-} from '@angular/core';
+import { Component, Input, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 
 import { DISMISS_THRESHOLD } from './toast.constant';
 
@@ -68,22 +61,18 @@ export class ZapToast {
   constructor(private el: ElementRef) {}
 
   private getEventX(event: MouseEvent | TouchEvent): number {
-    return event instanceof MouseEvent
-      ? event.clientX
-      : event.touches[0].clientX;
+    return event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
   }
 
   get classes(): string[] {
-    return [this.shape, this.type, this.zapClass].filter(
-      (cls) => cls && cls !== 'default'
-    );
+    return [this.shape, this.type, this.zapClass].filter((cls) => cls && cls !== 'default');
   }
 
   handleDismiss() {
     this.dismiss.emit();
   }
 
-  handleActionClick() {    
+  handleActionClick() {
     if (this.actioned instanceof EventEmitter) {
       this.actioned.emit();
     } else if (typeof this.actioned === 'function') {

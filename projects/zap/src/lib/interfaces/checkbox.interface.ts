@@ -1,9 +1,11 @@
-import { HexCode, Padding, ShapeType } from "./index";
+import { HexCode, Padding, ShapeType } from './index';
 
 export interface CheckboxConfig {
   shape?: ShapeType;
   styles?: {
-    colors?: Record<string, {
+    colors?: Record<
+      string,
+      {
         bgColor?: HexCode;
         textColor?: HexCode;
         borderColor?: HexCode;
@@ -18,7 +20,8 @@ export interface CheckboxConfig {
         labelColor?: HexCode;
         labelHoverColor?: HexCode;
         helpTextColor?: HexCode;
-      }>;
+      }
+    >;
     borderRadius?: string;
     paddingLeft?: string;
     paddingRight?: string;

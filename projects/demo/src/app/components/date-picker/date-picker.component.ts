@@ -15,28 +15,28 @@ export class DatePickerComponent {
       value: new Date(new Date().setMonth(new Date().getMonth() + 2)),
       disabled: false,
     },
-    []
+    [],
   );
   datePickerControl2 = new FormControl(
     {
       value: '',
       disabled: false,
     },
-    []
+    [],
   );
   datePickerControl3 = new FormControl(
     {
       value: '',
       disabled: false,
     },
-    []
+    [],
   );
   datePickerControl4 = new FormControl(
     {
       value: '',
       disabled: false,
     },
-    []
+    [],
   );
   breakpoints: ZapDatePickerBreakpoints = {
     default: {

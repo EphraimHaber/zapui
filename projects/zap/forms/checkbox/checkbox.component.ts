@@ -6,13 +6,10 @@ import {
   forwardRef,
   Input,
   OnDestroy,
-  ViewChild, OnInit,
+  ViewChild,
+  OnInit,
 } from '@angular/core';
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { ControlValueAccessorDirective } from '../directives/control-value-accessor.directive';
@@ -22,12 +19,7 @@ import { ZapLabelDirective } from '../public-api';
 @Component({
   selector: 'zap-checkbox',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ValidationErrorComponent,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ValidationErrorComponent],
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   providers: [
@@ -59,10 +51,8 @@ export class ZapCheckbox<T>
 
   ngAfterViewInit() {
     if (this.labelDirective) {
-      this.labelDirective.el.nativeElement.style.color =
-        'var(--zap-checkbox-label-color)';
-      this.labelDirective.el.nativeElement.style.fontSize =
-        'var(--zap-checkbox-label-font-size)';
+      this.labelDirective.el.nativeElement.style.color = 'var(--zap-checkbox-label-color)';
+      this.labelDirective.el.nativeElement.style.fontSize = 'var(--zap-checkbox-label-font-size)';
       this.labelDirective.el.nativeElement.style.fontWeight =
         'var(--zap-checkbox-label-font-weight)';
       this.labelDirective.el.nativeElement.style.lineHeight =
@@ -72,10 +62,7 @@ export class ZapCheckbox<T>
       this.labelDirective.el.nativeElement.style.cursor = this.control.disabled
         ? 'not-allowed'
         : 'pointer';
-      this.labelDirective.el.nativeElement.addEventListener(
-        'click',
-        this.handleLabelClick
-      );
+      this.labelDirective.el.nativeElement.addEventListener('click', this.handleLabelClick);
     }
   }
 
@@ -86,17 +73,14 @@ export class ZapCheckbox<T>
 
   get classes(): string[] {
     return [this.shape, this.size, this.labelPosition, this.zapClass].filter(
-      (cls) => cls && cls !== 'default'
+      (cls) => cls && cls !== 'default',
     );
   }
 
   override ngOnDestroy() {
     super.ngOnDestroy();
     if (this.labelDirective) {
-      this.labelDirective.el.nativeElement.removeEventListener(
-        'click',
-        this.handleLabelClick
-      );
+      this.labelDirective.el.nativeElement.removeEventListener('click', this.handleLabelClick);
     }
   }
 }

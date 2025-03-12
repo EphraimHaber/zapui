@@ -3,14 +3,17 @@ import { HexCode, ShapeType } from './index';
 export interface ToggleConfig {
   shape?: ShapeType;
   styles?: {
-    colors?: Record<string, {
+    colors?: Record<
+      string,
+      {
         bgColor?: HexCode;
         rollerColor?: HexCode;
         bgOnColor?: HexCode;
         rollerOnColor?: HexCode;
         labelColor?: HexCode;
         helpTextColor?: HexCode;
-      }>;
+      }
+    >;
     width?: string;
     height?: string;
     rollerWidth?: string;

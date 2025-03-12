@@ -215,7 +215,6 @@ fieldset {
     }
   }
 
-
   &.curve {
     .__zap__form__control__options {
       @apply rounded;
@@ -236,7 +235,6 @@ fieldset {
     }
   }
 }
-
 
 .sr-only {
   @apply absolute w-px h-px p-0 m-[-1px] overflow-hidden  whitespace-nowrap border-0;

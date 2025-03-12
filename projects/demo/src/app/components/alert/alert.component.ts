@@ -6,8 +6,6 @@ import { ZapAlert, ZapIconDirective } from 'zap/core';
   standalone: true,
   imports: [ZapIconDirective, ZapAlert],
   templateUrl: './alert.component.html',
-  styleUrl: './alert.component.scss'
+  styleUrl: './alert.component.scss',
 })
-export class AlertComponent {
-
-}
+export class AlertComponent {}

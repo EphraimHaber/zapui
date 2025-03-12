@@ -16,8 +16,7 @@ export class ZapChip implements AfterViewInit {
   @Input() variant: 'outlined' | 'default' = 'default';
   @Input() shape!: 'pill' | 'curve' | 'flat';
   @Input() size: 'base' | 'compact' | 'wide' = 'base';
-  @Input() type: 'default' | 'info' | 'success' | 'warning' | 'error' =
-    'default';
+  @Input() type: 'default' | 'info' | 'success' | 'warning' | 'error' = 'default';
   @Input() icon?: string;
   @Input() iconPosition: 'left' | 'right' = 'left';
   @Input() disabled = false;
@@ -28,8 +27,10 @@ export class ZapChip implements AfterViewInit {
   ngAfterViewInit() {
     if (this.iconDirective) {
       this.iconDirective.el.nativeElement.style.height = 'var(--zap-chip-font-size)';
-      this.iconDirective.el.nativeElement.style.marginRight = this.iconPosition === 'left' ? '8px' : '0';
-      this.iconDirective.el.nativeElement.style.marginLeft = this.iconPosition === 'right' ? '8px' : '0';
+      this.iconDirective.el.nativeElement.style.marginRight =
+        this.iconPosition === 'left' ? '8px' : '0';
+      this.iconDirective.el.nativeElement.style.marginLeft =
+        this.iconPosition === 'right' ? '8px' : '0';
       this.iconDirective.el.nativeElement.style.order = this.iconPosition === 'right' ? '1' : '0';
     }
   }
@@ -53,8 +54,8 @@ export class ZapChip implements AfterViewInit {
       this.dismissible && this.icon && this.iconPosition === 'left'
         ? 'dismissible-left'
         : this.dismissible && this.icon && this.iconPosition === 'right'
-        ? 'dismissible-right'
-        : '',
+          ? 'dismissible-right'
+          : '',
     ].filter((cls) => cls && cls !== 'default');
   }
 }
