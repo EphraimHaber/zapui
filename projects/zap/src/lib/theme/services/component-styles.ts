@@ -1,10 +1,10 @@
-import { HexCode, ZapConfig } from '../../interfaces';
-import { toKebabCase } from '../utils/base-theme-utils';
-import { handlePaddingStyles } from '../utils/padding-utils';
+import { HexCode, ZapConfig } from '../../interfaces'
+import { toKebabCase } from '../utils/base-theme-utils'
+import { handlePaddingStyles } from '../utils/padding-utils'
 
 interface ComponentStyles {
-  colors?: Record<string, Record<string, HexCode>>;
-  padding?: string;
+  colors?: Record<string, Record<string, HexCode>>
+  padding?: string
 }
 
 export function generateComponentStylesVariables(
@@ -12,22 +12,22 @@ export function generateComponentStylesVariables(
   componentKey: string,
   config: ZapConfig,
 ): string {
-  let cssVariables = '';
+  let cssVariables = ''
   Object.entries(styles).forEach(([styleKey, styleValue]) => {
     if (
       (styleKey === 'padding' && typeof styleValue === 'string') ||
       (styleKey.endsWith('Padding') && typeof styleValue === 'string')
     ) {
-      cssVariables += handlePaddingStyles(componentKey, styleValue);
+      cssVariables += handlePaddingStyles(componentKey, styleValue)
     } else if (styleKey === 'colors' && config.theme) {
       if (typeof styleValue === 'object' && styleValue[config.theme]) {
         Object.entries(styleValue[config.theme]).forEach(([colorKey, colorValue]) => {
-          cssVariables += `--zap-${componentKey}-${toKebabCase(colorKey)}: ${colorValue};\n`;
-        });
+          cssVariables += `--zap-${componentKey}-${toKebabCase(colorKey)}: ${colorValue};\n`
+        })
       }
     } else {
-      cssVariables += `--zap-${componentKey}-${toKebabCase(styleKey)}: ${styleValue};\n`;
+      cssVariables += `--zap-${componentKey}-${toKebabCase(styleKey)}: ${styleValue};\n`
     }
-  });
-  return cssVariables;
+  })
+  return cssVariables
 }

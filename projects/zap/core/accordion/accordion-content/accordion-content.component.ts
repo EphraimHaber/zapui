@@ -1,6 +1,6 @@
-import { Component, Host, Optional } from '@angular/core';
+import { Component, Host, Optional } from '@angular/core'
 
-import { ZapAccordionItem } from '../accordion-item/accordion-item.component';
+import { ZapAccordionItem } from '../accordion-item/accordion-item.component'
 
 @Component({
   standalone: true,
@@ -15,6 +15,6 @@ export class ZapAccordionContent {
   constructor(@Optional() @Host() private accordionItem: ZapAccordionItem) {}
 
   get isOpen(): boolean {
-    return this.accordionItem ? this.accordionItem.isOpen : false;
+    return this.accordionItem ? this.accordionItem.isOpen : false
   }
 }

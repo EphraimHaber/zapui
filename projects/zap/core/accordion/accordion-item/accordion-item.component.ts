@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ContentChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, ContentChild } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
-import { ZapAccordionHeader } from '../accordion-header/accordion-header.component';
+import { ZapAccordionHeader } from '../accordion-header/accordion-header.component'
 
 @Component({
   standalone: true,
@@ -14,18 +14,18 @@ import { ZapAccordionHeader } from '../accordion-header/accordion-header.compone
   styleUrl: './accordion-item.component.scss',
 })
 export class ZapAccordionItem implements AfterViewInit {
-  @ContentChild(ZapAccordionHeader) header!: ZapAccordionHeader;
-  isOpen = false;
+  @ContentChild(ZapAccordionHeader) header!: ZapAccordionHeader
+  isOpen = false
 
   ngAfterViewInit() {
     if (this.header) {
       this.header.open.subscribe(() => {
-        this.toggle();
-      });
+        this.toggle()
+      })
     }
   }
 
   toggle() {
-    this.isOpen = !this.isOpen;
+    this.isOpen = !this.isOpen
   }
 }
