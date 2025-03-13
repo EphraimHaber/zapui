@@ -2,15 +2,6 @@ import { ZapTheme, ZapConfig } from '../interfaces/config.interface'
 
 export const defaultConfig: ZapConfig = {
   theme: 'dark',
-  components: {
-    global: {
-      shape: 'flat',
-    },
-    button: {
-      shape: 'flat',
-      size: 'base',
-    },
-  },
 }
 
 export const lightTheme: ZapTheme = {
