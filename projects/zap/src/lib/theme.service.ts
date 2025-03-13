@@ -99,8 +99,9 @@ export class ThemeService {
     cssVariables += generateFontSizeVariables(theme)
     cssVariables += generateGlobalStylesVariables(theme)
 
-    if (config.components) {
+    if (config?.components && Object.keys(config.components).length > 0) {
       for (const [componentKey, value] of Object.entries(config.components)) {
+        if (!value) continue
         cssVariables += this.generateComponentVariables(componentKey, value)
       }
     }
