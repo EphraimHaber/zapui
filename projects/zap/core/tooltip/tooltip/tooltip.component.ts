@@ -117,7 +117,7 @@ export class ZapTooltip implements OnDestroy {
 
     if (this.position === 'auto') {
       if (spaceAbove < contentHeight && spaceBelow > contentHeight) {
-        contentElement.style.top = `${holderRect.top + contentHeight - 5}px`
+        contentElement.style.top = `${holderRect.top + holderRect.height + 5}px`
         contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`
       } else {
         contentElement.style.top = `${holderRect.top - contentHeight - 5}px`
@@ -130,24 +130,16 @@ export class ZapTooltip implements OnDestroy {
           contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`
           break
         case 'bottom':
-          contentElement.style.top = `${holderRect.top + contentHeight - 5}px`
+          contentElement.style.top = `${holderRect.top + holderRect.height + 5}px`
           contentElement.style.left = `${holderRect.left + holderRect.width / 2}px`
           break
         case 'left':
-          contentElement.style.left = `${
-            holderRect.left - contentRect.width - 5 + holderRect.width
-          }px`
-          contentElement.style.top = `${
-            holderRect.top + holderRect.height / 2 - contentRect.height / 2
-          }px`
+          contentElement.style.left = `${holderRect.left - contentRect.width / 2 - 15}px`
+          contentElement.style.top = `${holderRect.top + holderRect.height / 2 - contentRect.height / 2}px`
           break
         case 'right':
-          contentElement.style.left = `${
-            holderRect.left + holderRect.width + 15 + holderRect.width
-          }px`
-          contentElement.style.top = `${
-            holderRect.top + holderRect.height / 2 - contentRect.height / 2
-          }px`
+          contentElement.style.left = `${holderRect.left + holderRect.width + contentRect.width / 2 + 15}px`
+          contentElement.style.top = `${holderRect.top + holderRect.height / 2 - contentRect.height / 2}px`
           break
       }
     }
