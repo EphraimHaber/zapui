@@ -20,9 +20,13 @@ import { ZapIconDirective } from '../../public-api'
   template: `<div
     class="__zap__accordion__header"
     role="button"
+    [attr.aria-expanded]="isOpen"
+    [attr.aria-controls]="'accordion-content-' + accordionItem?.id"
+    [id]="'accordion-header-' + accordionItem?.id"
     tabindex="0"
     (click)="onToggle()"
     (keydown.enter)="onToggle()"
+    (keydown.space)="onToggle()"
     [ngClass]="variant">
     <ng-content></ng-content>
     @if (iconDirective) {
