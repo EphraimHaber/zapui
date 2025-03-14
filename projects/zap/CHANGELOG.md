@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.0-alpha.7
+
+- Fixed: Tooltip content position adjusted; now wrap removed as it will be based on user preference.
+- Fixed: Global stylings are now working
+- Enhanced: Added check for valid `sizeValue` in `getSizeVariables` function
+- Fixed: Compact size for `select` now works with icon; removed `chip` padding Y for compact select.
+- Fixed: Scrollarea is now working with date picker calendar
+
 ## 0.0.0-alpha.6
 
 - Latest release of alpha version
