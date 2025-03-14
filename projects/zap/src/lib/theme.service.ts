@@ -13,6 +13,7 @@ import {
   getSizeVariables,
   generateComponentGlobalVariables,
 } from './theme/variables'
+import { generateComponentStylesVariables } from './theme/services/component-styles'
 
 @Injectable({
   providedIn: 'root',
@@ -122,6 +123,10 @@ export class ThemeService {
 
     if ('size' in value && value.size) {
       variables += getSizeVariables(value.size, componentKey)
+    }
+
+    if ('styles' in value && value.styles) {
+      variables += generateComponentStylesVariables(value.styles, componentKey, this.config)
     }
 
     return variables
