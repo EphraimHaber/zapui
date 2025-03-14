@@ -25,14 +25,7 @@ export class ZapScrollAreaDirective implements AfterViewInit, OnDestroy {
   ) {
     this.renderer.setStyle(this.el.nativeElement, 'scrollbar-width', 'none')
     this.renderer.setStyle(this.el.nativeElement, '-ms-overflow-style', 'none')
-
-    const style = document.createElement('style')
-    style.innerHTML = `
-      ::-webkit-scrollbar {
-        display: none;
-      }
-    `
-    this.renderer.appendChild(this.el.nativeElement, style)
+    this.renderer.setStyle(this.el.nativeElement, '-webkit-scrollbar', 'none')
 
     this.scrollbarTrack = this.renderer.createElement('div')
     this.renderer.setStyle(this.scrollbarTrack, 'position', 'absolute')
@@ -98,8 +91,10 @@ export class ZapScrollAreaDirective implements AfterViewInit, OnDestroy {
     const scrollElement = this.el.nativeElement
     const containerHeight = scrollElement.clientHeight
     const contentHeight = scrollElement.scrollHeight
+    const parentElement = scrollElement.parentElement
+    const parentHeight = parentElement ? parentElement.clientHeight : 0
 
-    if (contentHeight <= containerHeight) {
+    if (contentHeight <= Math.max(containerHeight) || contentHeight <= parentHeight) {
       this.renderer.setStyle(this.scrollbarTrack, 'display', 'none')
       return
     }
