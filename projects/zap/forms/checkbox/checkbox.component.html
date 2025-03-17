@@ -1,4 +1,8 @@
-<div class="__zap__checkbox__control" [ngClass]="classes" [class.disabled]="control.disabled">
+<div
+  class="__zap__checkbox__control"
+  [ngClass]="classes"
+  [class.disabled]="control.disabled"
+  role="group">
   <fieldset>
     @if (label) {
       <legend class="sr-only">{{ label }}</legend>
@@ -7,7 +11,11 @@
         class="__zap__form__control__label"
         (click)="checkbox.click()"
         (keydown.enter)="checkbox.click()"
+        (keydown.space)="$event.preventDefault(); checkbox.click()"
         tabindex="0"
+        role="checkbox"
+        [attr.aria-checked]="control.value"
+        [attr.aria-disabled]="control.disabled"
         >{{ label }}</label
       >
     } @else if (labelDirective) {
@@ -19,7 +27,11 @@
         [id]="id"
         type="checkbox"
         class="__zap__form__control__input"
-        [formControl]="control" />
+        [formControl]="control"
+        [attr.aria-label]="label"
+        [attr.aria-invalid]="control.invalid && control.touched"
+        [attr.aria-describedby]="control.invalid && control.touched ? id + '-error' : null"
+        (keydown.space)="$event.preventDefault(); checkbox.click()" />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
         <path
           d="M441 103c9.4 9.4 9.4 24.6 0 33.9L177 401c-9.4 9.4-24.6 9.4-33.9 0L7 265c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l119 119L407 103c9.4-9.4 24.6-9.4 33.9 0z" />
