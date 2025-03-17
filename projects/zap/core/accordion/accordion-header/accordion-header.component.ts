@@ -73,7 +73,7 @@ export class ZapAccordionHeader implements AfterViewInit {
   @ContentChild(ZapIconDirective, { static: false })
   iconDirective!: ZapIconDirective
 
-  constructor(@Optional() @Host() private accordionItem: ZapAccordionItem) {}
+  constructor(@Optional() @Host() public accordionItem: ZapAccordionItem) {}
 
   get isOpen(): boolean {
     return this.accordionItem ? this.accordionItem.isOpen : false
