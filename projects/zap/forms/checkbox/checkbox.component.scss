@@ -55,28 +55,36 @@
   }
 
   &.flat {
-    input {
-      @apply rounded-none;
+    .__zap__checkbox__wrapper {
+      input {
+        @apply rounded-none;
+      }
     }
   }
 
   &.compact {
-    input {
-      @apply h-4 w-4;
+    .__zap__checkbox__wrapper {
+      input {
+        @apply h-4 w-4;
+      }
     }
   }
 
   &.curve {
-    input {
-      @apply rounded;
+    .__zap__checkbox__wrapper {
+      input {
+        @apply rounded;
+      }
     }
   }
 
   &.disabled {
     @apply opacity-50 cursor-not-allowed;
 
-    input {
-      @apply cursor-not-allowed;
+    .__zap__checkbox__wrapper {
+      input {
+        @apply cursor-not-allowed;
+      }
     }
 
     label {
