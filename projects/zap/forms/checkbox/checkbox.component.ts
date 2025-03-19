@@ -38,7 +38,7 @@ export class ZapCheckbox<T>
   @Input() label = ''
   @Input() customErrorMessages: Record<string, string> = {}
   @Input() zapClass = ''
-  @Input() id = ''
+  @Input() id!: string
   @Input() shape!: 'curve' | 'flat'
   @Input() size!: 'compact' | 'base'
   @Input() labelPosition: 'left' | 'right' = 'right'
@@ -47,6 +47,11 @@ export class ZapCheckbox<T>
 
   override ngOnInit(): void {
     super.ngOnInit()
+    if (!this.id) {
+      console.warn(
+        '[ZapCheckbox] No id provided. This may cause accessibility issues. Please provide a unique id for the checkbox.',
+      )
+    }
   }
 
   ngAfterViewInit() {

@@ -20,9 +20,13 @@ import { ZapIconDirective } from '../../public-api'
   template: `<div
     class="__zap__accordion__header"
     role="button"
+    [attr.aria-expanded]="isOpen"
+    [attr.aria-controls]="'accordion-content-' + accordionItem?.id"
+    [id]="'accordion-header-' + accordionItem?.id"
     tabindex="0"
     (click)="onToggle()"
     (keydown.enter)="onToggle()"
+    (keydown.space)="onToggle()"
     [ngClass]="variant">
     <ng-content></ng-content>
     @if (iconDirective) {
@@ -69,7 +73,7 @@ export class ZapAccordionHeader implements AfterViewInit {
   @ContentChild(ZapIconDirective, { static: false })
   iconDirective!: ZapIconDirective
 
-  constructor(@Optional() @Host() private accordionItem: ZapAccordionItem) {}
+  constructor(@Optional() @Host() public accordionItem: ZapAccordionItem) {}
 
   get isOpen(): boolean {
     return this.accordionItem ? this.accordionItem.isOpen : false
