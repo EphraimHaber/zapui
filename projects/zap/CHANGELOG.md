@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.0.0-alpha.8
+
+- **Fixed**: Checkbox shape and size are now working correctly.
+- **Fixed**: Input help text global styling is now working as expected.
+- **Fixed**: Tooltip content element is now removed from the DOM on initialization, only visible on hover.
+- **Fixed**: Global style for padding is fixed across all components.
+- **Feature**: Checkbox `id` made required; shows warning if user does not provide `id`.
+- **Feature**: Accessibility-related features such as `role`, `aria`, and `aria-labels` added to Checkbox.
+- **Enhanced**: Accordion accessibility improved with additional `role`, `aria`, and `aria-labels` support.
+
 ## 0.0.0-alpha.7
 
 - Fixed: Tooltip content position adjusted; now wrap removed as it will be based on user preference.
