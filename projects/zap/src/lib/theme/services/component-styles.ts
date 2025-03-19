@@ -1,10 +1,10 @@
-import { HexCode, ZapConfig } from '../../interfaces'
+import { HexCode, Padding, ZapConfig } from '../../interfaces'
 import { toKebabCase } from '../utils/base-theme-utils'
 import { handlePaddingStyles } from '../utils/padding-utils'
 
 interface ComponentStyles {
   colors?: Record<string, Record<string, HexCode>>
-  padding?: string
+  padding?: Padding
 }
 
 export function generateComponentStylesVariables(
@@ -18,7 +18,7 @@ export function generateComponentStylesVariables(
       (styleKey === 'padding' && typeof styleValue === 'string') ||
       (styleKey.endsWith('Padding') && typeof styleValue === 'string')
     ) {
-      cssVariables += handlePaddingStyles(componentKey, styleValue)
+      cssVariables += handlePaddingStyles(componentKey, styleKey, styleValue as Padding)
     } else if (styleKey === 'colors' && config.theme) {
       if (typeof styleValue === 'object' && styleValue[config.theme]) {
         Object.entries(styleValue[config.theme]).forEach(([colorKey, colorValue]) => {

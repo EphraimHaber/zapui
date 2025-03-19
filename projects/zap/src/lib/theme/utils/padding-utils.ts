@@ -1,4 +1,10 @@
-export function handlePaddingStyles(componentKey: string, value: string): string | undefined {
+import { Padding } from '../../interfaces'
+
+export function handlePaddingStyles(
+  componentKey: string,
+  styleKey: string,
+  value: Padding,
+): string | undefined {
   let cssVariables = ''
   let pt
   let pr
@@ -28,10 +34,16 @@ export function handlePaddingStyles(componentKey: string, value: string): string
     return
   }
 
-  cssVariables += `--zap-${componentKey}-padding-left: ${pl};\n`
-  cssVariables += `--zap-${componentKey}-padding-top: ${pt};\n`
-  cssVariables += `--zap-${componentKey}-padding-bottom: ${pb};\n`
-  cssVariables += `--zap-${componentKey}-padding-right: ${pr};\n`
+  let component = componentKey
+
+  if (styleKey.endsWith('Padding')) {
+    component = `${componentKey}-${styleKey.split('Padding')[0]}`
+  }
+
+  cssVariables += `--zap-${component}-padding-left: ${pl};\n`
+  cssVariables += `--zap-${component}-padding-top: ${pt};\n`
+  cssVariables += `--zap-${component}-padding-bottom: ${pb};\n`
+  cssVariables += `--zap-${component}-padding-right: ${pr};\n`
 
   return cssVariables
 }

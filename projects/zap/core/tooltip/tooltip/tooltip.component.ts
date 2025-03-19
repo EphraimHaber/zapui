@@ -17,7 +17,9 @@ import { ZapTooltipContent } from '../tooltip-content/tooltip-content.component'
   template: `
     <div #tooltip class="zap__tooltip">
       <ng-content select="zap-tooltip-handler"></ng-content>
-      <ng-content select="zap-tooltip-content"></ng-content>
+      @if (isHoveringTooltip || isHoveringContent) {
+        <ng-content select="zap-tooltip-content"></ng-content>
+      }
     </div>
   `,
   styleUrls: ['./tooltip.component.scss'],
@@ -29,8 +31,8 @@ export class ZapTooltip implements OnDestroy {
   @Input() shape: 'curve' | 'pill' | 'flat' = 'flat'
   @Input() position: 'top' | 'bottom' | 'left' | 'right' | 'auto' = 'auto'
   private onDocumentMouseMoveBound: (event: MouseEvent) => void
-  private isHoveringTooltip = false
-  private isHoveringContent = false
+  isHoveringTooltip = false
+  isHoveringContent = false
 
   @HostListener('window:resize')
   onWindowResize(): void {
